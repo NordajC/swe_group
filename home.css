@@ -1,0 +1,57 @@
+body{
+  font-family: sans-serif;
+  background-color: #FFFDFA;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.container{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  /* border: 2px solid black; */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  width: 250px;
+  height: 250px;
+  background-color: #ff3355;
+  border: 1px solid grey;
+  border-radius: 25px;
+  box-shadow: 0px 10px 10px -10px #111;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 10px 20px 20px -20px #111;
+  cursor: pointer;
+}
+
+.btn p {
+  margin: 10%;
+}
+#icon {
+font-size: 90px;
+margin-top: 20px;
+}
+
+#EC-container{
+  background-color:#ffa602;
+}
+
+#ticket-container{
+  background-color: #45a3e5;
+}
+
+#status-container{
+  background-color: #c2a5df;
+}
