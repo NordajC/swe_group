@@ -40,7 +40,7 @@ footer{
 }
 
 h2{
-  padding: 1em 0 1em 0;
+  margin: 1em 0 1em 0;
 }
 
 .row{
@@ -77,4 +77,44 @@ h2{
 .main-stat, .date{
   font-size: 1.25em;
   font-weight: bold;
+}
+
+.statusSelect{
+  width: 150px;
+  height: 1.75em;
+  border: 1px solid #454545;
+  font-weight: bold;
+}
+
+.form-button1,.form-button2{
+  position: absolute;
+  font-size: 1.25em;
+  height: 1.5em;
+  margin: 1.1em 1em 1em 1em;
+}
+
+.form-button1{
+  right: 20.5%;
+  background-color: rgb(255, 70, 70);
+}
+
+.form-button2{
+  right: 12.5%;
+  background-color: rgb(70, 255, 70);
+}
+
+.form-top-row{
+  display: flex;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+.add-schedule{
+  width: 95%;
+  min-height: 5em;
+  padding: 0.5em;
+  height: auto;
+  resize: none;
+  border: 1px solid #454545;
 }
