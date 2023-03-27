@@ -1,0 +1,120 @@
+body{
+  width: 100%;
+  height: 100vh;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: #EEEEEE;
+  color: #454545;
+}
+
+header{
+  background-color: blue;
+  margin: 0;
+  padding: 0.5em;
+  height: 10vh;
+  color: #EEEEEE;
+}
+
+footer{
+  background-color: blue;
+  height: 15vh;
+  margin: 0;
+  padding: 0.5em;
+  color: #EEEEEE;
+}
+.container{
+  margin: 1em;
+}
+.content{
+  width: 75vw;
+  margin: 0 auto 0 auto;
+  /* background-color: grey; */
+}
+
+.title{
+  text-align: center;
+  font-size: 2em;
+}
+
+h2{
+  margin: 1em 0 1em 0;
+}
+
+.row{
+  display: flex;
+  width: auto;
+  background-color: white ;
+  justify-content: space-between;
+  margin: 0.5em;
+  padding: 1em;
+  border-radius: 0px;
+  box-shadow:  5px 5px 13px #c5c5c5,
+             -5px -5px 13px #fbfbfb;
+}
+
+.textbox{
+  width: auto;
+  height: auto;
+  background-color: white;
+  margin: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 1em;
+  padding-bottom: 0.5rem;
+  border-radius: 0px;
+  box-shadow:  5px 5px 13px #c5c5c5,
+             -5px -5px 13px #fbfbfb;
+}
+
+.main-stat{
+  margin-right: 1em;
+  float: right;
+}
+
+.main-stat, .date{
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.statusSelect{
+  width: 150px;
+  height: 1.75em;
+  border: 1px solid #454545;
+  font-weight: bold;
+}
+
+.form-button1,.form-button2{
+  position: absolute;
+  font-size: 1.25em;
+  height: 1.5em;
+  margin: 1.1em 1em 1em 1em;
+}
+
+.form-button1{
+  right: 20.5%;
+  background-color: rgb(255, 70, 70);
+}
+
+.form-button2{
+  right: 12.5%;
+  background-color: rgb(70, 255, 70);
+}
+
+.form-top-row{
+  display: flex;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+.add-schedule{
+  width: 95%;
+  min-height: 5em;
+  padding: 0.5em;
+  height: auto;
+  resize: none;
+  border: 1px solid #454545;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="status.css" />
+  <title>Service Status</title>
+</head>
+
+<body>
+  <header>
+    <h1>QM Minus Admin</h1>
+  </header>
+  <div class="content">
+    <h1 class="title">Set Service Status</h1>
+
+    <!-- status section -->
+
+    <div class="container">
+
+      <form>
+        <div class="form-top-row">
+          <h2>Last Modified: dd/mm/yy</h2>
+          <button class="form-button1" type="reset" value="Reset">Cancel</button>
+          <input class="form-button2" type="submit">
+        </div>
+        <div class="row">
+          <span class="service">Campus</span>
+          <span class="status" id="campusStat">
+            <select class="statusSelect">
+              <option value="operational" style="color: green">
+                Operational
+              </option>
+              <option value="maintenance" style="color: orange">
+                In Maintenance
+              </option>
+            </select>
+          </span>
+        </div>
+        <div class="row">
+          <span class="service">eLearning</span>
+          <span style="color: green" class="status" id="eLearningStat">
+            <select class="statusSelect">
+              <option value="operational" style="color: green">
+                Operational
+              </option>
+              <option value="maintenance" style="color: orange">
+                In Maintenance
+              </option>
+            </select>
+          </span>
+        </div>
+        <div class="row">
+          <span class="service">Email</span>
+          <span style="color: green" class="status" id="emailStat">
+            <select class="statusSelect">
+              <option value="operational" style="color: green">Operational</option>
+              <option value="maintenance" style="color: orange">In Maintenance</option>
+            </select>
+          </span>
+        </div>
+        <div class="row">
+          <span class="service">Internet Services</span>
+          <span style="color: green" class="status" id="iServicesStat">
+            <select class="statusSelect">
+              <option value="operational" style="color: green">Operational</option>
+              <option value="maintenance" style="color: orange">In Maintenance</option>
+            </select>
+          </span>
+        </div>
+        <div class="row">
+          <span class="service">MySIS</span>
+          <span style="color: green" class="status" id="mysisStat">
+            <select class="statusSelect">
+              <option value="operational" style="color: green">Operational</option>
+              <option value="maintenance" style="color: orange">In Maintenance</option>
+            </select>
+          </span>
+        </div>
+        <div class="row">
+          <span class="service">Wi-FI</span>
+          <span style="color: green" class="status" id="wifiStat">
+            <select class="statusSelect">
+              <option value="operational" style="color: green">Operational</option>
+              <option value="maintenance" style="color: orange">In Maintenance</option>
+            </select>
+          </span>
+        </div>
+        <div class="row">
+          <span class="service">filler</span>
+          <span class="status" id="wifiStat"></span>
+        </div>
+        <div class="row">
+          <span class="service">filler</span>
+          <span class="status" id="wifiStat"></span>
+        </div>
+        <div class="row">
+          <span class="service">filler</span>
+          <span class="status" id="wifiStat"></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- maintenance section -->
+
+    <div id="Scheduled" class="container">
+      <h2>Scheduled Service Maintenance</h2>
+      <h3>Add To Schedule</h3>
+      <form action="">
+        <div class="textbox" style="border-left: 10px solid black;">
+          <label>Schedule</label>
+          <br><br>
+          <textarea class="add-schedule" placeholder="text here..."></textarea> 
+          <br>
+          <button class="form-button3" type="reset" value="Reset">Cancel</button>
+          <input class="form-button4" type="submit">
+        </div>
+      </form> 
+      <div class="textbox" style="border-left: 10px solid green">
+        <span class="date">dd/mm/yy</span>
+        <span style="color: green" class="main-stat">Resolved</span>
+        <p class="description">Schedule description</p>
+      </div>
+      <div class="textbox" style="border-left: 10px solid orange">
+        <span class="date">dd/mm/yy</span>
+        <span style="color: orange" class="main-stat">Unresolved</span>
+        <p class="description">Schedule description</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <h3>QM minus not copyright. Developed by group 25.</h3>
+    <p>
+      filler text filler text filler text filler text filler text filler text
+      filler text filler text
+    </p>
+  </footer>
+</body>
+
+</html>
