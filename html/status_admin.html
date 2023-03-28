@@ -6,87 +6,108 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/status.css" />
+  <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
   <title>Service Status</title>
 </head>
 
 <body>
-  <header>
-    <h1>QM Minus Admin</h1>
+  <header class="bg-primary text-white py-3">
+    <div class="container-center">
+      <h1>QM Minus Admin</h1>
+    </div>
   </header>
-  <div class="content">
-    <h1 class="title">Set Service Status</h1>
+  <div class="container my-5">
+    <h1 class="text-center mb-5">Set Service Status</h1>
 
     <!-- status section -->
 
-    <div class="container">
-
-      <form>
-        <div class="form-top-row">
+    <form>
+      <div class="row mb-3">
+        <div class="col-12 col-md-4">
           <h2>Last Modified: dd/mm/yy</h2>
-          <button class="form-button1" type="reset" value="Reset">Cancel</button>
-          <input class="form-button2" type="submit">
         </div>
-        <div class="row">
+        <div class="col-12 col-md-8 d-flex justify-content-end align-items-center">
+          <button class="btn btn-secondary me-2" type="reset">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-md-4">
           <span class="service">Campus</span>
+        </div>
+        <div class="col-12 col-md-8">
           <span class="status" id="campusStat">
-            <select class="statusSelect">
-              <option value="operational" style="color: green">
-                Operational
-              </option>
-              <option value="maintenance" style="color: orange">
-                In Maintenance
-              </option>
+            <select class="form-select form-select-lg mb-3">
+              <option value="operational" style="color: green">Operational</option>
+              <option value="maintenance" style="color: orange">In Maintenance</option>
             </select>
           </span>
         </div>
-        <div class="row">
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-md-4">
           <span class="service">eLearning</span>
+        </div>
+        <div class="col-12 col-md-8">
           <span style="color: green" class="status" id="eLearningStat">
-            <select class="statusSelect">
-              <option value="operational" style="color: green">
-                Operational
-              </option>
-              <option value="maintenance" style="color: orange">
-                In Maintenance
-              </option>
+            <select class="form-select form-select-lg mb-3">
+              <option value="operational" style="color: green">Operational</option>
+              <option value="maintenance" style="color: orange">In Maintenance</option>
             </select>
           </span>
         </div>
-        <div class="row">
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-md-4">
           <span class="service">Email</span>
+        </div>
+        <div class="col-12 col-md-8">
           <span style="color: green" class="status" id="emailStat">
-            <select class="statusSelect">
+            <select class="form-select form-select-lg mb-3">
               <option value="operational" style="color: green">Operational</option>
               <option value="maintenance" style="color: orange">In Maintenance</option>
             </select>
           </span>
         </div>
-        <div class="row">
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-md-4">
           <span class="service">Internet Services</span>
+        </div>
+        <div class="col-12 col-md-8">
           <span style="color: green" class="status" id="iServicesStat">
-            <select class="statusSelect">
+            <select class="form-select form-select-lg mb-3">
               <option value="operational" style="color: green">Operational</option>
               <option value="maintenance" style="color: orange">In Maintenance</option>
             </select>
           </span>
+          </div>
         </div>
-        <div class="row">
-          <span class="service">MySIS</span>
+        <div class="row mb-3">
+          <div class="col-12 col-md-4">
+            <span class="service">MySIS</span>
+          </div>
+          <div class="col-12 col-md-8">
           <span style="color: green" class="status" id="mysisStat">
-            <select class="statusSelect">
+            <select class="form-select form-select-lg mb-3">
               <option value="operational" style="color: green">Operational</option>
               <option value="maintenance" style="color: orange">In Maintenance</option>
             </select>
           </span>
+          </div>
         </div>
-        <div class="row">
-          <span class="service">Wi-FI</span>
+        <div class="row mb-3">
+          <div class="col-12 col-md-4">
+            <span class="service">Wi-FI</span>
+          </div>
+          <div class="col-12 col-md-8">
           <span style="color: green" class="status" id="wifiStat">
-            <select class="statusSelect">
+            <select class="form-select form-select-lg mb-3">
               <option value="operational" style="color: green">Operational</option>
               <option value="maintenance" style="color: orange">In Maintenance</option>
             </select>
           </span>
+          </div>
         </div>
         <div class="row">
           <span class="service">filler</span>
