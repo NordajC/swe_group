@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="SEProjectForm.css" type="text/css">   
+</head>
+<body>
+    <form method="POST" action="">
+            <legend><div style="position: relative; right: -620px; top: 10px;">Feedback form</div></legend>
+            <article>
+                <style>
+                    label {
+                      display: inline-block;
+                      width: 100px;
+                    }
+                </style>
+                <div class="name">
+                    <label class="name">First Name</label>
+                    <input type="text" name="First Name"placeholder="First name" >
+                </div>
+            
+                <div class="Sname">
+                    <label class="name">Surname</label>
+                    <input type="text" name="Surname" placeholder="Surname" >
+                </div>
+
+                <div class="YOS">
+                    <label>Year of Study</label>
+                    <select name="Year of Study">
+                        <option>Choose year <style> </style> </option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+
+                <div class="id">
+                    <label class="name">Student ID</label>
+                    <input type="text"  name="Student ID" placeholder=" Enter a 9 digit number">
+                </div>
+
+                <div class="email">
+                    <label class="name">Email</label>
+                    <input type="email" name="Email" placeholder="Enter your email">
+                </div>
+
+                <div class="feedback">
+                    <label>Feedback on</label> 
+                    <select name="Choice" >
+                        <option>Choose feedback option</option>
+                        <option>Service</option>
+                        <option>Module</option>
+                        <option>lecture</option>
+                        <option>Campus</option>
+                        <option>Teaching</option>
+                        <option>Equipments</option>
+                    </select>
+                </div>
+
+                <div class="message">
+                    <label>Please add more detail to the feedback. For example, module code, lecturer, praise </label>
+                    <input type="text" name="Message"  placeholder="Enter your text here including all details" style="width: 500px; height: 100px; position: relative; top: -50px;">
+                </div>
+            </article>
+
+            <div class="design"></div>
+
+            <section>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Cancel">
+            </section>
+    </form>
+</body>
+</html>
