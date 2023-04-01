@@ -20,7 +20,7 @@ legend{
     position: relative;
     display: inline-block;
     left: 1266px;
-    top: -68.5px;
+    top: -149px;
   }
   
 
@@ -50,4 +50,11 @@ legend{
   
   .dropdown:hover .dropbutton {
     background-color: rgb(168, 38, 166);
+  }
+
+  h1{
+    position: relative;
+    left: 400px;
+    bottom: 60px;
+    color: white;  
   }
