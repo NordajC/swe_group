@@ -17,12 +17,13 @@
                 <h2>Type and Description</h2>
                 <p>
                     <label>Type of issue</label><br>
-                    <input type="text" name="issue type">
+                    <input type="text" name="issue type" required>
                 </p>
                 <p>
                     <label>Description</label>
                     <br>
-                    <textarea name="Issue description" form="issue-form">Provide description here...</textarea>
+                    <textarea name="Issue description" form="issue-form" placeholder="Provide description here... " required></textarea>
+
                 </p>
             </div>
             
@@ -32,7 +33,7 @@
                     <label>Building</label>
                     <br>
                     <select name="Building" required>
-                    <option>Choose building</option>
+                    <option value="" disabled selected>Choose building</option>
                     <option>Bancroft Building</option>
                     <option>Bancroft Road Teaching Rooms</option>
                     <option>Engineering Building</option>
@@ -46,7 +47,7 @@
                     <label>Floor</label>
                     <br>
                     <select name="Floor" required>
-                        <option>Choose Floor</option>
+                        <option value="" disabled selected>Choose Floor</option>
                         <option>0 - Ground</option>
                         <option>-1 - Basement</option>
                         <option>1 - First</option>
