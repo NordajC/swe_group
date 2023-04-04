@@ -20,5 +20,20 @@ const app = initializeApp(firebaseConfig);
 
 get(child(dbRef, `user/${user.uid}/type`))
 .then((snapshot) => {
+  
+});
+
+get(child(dbRef, `user/${user.uid}/type`))
+.then((snapshot) => {
+  
+});
+
+get(child(dbRef, `user/${user.uid}/type`))
+.then((snapshot) => {
+  
+});
+
+get(child(dbRef, `user/${user.uid}/type`))
+.then((snapshot) => {
 
 });
