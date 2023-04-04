@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMinus | Extenuating Circumstance </title>
+    <link rel="stylesheet" href="../css/ec_form.css" type="text/css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <form method="POST" action=#AddPHPActionToSeeSummary id="issue-form">
+        <fieldset>
+            <legend>Report a Fault</legend>
+            <div id="firstblock">
+                <h2>Type and Description</h2>
+                <p>
+                    <label>Type of issue</label><br>
+                    <input type="text" name="issue type">
+                </p>
+                <p>
+                    <label>Description</label>
+                    <br>
+                    <textarea name="Issue description" form="issue-form">Provide description here...</textarea>
+                </p>
+            </div>
+            
+            <div id="secondblock">
+                <h2>Location</h2>
+                <p>
+                    <label>Building</label>
+                    <br>
+                    <select name="Building" required>
+                    <option>Choose building</option>
+                    <option>Bancroft Building</option>
+                    <option>Bancroft Road Teaching Rooms</option>
+                    <option>Engineering Building</option>
+                    <option>Graduate Centre</option>
+                    <option>Informatics Teaching Laboratories</option>
+                    <option>Library</option>
+                    <option>People's Palace/Great Hall</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Floor</label>
+                    <br>
+                    <select name="Floor" required>
+                        <option>Choose Floor</option>
+                        <option>0 - Ground</option>
+                        <option>-1 - Basement</option>
+                        <option>1 - First</option>
+                        <option>2 - Second</option>
+                        <option>3-Third</option>
+                    </select>
+                </p>
+            </div> 
+            
+            <div id="footer">
+             <p>
+                 <label>I confirm that all of the information provided is correct</label>
+                 <input type="checkbox" name="accept" required>
+             </p>
+             <p id="buttons">
+                 <input type="submit" class="button" id="submit-button">
+                 <input type="reset" class="button">
+             </p>
+            </div>
+        </fieldset>
+    </form> 
+ </body>
+</html>

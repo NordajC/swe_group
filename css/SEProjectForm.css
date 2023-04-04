@@ -1,0 +1,121 @@
+
+.submit_area{
+    position: relative;
+    width: 600px;
+    height:300px;
+    background-color: rgb(207, 194, 153);
+    left: 400px;
+    top: 150px;
+}
+h1{
+    position: relative;
+    left: 455px;
+    bottom: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+p{
+    position: relative;
+    left: 470px;
+    bottom: 60px;
+}
+legend{
+    background-color: rgb(21, 68, 143);
+    margin-top: -10px;
+    margin-left: -10px;
+    height: 50px;
+    width: 1440px;
+    font-size: 30px;
+    color: white;
+}
+
+
+div.name{
+    margin-top: 80px;
+    margin-left: 400px;
+    color: white;
+}
+
+div.Sname{
+    margin-top: 30px;
+    margin-left: 400px;
+    color: white
+}
+
+div.id{
+    margin-top: 30px;
+    margin-left: 400px;
+    color: white
+}
+
+div.email{
+    margin-top: 40px;
+    margin-left: 400px;
+    color: white
+}
+
+div.Sname{
+    margin-top: 40px;
+    margin-left: 400px;
+    color: white
+}
+
+div.YOS{
+    margin-top: 40px;
+    margin-left: 400px;
+    color: white
+}
+
+div.feedback{
+    margin-top: 40px;
+    margin-left: 400px;
+    color: white
+}
+
+div.design{
+    background-color: rgb(156, 41, 164);
+    width: 700px;
+    height: 600px;
+    margin-top: -560px;
+    margin-left: 350px;
+}
+div.message{
+    margin-top: 40px;
+    margin-left: 400px;
+    color: white
+}
+
+section{
+    margin-left: 680px;
+    margin-top: -85px;
+}
+input[type=submit],
+input[type=reset] {
+    background-color: rgb(21, 68, 143);
+    color: white;
+    font-family: 'Arial', 'sans-serif';
+    cursor: pointer;
+    width: 100%;
+    padding: 1%;
+    margin-top: 2em;
+}
+
+input[type=submit]{
+    width: 100px;
+}
+
+input[type=reset] {
+    width: 100px;
+    margin-left: 1em;
+}
+
+input[type=submit]:hover{
+    background-color: rgb(149, 213, 106) ;
+    color: white;
+}
+input[type=reset]:hover {
+    background-color: rgb(240, 15, 26)
+}
+
+
+

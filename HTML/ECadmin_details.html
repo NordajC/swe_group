@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Details</title>
+    <link rel="stylesheet" href="../css/Ecadmin_details.css" type="text/css" />
+  </head>
+  <body>
+    <legend></legend>
+    <h1>My Details</h1>
+    <div class="dropdown">
+      <button class="dropbutton">Account</button>
+      <div class="dropdown-content">
+        <a href="admin.html">Admin Page</a>
+        <a href="review_ECapplication.html">Review EC Application</a>
+        <a href="respondToEC.html">Respond to EC Claim</a>
+        <a href="UpdateEC.html">Update EC Ticket Status</a>
+        <input id="logOut" type="submit" class="submit" value="Log Out">
+      </div>
+    </div>
+
+    <a href="Notification.html"
+      ><img
+        src="bell_icon2.png"
+        alt="Italian Trulli"
+        style="
+          position: relative;
+          width: 35px;
+          height: 30px;
+          left: 1120px;
+          top: -137px;
+          color: white;
+        "
+    /></a>
+    <a href="admin.html"
+      ><img
+        src="qm minus white.png"
+        alt="Italian Trulli"
+        style="
+          position: relative;
+          padding: 0.3%;
+          width: 60px;
+          height: 40px;
+          right: 135px;
+          top: -128px;
+        "
+    /></a>
+
+    <section></section>
+    <p style="display: inline-block">Name:</p>
+    <p style="display: inline" id="myName">testing</p>
+    <br />
+
+    <p style="display: inline-block">Surname:</p>
+    <p style="display: inline" id="mySur">testing</p>
+    <br />
+
+    <p id="myID" style="display: inline-block">ID:</p>
+    <p style="display: inline">test</p>
+    <br />
+
+    <p style="display: inline-block">Email:</p>
+    <p style="display: inline">test</p>
+    <br />
+  </body>
+  <script type="module" src="../functionality-js/logout_firebase.js"></script>
+  </html>
