@@ -18,21 +18,28 @@
                 <h2>Type and Circumstances</h2>
                 <p>
                     <label>Extenuating Circumstance Type</label><br>
-                    <input type="radio" name="type">Standard Claim<br>
-                    <input type="radio" name="type">Self-Certification<br>
+                    <!--<input type="radio" name="type">Standard Claim<br>
+                    <input type="radio" name="type">Self-Certification<br>-->
+                    <select id="ecType">
+                        <option value="standard-claim">Standard Claim</option>
+                        <option value="self-cert">Self-Certification</option>
+                    </select>
                 </p>
                 <p>
                     <label>Nature/category of circumstances</label>
                     <br>
-                    <select name="EC nature" required>
-                    <option>Choose nature/category</option>
-                    <option>Bereavement</option>
-                    <option>Crime</option>
-                    <option>Mental Health</option>
-                    <option>Physical Health</option>
-                    <option>Minor illness</option>
-                    <option>Severe illness</option>
-                    <option>Workload / employment</option>
+                    <select name="EC nature" id="nature" required>
+                        <option>Choose nature/category</option>
+                        <option value="bereavement">Bereavement</option>
+                        <option value="crime">Crime</option>
+                        <option value="travel-disruption">Major unforeseeable disruption to travel</option>
+                        <option value="mental-health-acute">Mental Health: acute episode</option>
+                        <option value="mental-health-long">Mental Health: long-term condition</option>
+                        <option value="minor-illness">Minor illness/Medical reasons: acute episode</option>
+                        <option value="physical-health">Physical Health: long-term condition</option>
+                        <option value="other">Other</option>
+                        <option value="severe-illness">Severe illness/medical reasons: acute episode</option>
+                        <option value="workload-employment">Workload / employment</option>
                     </select>
                 </p>
                 <p>
@@ -47,17 +54,19 @@
                 <p>
                     <label>Select Module & Assessments</label>
                     <br>
-                    <!-- <select name="Modules & Assessments">
-                    <option>ECS506U Software Engineering Project Assignment 1</option>
-                    <option>ECS506U Software Engineering Project Assignment 2</option>
-                    <option>ECS506U Software Engineering Project Assignment 3</option>
-                    </select> -->
+                    <select name="Modules & Assessments" id="assessments">
+                        <option>ECS506U Software Engineering Project Assignment 1</option>
+                        <option>ECS506U Software Engineering Project Assignment 2</option>
+                        <option>ECS506U Software Engineering Project Assignment 3</option>
+                    </select>
+                    <!--
                     <input type="checkbox" id="SE_Assgn1" name="SE_Assgn1" value="SE_Assgn1">
                     <label for="SE_Assgn1">ECS506U Software Engineering Project Assignment 1</label><br>
                     <input type="checkbox" id="SE_Assgn2" name="SE_Assgn2" value="SE_Assgn2">
                     <label for="SE_Assgn2">ECS506U Software Engineering Project Assignment 2</label><br>
                     <input type="checkbox" id="SE_Assgn3" name="SE_Assgn3" value="SE_Assgn3">
                     <label for="SE_Assgn3">ECS506U Software Engineering Project Assignment 3</label><br>
+                    -->
                 </p>
                 <p>
                     <label>Extended Date Requested</label>
@@ -88,4 +97,5 @@
         </fieldset>
     </form> 
  </body>
+ <script type="module" src="../functionality-js/ec_ticket.js"></script>
 </html>
