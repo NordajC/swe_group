@@ -20,7 +20,7 @@
                     <label>Extenuating Circumstance Type</label><br>
                     <!--<input type="radio" name="type">Standard Claim<br>
                     <input type="radio" name="type">Self-Certification<br>-->
-                    <select id="ecType">
+                    <select id="ecType" required>
                         <option value="standard-claim">Standard Claim</option>
                         <option value="self-cert">Self-Certification</option>
                     </select>
@@ -45,7 +45,7 @@
                 <p>
                     <label>Provide a summary of the extenuating circumstance and how these circumstances affected the assessment(s)</label>
                     <br>
-                    <textarea name="EC reason summary" form="ec-form">Provide summary here...</textarea>
+                    <textarea id="summary" name="EC reason summary" form="ec-form" required>Provide summary here...</textarea>
                 </p>
             </div>
             
@@ -54,7 +54,8 @@
                 <p>
                     <label>Select Module & Assessments</label>
                     <br>
-                    <select name="Modules & Assessments" id="assessments">
+                    <select name="Modules & Assessments" id="assessments" required>
+                        <option value="" disabled selected>Select Option</option>
                         <option>ECS506U Software Engineering Project Assignment 1</option>
                         <option>ECS506U Software Engineering Project Assignment 2</option>
                         <option>ECS506U Software Engineering Project Assignment 3</option>
@@ -71,7 +72,7 @@
                 <p>
                     <label>Extended Date Requested</label>
                     <br>
-                    <input type="date" name="date">
+                    <input type="date" name="date" id="date" required>
                 </p>
             </div>
             
@@ -80,7 +81,7 @@
                 <p>
                     <label>Upload Supporting Evidence</label>
                     <br>
-                    <input type="file" id="evidenceFile" name="filename">
+                    <input type="file" id="evidence-file" name="filename" required>
                 </p>
             </div>
             
