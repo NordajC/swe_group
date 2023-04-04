@@ -9,7 +9,7 @@
 }
 h1{
     position: relative;
-    left: 455px;
+    left: 430px;
     bottom: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: larger;
@@ -89,8 +89,8 @@ section{
     margin-left: 680px;
     margin-top: -85px;
 }
-input[type=submit],
-input[type=reset] {
+button[type=submit],
+button[type=reset] {
     background-color: rgb(21, 68, 143);
     color: white;
     font-family: 'Arial', 'sans-serif';
@@ -100,20 +100,20 @@ input[type=reset] {
     margin-top: 2em;
 }
 
-input[type=submit]{
+button[type=submit]{
     width: 100px;
 }
 
-input[type=reset] {
+button[type=reset] {
     width: 100px;
     margin-left: 1em;
 }
 
-input[type=submit]:hover{
+button[type=submit]:hover{
     background-color: rgb(149, 213, 106) ;
     color: white;
 }
-input[type=reset]:hover {
+button[type=reset]:hover {
     background-color: rgb(240, 15, 26)
 }
 
