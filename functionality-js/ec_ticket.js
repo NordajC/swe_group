@@ -1,29 +1,29 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
 import {
-  getDatabase,
-  ref,
-  child,
-  get,
-  push
+    getDatabase,
+    ref,
+    child,
+    get,
+    push
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
-  authDomain: "test-29549.firebaseapp.com",
-  databaseURL:
-    "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "test-29549",
-  storageBucket: "test-29549.appspot.com",
-  messagingSenderId: "864209838742",
-  appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
+    apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+    authDomain: "test-29549.firebaseapp.com",
+    databaseURL:
+        "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "test-29549",
+    storageBucket: "test-29549.appspot.com",
+    messagingSenderId: "864209838742",
+    appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
 };
 
 // Initialize Firebase
@@ -32,86 +32,100 @@ const db = getDatabase(app);
 const dbRef = ref(db);
 const auth = getAuth();
 const user = auth.currentUser;
-var userID;
 
-//Enter path
-//var ecForm = firebase.database().ref(/path");
-
-// var userRecord = FirebaseAuth.getInstance().getUser(uid);
-// // See the UserRecord reference doc for the contents of userRecord.
-// System.out.println("Successfully fetched user data: " + userRecord.getUid());
-
-// get(child(dbRef, `user/${user.uid}/userID`))
-//     .then((snapshot) => {
-//         if (snapshot.exists()) {
-//             userID = snapshot.val();
-//         } else {
-//             console.log("No data available");
-//         }
-//     })
 
 auth.onAuthStateChanged((user) => {
-  if (user) {
-    // User logged in already or has just logged in.
-    console.log(user.uid);
-    let userID = user.uid;
-    console.log(userID);
+    if (user) {
+        // User logged in already or has just logged in.
+        console.log(user.uid);
+        let userID = user.uid;
+        console.log(userID);
 
-    let submit_button = document.getElementById("submit-button");
-    submit_button.addEventListener("click", (e) => {
-      e.preventDefault(); // prevent default form submission behavior
+        let submit_button = document.getElementById("submit-button");
+        submit_button.addEventListener("click", (e) => {
+            e.preventDefault(); // prevent default form submission behavior
 
-      let ecType = document.getElementById("ecType").value;
+            let state = "Unseen";
 
-      let nature = document.getElementById("nature").value;
+            const date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
 
-      let summary = document.getElementById("summary").value;
+            if(day<10) {
+                day='0'+day;
+            } 
 
-      let assessments = document.getElementById("assessments").value;
+            if(month<10) {
+                month='0'+month;
+            }
 
-      let date = document.getElementById("date").value;
+            let dateCreated = `${year}-${month}-${day}`;
 
-      let evidence = document.getElementById("evidence-file").value;
+            let ecType = document.getElementById("claim-type").value;
 
-      var data = {
-        StudentID: userID,
-        ecType: ecType,
-        ecNature: nature,
-        ecSummary: summary,
-        ecAssess: assessments,
-        ecDate: date,
-        ecEvidence: evidence,
-      };
+            if (ecType == "standard-claim") {
+                let subject = "Standard Claim";
+            }
+            else {
+                let subject = "Self-Certification";
+            }
 
-      var refEC = child(dbRef, "ecTicket");
+            let nature = document.getElementById("nature").value;
 
-      //push object
-      push(refEC, data, (error) => {
-        if (error) {
-          console.error("Error saving data:", error);
-          // handle error here, e.g. display an error message to the user
-        } else {
-          console.log("Data saved successfully");
-          // do something here, e.g. show a success message to the user
-        }
-      });
-    });
-  } else {
-    // User not logged in or has just logged out.
-    console.log("User not logged in");
-  }
+            let summary = document.getElementById("summary").value;
+
+            let assessment = document.getElementById("assessment").value;
+
+            let assessDate = document.getElementById("assessDate").value;
+
+            let reqDate = document.getElementById("reqDate").value;
+
+            let evidence = document.getElementById("evidence-file").value;
+
+            var data = {
+                StudentID: userID,
+                dateCreated: dateCreated,
+                ecType: ecType,
+                ecNature: nature,
+                ecSummary: summary,
+                ecAssessments: assessment,
+                ecAssessDate: assessDate,
+                ecReqDate: reqDate,
+                ecEvidence: evidence,
+                state: state,
+                subject: subject,
+            };
+
+            var refEC = child(dbRef, "ecTicket");
+
+            //push object
+            push(refEC, data, (error) => {
+                if (error) {
+                    console.error("Error saving data:", error);
+                    // handle error here, e.g. display an error message to the user
+                } else {
+                    console.log("Data saved successfully");
+                    // do something here, e.g. show a success message to the user
+                }
+            });
+        });
+    } else {
+        // User not logged in or has just logged out.
+        console.log("User not logged in");
+    }
 });
 
 
 const checkAuthStat = async () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      //if users are signed in then.....
-      console.log("user is signed in and is authenticated");
-    } else {
-      console.log("user is NOT signed in");
-    }
-  });
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            //if users are signed in then.....
+            console.log("user is signed in and is authenticated");
+        } else {
+            console.log("user is NOT signed in");
+        }
+    });
 };
 
 checkAuthStat();
