@@ -71,7 +71,7 @@ const userLogIn = async () => {
             } else if (userType == "eecs") {
               alert("user is an eecs admin");
               //redirect
-              window.location.href = "../HTML/admin.html";
+              window.location.href = "../HTML/eecs_admin_homepage.html";
             } else if (userType == "student") {
               alert("user is a student");
               //redirect
