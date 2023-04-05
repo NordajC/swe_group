@@ -5,98 +5,140 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QMinus | Extenuating Circumstance </title>
-    <link rel="stylesheet" href="../css/ec_form.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/style.css" type="text/css"/>
     <!-- <script src="../js/ec_form.js" defer></script> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
 
 </head>
+    
 <body>
-    <form method="POST" action=#AddPHPActionToSeeSummary id="ec-form">
-        <fieldset>
-            <legend>Extenuating Circumstances Form</legend>
-            <div id="firstblock">
-                <h2>Type and Circumstances</h2>
-                <p>
-                    <label>Extenuating Circumstance Type</label><br>
-                    <!--<input type="radio" name="type">Standard Claim<br>
-                    <input type="radio" name="type">Self-Certification<br>-->
-                    <select id="ecType" required>
-                        <option value="standard-claim">Standard Claim</option>
-                        <option value="self-cert">Self-Certification</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Nature/category of circumstances</label>
-                    <br>
-                    <select name="EC nature" id="nature" required>
-                        <option>Choose nature/category</option>
-                        <option value="bereavement">Bereavement</option>
-                        <option value="crime">Crime</option>
-                        <option value="travel-disruption">Major unforeseeable disruption to travel</option>
-                        <option value="mental-health-acute">Mental Health: acute episode</option>
-                        <option value="mental-health-long">Mental Health: long-term condition</option>
-                        <option value="minor-illness">Minor illness/Medical reasons: acute episode</option>
-                        <option value="physical-health">Physical Health: long-term condition</option>
-                        <option value="other">Other</option>
-                        <option value="severe-illness">Severe illness/medical reasons: acute episode</option>
-                        <option value="workload-employment">Workload / employment</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Provide a summary of the extenuating circumstance and how these circumstances affected the assessment(s)</label>
-                    <br>
-                    <textarea id="summary" name="EC reason summary" form="ec-form" required>Provide summary here...</textarea>
-                </p>
-            </div>
+
+    <header style="position: relative;">
+        <h1 class="row justify-content-center" >Apply For EC</h1>
+        <a href="home.html" >
+        <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+        </a>
+        
+    </header>
+
+    <div class="container-fluid col-lg-7 col-md-10 ">
+        <form method="POST" action=#AddPHPActionToSeeSummary id="ec-form"class="card p-3 row justify-content-center">
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <legend>Extenuating Circumstances Form</legend>
+                            <div id="firstblock">
+                                <h2>Type and Circumstances</h2>
+                                    <label class="form-label">Extenuating Circumstance Type</label><br>
+                                    <input class="form-check-input" type="radio" name="type"> Standard Claim<br>
+                                    <input class="form-check-input" type="radio" name="type"> Self-Certification<br>
+                            
+
+                            
+                        </div>
+                    </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label">Nature/category of circumstances</label>
+                                <br>
+                                <select class="form-control" name="EC nature" required>
+                                <option>Choose nature/category</option>
+                                <option>Bereavement</option>
+                                <option>Crime</option>
+                                <option>Mental Health</option>
+                                <option>Physical Health</option>
+                                <option>Minor illness</option>
+                                <option>Severe illness</option>
+                                <option>Workload / employment</option>
+                                </select>
+
+
+                            <p>
+                                <label class="form-label">Provide a summary of the extenuating circumstance and how these circumstances affected the assessment(s)</label>
+                                <br>
+                                <textarea name="EC reason summary" class="form-control" form="ec-form">Provide summary here...</textarea>
+                            </p> 
+                        </div>
+                    </div>
+                </div>
+                
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="mb-3">
+                            <h2>Assessments</h2>
+                            <p>
+                                <label>Select Module & Assessments</label>
+                                <br>
+                                <!-- <select name="Modules & Assessments">
+                                <option>ECS506U Software Engineering Project Assignment 1</option>
+                                <option>ECS506U Software Engineering Project Assignment 2</option>
+                                <option>ECS506U Software Engineering Project Assignment 3</option>
+                                </select> -->
+                                <label class="form-label">Nature/category of circumstances</label>
+                                <br>
+                                <select class="form-control" name="EC nature" required>
+                                <option>Choose Assignment</option>
+                                <option name="SE_Assgn1" >ECS506U Software Engineering Project Assignment 1</option>
+                                <option name="SE_Assgn2">ECS506U Software Engineering Project Assignment 2</option>
+                                <option name="SE_Assgn3" >ECS506U Software Engineering Project Assignment 3</option>
+                                </select>
+
+                            </p>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="mb-3">
+                            <p>
+                                <label class="form-label">Extended Date Requested</label>
+                                <br>
+                                <input type="date" name="date" class="form-control">
+                            </p>
+                        </div>
+                    </div>
+                </div>    
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <h2>Evidence</h2>
+                            <p>
+                                <label>Upload Supporting Evidence</label>
+                                <br>
+                                <input type="file" id="evidenceFile" name="filename">
+                            </p>
+                        </div>
+                        
+                        <div class="col-md-12" id="footer">
+                            <div class="mb-3">
+                               
+                            <label>I confirm that all of the information provided is correct</label>
+                            <input type="checkbox" name="accept" required>
+                           
+                            <p id="buttons">
+                                <input type="submit" class="btn btn-success" id="submit-button">
+                                <input type="reset" class="btn btn-danger">
+                            </p>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
             
-            <div id="secondblock">
-                <h2>Assessments</h2>
-                <p>
-                    <label>Select Module & Assessments</label>
-                    <br>
-                    <select name="Modules & Assessments" id="assessments" required>
-                        <option value="" disabled selected>Select Option</option>
-                        <option>ECS506U Software Engineering Project Assignment 1</option>
-                        <option>ECS506U Software Engineering Project Assignment 2</option>
-                        <option>ECS506U Software Engineering Project Assignment 3</option>
-                    </select>
-                    <!--
-                    <input type="checkbox" id="SE_Assgn1" name="SE_Assgn1" value="SE_Assgn1">
-                    <label for="SE_Assgn1">ECS506U Software Engineering Project Assignment 1</label><br>
-                    <input type="checkbox" id="SE_Assgn2" name="SE_Assgn2" value="SE_Assgn2">
-                    <label for="SE_Assgn2">ECS506U Software Engineering Project Assignment 2</label><br>
-                    <input type="checkbox" id="SE_Assgn3" name="SE_Assgn3" value="SE_Assgn3">
-                    <label for="SE_Assgn3">ECS506U Software Engineering Project Assignment 3</label><br>
-                    -->
-                </p>
-                <p>
-                    <label>Extended Date Requested</label>
-                    <br>
-                    <input type="date" name="date" id="date" required>
-                </p>
-            </div>
-            <!-- removed required from evidence -->
-            <div id="thirdblock">
-                <h2>Evidence</h2>
-                <p>
-                    <label>Upload Supporting Evidence</label>
-                    <br>
-                    <input type="file" id="evidence-file" name="filename">
-                </p>
-            </div>
-            
-            <div id="footer">
-             <p>
-                 <label>I confirm that all of the information provided is correct</label>
-                 <input type="checkbox" name="accept" required>
-             </p>
-             <p id="buttons">
-                 <input type="submit" class="button" id="submit-button">
-                 <input type="reset" class="button">
-             </p>
-            </div>
-        </fieldset>
-    </form> 
+            </fieldset>
+        </form> 
+        <footer class = "fixed-bottom">
+            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+        </footer>
+    </div>
  </body>
  <script type="module" src="../functionality-js/ec_ticket.js"></script>
 </html>

@@ -2,72 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QMinus | Extenuating Circumstance </title>
-    <link rel="stylesheet" href="../css/ec_form.css" type="text/css"/>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QMinus | Extenuating Circumstance</title>
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-    <form method="POST" action=#AddPHPActionToSeeSummary id="issue-form">
-        <fieldset>
-            <legend>Report a Fault</legend>
-            <div id="firstblock">
-                <h2>Type and Description</h2>
-                <p>
-                    <label>Type of issue</label><br>
-                    <input type="text" name="issue type" required>
-                </p>
-                <p>
-                    <label>Description</label>
-                    <br>
-                    <textarea name="Issue description" form="issue-form" placeholder="Provide description here... " required></textarea>
 
-                </p>
+<body>
+    <header style="position: relative;">
+        <h1 class="row justify-content-center" >Report Issue</h1>
+        <a href="home.html" >
+          <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+        </a>
+        
+    </header>
+
+<div class="container-fluid col-lg-10">
+    <form method="POST" action="#AddPHPActionToSeeSummary" id="issue-form" class="card p-3 row justify-content-center">
+        <fieldset>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="issue-type" class="form-label">Type of Issue</label>
+                        <input type="text" class="form-control" id="issue-type" name="issue type" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="issue-description" class="form-label">Description</label>
+                        <textarea class="form-control" id="issue-description" name="Issue description" form="issue-form" placeholder="Provide description here..." required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="building" class="form-label">Building</label>
+                        <select class="form-select" id="building" name="Building" required>
+                            <option value="" selected disabled>Choose building</option>
+                            <option value="Bancroft Building">Bancroft Building</option>
+                            <option value="Bancroft Road Teaching Rooms">Bancroft Road Teaching Rooms</option>
+                            <option value="Engineering Building">Engineering Building</option>
+                            <option value="Graduate Centre">Graduate Centre</option>
+                            <option value="Informatics Teaching Laboratories">Informatics Teaching Laboratories</option>
+                            <option value="Library">Library</option>
+                            <option value="People's Palace/Great Hall">People's Palace/Great Hall</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="floor" class="form-label">Floor</label>
+                        <select class="form-select" id="floor" name="Floor" required>
+                            <option value="" selected disabled>Choose Floor</option>
+                            <option value="Ground">0 - Ground</option>
+                            <option value="Basement">-1 - Basement</option>
+                            <option value="First">1 - First</option>
+                            <option value="Second">2 - Second</option>
+                            <option value="Third">3 - Third</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             
-            <div id="secondblock">
-                <h2>Location</h2>
+            <div class="col-md-6" id="footer">
+                <div class="mb-3">
                 <p>
-                    <label>Building</label>
-                    <br>
-                    <select name="Building" required>
-                    <option value="" disabled selected>Choose building</option>
-                    <option>Bancroft Building</option>
-                    <option>Bancroft Road Teaching Rooms</option>
-                    <option>Engineering Building</option>
-                    <option>Graduate Centre</option>
-                    <option>Informatics Teaching Laboratories</option>
-                    <option>Library</option>
-                    <option>People's Palace/Great Hall</option>
-                    </select>
+                    <label>I confirm that all of the information provided is correct</label>
+                    <input type="checkbox" name="accept" required>
                 </p>
-                <p>
-                    <label>Floor</label>
-                    <br>
-                    <select name="Floor" required>
-                        <option value="" disabled selected>Choose Floor</option>
-                        <option>0 - Ground</option>
-                        <option>-1 - Basement</option>
-                        <option>1 - First</option>
-                        <option>2 - Second</option>
-                        <option>3-Third</option>
-                    </select>
+                <p id="buttons">
+                    <input type="submit" class="btn btn-success" id="submit-button">
+                    <input type="reset" class="btn btn-danger">
                 </p>
-            </div> 
-            
-            <div id="footer">
-             <p>
-                 <label>I confirm that all of the information provided is correct</label>
-                 <input type="checkbox" name="accept" required>
-             </p>
-             <p id="buttons">
-                 <input type="submit" class="button" id="submit-button">
-                 <input type="reset" class="button">
-             </p>
+                </div>
+             
             </div>
         </fieldset>
     </form> 
+    <footer class = "fixed-bottom">
+        <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+    </footer>
+    
  </body>
 </html>
