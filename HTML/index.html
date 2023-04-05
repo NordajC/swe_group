@@ -7,29 +7,49 @@
     <title>QMinus | Login </title>
     <link rel="stylesheet" href="../css/style.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
 
 </head>
 <body>
+  <header style="position: relative;">
+    <h1 class="row justify-content-center" >Login</h1>
+      <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+    
+  </header>
+
+
+
    <div class="box">
     <div class="container">
       <div class="top-header">
-        <span>Welcome to QMinus!</span>
-        <header>Login</header>
       </div>
-
-      <div class="input-field">
-        <input id="email" type="text" class="input" placeholder="Email" required>
-        <i class="bx bx-user"></i>
+      <div class="container-fluid">
+        <div class="justify-content-center">
+          <div class="card my-10 col-lg-12 mx-auto">
+            
+            <div class="card-body " style="width: 30em;">
+              <h5 class="card-title text-center mb-6">Welcome to QMinus!</h5>
+              <div class="input-field ">
+                <input id="email" type="text" class="form-control" placeholder="Email" required>
+                <i class="bx bx-user"></i>
+              </div>
+              <div class="input-field">
+                <input id="password" type="password" class="form-control" placeholder="Password" required>
+                <i class="bx bx-lock-alt"></i>
+              </div>
+              <div class="input-field">
+                <input id="submitLogin" type="submit" class="submit" value="Login">
+             
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="input-field">
-        <input id="password" type="password" class="input" placeholder="Password" required>
-        <i class="bx bx-lock-alt"></i>
-      </div>
-      <div class="input-field">
-        <input id="submitLogin" type="submit" class="submit" value="Login">
-      </div>
-    </div>
+    </div> 
    </div>
 </body>
+<footer class = "fixed-bottom">
+  <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+</footer>
 <script type="module" src="../functionality-js/login_firebase.js"></script>
 </html>
