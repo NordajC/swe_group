@@ -1,30 +1,45 @@
 body{
-  width: 100%;
-  height: 100vh;
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background: #EEEEEE;
-  color: #454545;
+  background: rgb(63,94,251);
+  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(226,224,241,1) 100%);
+  background-position: center;
 }
-
 header{
   background-color: blue;
   margin: 0;
-  padding: 0.5em;
+  padding: 0;
   height: 10vh;
-  color: #EEEEEE;
+  position: relative;
+  width: 100vw;
+  top: -25px;
+  
+}
+
+header>h1{
+  text-align: left;
+  padding: 0.5em;
+  color: white;
+  
 }
 
 footer{
   background-color: blue;
-  height: 15vh;
-  margin: 0;
-  padding: 0.5em;
-  color: #EEEEEE;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;  
+  color: white;
 }
+
+@media screen and (max-height: 700px){
+  footer{
+    background-color: blue;
+    position: absolute;
+    bottom: auto;
+    width: 100%;
+    height: auto;  
+  }
+}
+
 .container{
   margin: 1em;
 }
@@ -52,7 +67,7 @@ h2{
   padding: 1em;
   border-radius: 0px;
   box-shadow:  5px 5px 13px #c5c5c5,
-             -5px -5px 13px #fbfbfb;
+             
 }
 
 .textbox{
