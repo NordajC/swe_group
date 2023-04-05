@@ -20,19 +20,19 @@
     </header>
 
 <div class="container-fluid col-lg-10">
-    <form method="POST" action="#AddPHPActionToSeeSummary" id="issue-form" class="card p-3 row justify-content-center">
+    <form id="issue-form" class="card p-3 row justify-content-center">
         <fieldset>
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="issue-type" class="form-label">Type of Issue</label>
-                        <input type="text" class="form-control" id="issue-type" name="issue type" required>
+                        <label for="issue-type" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="issue-subject" name="issue type" placeholder="What is the issue..." value="" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="issue-description" class="form-label">Description</label>
-                        <textarea class="form-control" id="issue-description" name="Issue description" form="issue-form" placeholder="Provide description here..." required></textarea>
+                        <textarea class="form-control" id="issue-description" name="Issue description" form="issue-form" placeholder="Provide description here..." value="" required></textarea>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <div class="mb-3">
                 <p>
                     <label>I confirm that all of the information provided is correct</label>
-                    <input type="checkbox" name="accept" required>
+                    <input type="checkbox" name="accept" id="tick-checkbox" required>
                 </p>
                 <p id="buttons">
                     <input type="submit" class="btn btn-success" id="submit-button">
@@ -87,4 +87,5 @@
     </footer>
     
  </body>
+<script type="module" src="../functionality-js/issues_ticket.js"></script>
 </html>

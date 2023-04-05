@@ -47,7 +47,7 @@ auth.onAuthStateChanged((user) => {
         console.log(currentUserID);
         document.getElementById('myID').innerHTML = currentUserID;
       } else {
-        console.log("not logged in ");
+        console.log("no data available");
       }
     });
 
@@ -57,7 +57,7 @@ auth.onAuthStateChanged((user) => {
         console.log(currentUserName);
         document.getElementById('myName').innerHTML = currentUserName;
       } else {
-        console.log("not logged in ");
+        console.log("no data available");
       }
     });
 
@@ -67,7 +67,7 @@ auth.onAuthStateChanged((user) => {
         console.log(currentUserEmail);
         document.getElementById('myEmail').innerHTML = currentUserEmail;
       } else {
-        console.log("not logged in ");
+        console.log("no data available");
       }
     });
 
@@ -77,7 +77,7 @@ auth.onAuthStateChanged((user) => {
         console.log(currentUserSurname);
         document.getElementById('mySur').innerHTML = currentUserSurname;
       } else {
-        console.log("not logged in ");
+        console.log("no data available");
       }
     });
   } else {

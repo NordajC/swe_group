@@ -86,9 +86,9 @@ auth.onAuthStateChanged((user) => {
 
             let evidence = document.getElementById("evidence-file").value;
 
-            let tickCheckbox = document.getElementById("tick-checkbox").value;
+            let tickCheckbox = document.getElementById("tick-checkbox");
 
-            if (ecType == "" || nature == "Choose nature/category" || summary == "" || assessment == "Choose Assessment" || reqDate == "" || tickCheckbox != "ticked") {
+            if (ecType == "" || nature == "Choose nature/category" || summary == "" || assessment == "Choose Assessment" || reqDate == "" || tickCheckbox.checked == false) {
                 alert("Error: Fill all fields.")
             }
 
