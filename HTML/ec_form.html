@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QMinus | Extenuating Circumstance </title>
-    <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <!-- <script src="../js/ec_form.js" defer></script> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
 
 </head>
-    
+
 <body>
 
     <header style="position: relative;">
-        <h1 class="row justify-content-center" >Apply For EC</h1>
-        <a href="home.html" >
-        <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+        <h1 class="row justify-content-center">Apply For EC</h1>
+        <a href="home.html">
+            <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
         </a>
-        
+
     </header>
 
     <div class="container-fluid col-lg-7 col-md-10 ">
-        <form method="POST" action=#AddPHPActionToSeeSummary id="ec-form"class="card p-3 row justify-content-center">
+        <form method="POST" action=#AddPHPActionToSeeSummary id="ec-form" class="card p-3 row justify-content-center">
             <fieldset>
                 <div class="row">
                     <div class="col-md-6">
@@ -31,42 +32,53 @@
                             <legend>Extenuating Circumstances Form</legend>
                             <div id="firstblock">
                                 <h2>Type and Circumstances</h2>
-                                    <label class="form-label">Extenuating Circumstance Type</label><br>
+                                <label class="form-label">Extenuating Circumstance Type</label><br>
+                                <select class="form-control" name="Claim Type" id="claim-type" required>
+                                    <option>Choose claim type</option>
+                                    <option value="standard-claim">Standard Claim</option>
+                                    <option value="self-cert">Self-Certification</option>
+                                </select>
+                                <!--
+                                <div id="claim-type">
                                     <input class="form-check-input" type="radio" name="type"> Standard Claim<br>
                                     <input class="form-check-input" type="radio" name="type"> Self-Certification<br>
-                            
+                                </div>
+                                -->
 
-                            
+                            </div>
                         </div>
-                    </div>
                         <div class="col-md-12 col-lg-12">
                             <div class="mb-3">
                                 <label class="form-label">Nature/category of circumstances</label>
                                 <br>
-                                <select class="form-control" name="EC nature" required>
-                                <option>Choose nature/category</option>
-                                <option>Bereavement</option>
-                                <option>Crime</option>
-                                <option>Mental Health</option>
-                                <option>Physical Health</option>
-                                <option>Minor illness</option>
-                                <option>Severe illness</option>
-                                <option>Workload / employment</option>
+                                <select class="form-control" name="EC nature" id="nature" required>
+                                    <option>Choose nature/category</option>
+                                    <option value="bereavement">Bereavement</option>
+                                    <option value="crime">Crime</option>
+                                    <option value="travel-disruption">Major unforeseeable disruption to travel</option>
+                                    <option value="mental-health-acute">Mental Health: acute episode</option>
+                                    <option value="mental-health-long">Mental Health: long-term condition</option>
+                                    <option value="minor-illness">Minor illness/Medical reasons: acute episode</option>
+                                    <option value="physical-health">Physical Health: long-term condition</option>
+                                    <option value="other">Other</option>
+                                    <option value="severe-illness">Severe illness/medical reasons: acute episode</option>
+                                    <option value="workload-employment">Workload / employment</option>
                                 </select>
 
 
-                            <p>
-                                <label class="form-label">Provide a summary of the extenuating circumstance and how these circumstances affected the assessment(s)</label>
-                                <br>
-                                <textarea name="EC reason summary" class="form-control" form="ec-form">Provide summary here...</textarea>
-                            </p> 
+                                <p>
+                                    <label class="form-label">Provide a summary of the extenuating circumstance and how
+                                        these circumstances affected the assessment(s)</label>
+                                    <br>
+                                    <textarea name="EC reason summary" class="form-control" id="summary" form="ec-form" placeholder="Provide summary here..." required></textarea>
+                                </p>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
-                
-                    
-                </div>
-                
+
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="mb-3">
@@ -81,15 +93,15 @@
                                 </select> -->
                                 <label class="form-label">Nature/category of circumstances</label>
                                 <br>
-                                <select class="form-control" name="EC nature" required>
-                                <option>Choose Assignment</option>
-                                <option name="SE_Assgn1" >ECS506U Software Engineering Project Assignment 1</option>
-                                <option name="SE_Assgn2">ECS506U Software Engineering Project Assignment 2</option>
-                                <option name="SE_Assgn3" >ECS506U Software Engineering Project Assignment 3</option>
+                                <select class="form-control" name="EC nature" id="assessment" required>
+                                    <option>Choose Assessement</option>
+                                    <option name="SE_Assgn1">ECS506U Software Engineering Project Assignment 1</option>
+                                    <option name="SE_Assgn2">ECS506U Software Engineering Project Assignment 2</option>
+                                    <option name="SE_Assgn3">ECS506U Software Engineering Project Assignment 3</option>
                                 </select>
 
                             </p>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -100,12 +112,12 @@
                             <p>
                                 <label class="form-label">Extended Date Requested</label>
                                 <br>
-                                <input type="date" name="date" class="form-control">
+                                <input type="date" name="date" class="form-control" id="reqDate">
                             </p>
                         </div>
                     </div>
-                </div>    
-                
+                </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
@@ -116,29 +128,30 @@
                                 <input type="file" id="evidenceFile" name="filename">
                             </p>
                         </div>
-                        
+
                         <div class="col-md-12" id="footer">
                             <div class="mb-3">
-                               
-                            <label>I confirm that all of the information provided is correct</label>
-                            <input type="checkbox" name="accept" required>
-                           
-                            <p id="buttons">
-                                <input type="submit" class="btn btn-success" id="submit-button">
-                                <input type="reset" class="btn btn-danger">
-                            </p>
+
+                                <label>I confirm that all of the information provided is correct</label>
+                                <input type="checkbox" name="accept" required>
+
+                                <p id="buttons">
+                                    <input type="submit" class="btn btn-success" id="submit-button">
+                                    <input type="reset" class="btn btn-danger">
+                                </p>
                             </div>
-                        
+
                         </div>
                     </div>
                 </div>
-            
+
             </fieldset>
-        </form> 
-        <footer class = "fixed-bottom">
-            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+        </form>
+        <footer class="fixed-bottom">
+            <img src="qm-logo-white.svg" style="width:120px; position: relative;">
         </footer>
     </div>
- </body>
- <script type="module" src="../functionality-js/ec_ticket.js"></script>
+</body>
+<script type="module" src="../functionality-js/ec_ticket.js"></script>
+
 </html>
