@@ -43,6 +43,7 @@ auth.onAuthStateChanged((user) => {
 
         let submit_button = document.getElementById("submit-button");
         submit_button.addEventListener("click", (e) => {
+
             e.preventDefault(); // prevent default form submission behavior
 
             let state = "Unseen";
@@ -65,11 +66,13 @@ auth.onAuthStateChanged((user) => {
             let ecType = document.getElementById("claim-type").value;
 
             if (ecType == "standard-claim") {
-                let subject = "Standard Claim";
+                var subject2 = "Standard Claim";
             }
             else {
-                let subject = "Self-Certification";
+                var subject2 = "Self-Certification";
             }
+
+            let subject = subject2;
 
             let nature = document.getElementById("nature").value;
 
@@ -77,38 +80,50 @@ auth.onAuthStateChanged((user) => {
 
             let assessment = document.getElementById("assessment").value;
 
-            let assessDate = document.getElementById("assessDate").value;
+            //let assessDate = document.getElementById("assessDate").value;
 
             let reqDate = document.getElementById("reqDate").value;
 
             let evidence = document.getElementById("evidence-file").value;
 
-            var data = {
-                StudentID: userID,
-                dateCreated: dateCreated,
-                ecType: ecType,
-                ecNature: nature,
-                ecSummary: summary,
-                ecAssessments: assessment,
-                ecAssessDate: assessDate,
-                ecReqDate: reqDate,
-                ecEvidence: evidence,
-                state: state,
-                subject: subject,
-            };
+            let tickCheckbox = document.getElementById("tick-checkbox").value;
 
-            var refEC = child(dbRef, "ecTicket");
+            if (ecType == "" || nature == "Choose nature/category" || summary == "" || assessment == "Choose Assessment" || reqDate == "" || tickCheckbox != "ticked") {
+                alert("Error: Fill all fields.")
+            }
 
-            //push object
-            push(refEC, data, (error) => {
-                if (error) {
-                    console.error("Error saving data:", error);
-                    // handle error here, e.g. display an error message to the user
-                } else {
-                    console.log("Data saved successfully");
-                    // do something here, e.g. show a success message to the user
-                }
-            });
+            else {
+                var data = {
+                    StudentID: userID,
+                    dateCreated: dateCreated,
+                    ecType: ecType,
+                    ecNature: nature,
+                    ecSummary: summary,
+                    ecAssessments: assessment,
+                    //ecAssessDate: assessDate,
+                    ecReqDate: reqDate,
+                    ecEvidence: evidence,
+                    state: state,
+                    subject: subject,
+                };
+    
+                var refEC = child(dbRef, "ecTicket");
+    
+                //push object
+                push(refEC, data, (error) => {
+                    if (error) {
+                        console.error("Error saving data:", error);
+                        // handle error here, e.g. display an error message to the user
+                    } else {
+                        console.log("Data saved successfully");
+                        // do something here, e.g. show a success message to the user
+                    }
+                });
+    
+                // Redirect user to successful submission page
+                //window.location.href = "submitpage.html";
+            }
+
         });
     } else {
         // User not logged in or has just logged out.

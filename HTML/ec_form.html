@@ -34,7 +34,7 @@
                                 <h2>Type and Circumstances</h2>
                                 <label class="form-label">Extenuating Circumstance Type</label><br>
                                 <select class="form-control" name="Claim Type" id="claim-type" required>
-                                    <option>Choose claim type</option>
+                                    <option disabled selected>Choose claim type</option>
                                     <option value="standard-claim">Standard Claim</option>
                                     <option value="self-cert">Self-Certification</option>
                                 </select>
@@ -52,7 +52,7 @@
                                 <label class="form-label">Nature/category of circumstances</label>
                                 <br>
                                 <select class="form-control" name="EC nature" id="nature" required>
-                                    <option>Choose nature/category</option>
+                                    <option disabled selected>Choose nature/category</option>
                                     <option value="bereavement">Bereavement</option>
                                     <option value="crime">Crime</option>
                                     <option value="travel-disruption">Major unforeseeable disruption to travel</option>
@@ -94,7 +94,7 @@
                                 <label class="form-label">Nature/category of circumstances</label>
                                 <br>
                                 <select class="form-control" name="EC nature" id="assessment" required>
-                                    <option>Choose Assessement</option>
+                                    <option disabled selected>Choose Assessement</option>
                                     <option name="SE_Assgn1">ECS506U Software Engineering Project Assignment 1</option>
                                     <option name="SE_Assgn2">ECS506U Software Engineering Project Assignment 2</option>
                                     <option name="SE_Assgn3">ECS506U Software Engineering Project Assignment 3</option>
@@ -133,7 +133,7 @@
                             <div class="mb-3">
 
                                 <label>I confirm that all of the information provided is correct</label>
-                                <input type="checkbox" name="accept" required>
+                                <input type="checkbox" name="accept" value="ticked" id="tick-checkbox" required>
 
                                 <p id="buttons">
                                     <input type="submit" class="btn btn-success" id="submit-button">
