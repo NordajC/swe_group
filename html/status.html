@@ -5,72 +5,78 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/status.css">
+  <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
   <title>Service Status</title>
 </head>
 <body>
-  <header>
-    <h1>QM Minus</h1>
+  <header style="position: relative;">
+    <h1 class="text-center" >Student Home</h1>
+    <a href="home.html" >
+      <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+    </a>
+    
   </header>
   <div class="content">
-  <h1 class="title">Service Status</h1>
   <form>
-    <div class="container">
-      <h2>Last Modified: dd/mm/yy</h2>
-      <div class="row">
-        <span class="service">Campus</span>
-        <span style="color:orange;" class="status" id="campusStat">In Maintenance</span>
-      </div>  
-      <div class="row">
-        <span class="service">eLearning</span>
-        <span style="color:green;" class="status" id="eLearningStat">Operational</span>
-      </div>  
-      <div class="row">
-        <span class="service">Email</span>
-        <span style="color:green;" class="status" id="emailStat">Operational</span>
-      </div>  
-      <div class="row">
-        <span class="service">Internet Services</span>
-        <span style="color:green;" class="status" id="iServicesStat">Operational</span>
-      </div>  
-      <div class="row">
-        <span class="service">MySIS</span>
-        <span style="color:green;" class="status" id="mysisStat">Operational</span>
-      </div>  
-      <div class="row">
-        <span class="service">Wi-FI</span>
-        <span style="color:green;" class="status" id="wifiStat">Operational</span>
-      </div>  
-      <div class="row">
-        <span class="service">filler</span>
-        <span class="status" id="wifiStat"></span>
-      </div>  
-      <div class="row">
-        <span class="service">filler</span>
-        <span class="status" id="wifiStat"></span>
-      </div>  
-      <div class="row">
-        <span class="service">filler</span>
-        <span class="status" id="wifiStat"></span>
-      </div>  
-    </div>
+    <div class="container my-4">
+      <form>
+        <div class="container">
+          <h2 class="text-center mb-4">Last Modified: dd/mm/yy</h2>
+          <div class="row">
+            <span class="service col-6 col-md-4">Campus</span>
+            <span style="color:orange;" class="status col-6 col-md-8" id="campusStat">In Maintenance</span>
+          </div>  
+          <div class="row">
+            <span class="service col-6 col-md-4">eLearning</span>
+            <span style="color:green;" class="status col-6 col-md-8" id="eLearningStat">Operational</span>
+          </div>  
+          <div class="row">
+            <span class="service col-6 col-md-4">Email</span>
+            <span style="color:green;" class="status col-6 col-md-8" id="emailStat">Operational</span>
+          </div>  
+          <div class="row">
+            <span class="service col-6 col-md-4">Internet Services</span>
+            <span style="color:green;" class="status col-6 col-md-8" id="iServicesStat">Operational</span>
+          </div>  
+          <div class="row">
+            <span class="service col-6 col-md-4">MySIS</span>
+            <span style="color:green;" class="status col-6 col-md-8" id="mysisStat">Operational</span>
+          </div>  
+          <div class="row">
+            <span class="service col-6 col-md-4">Wi-FI</span>
+            <span style="color:green;" class="status col-6 col-md-8" id="wifiStat">Operational</span>
+          </div>  
+      
     <!-- maintenance section -->
+  
     <div id="Scheduled" class="container">
-      <h2>Scheduled Service Maintenance</h2>
-      <div class="textbox" style="border-left: 10px solid green;">
-        <span class="date">dd/mm/yy</span>
-        <span style="color:green;" class="main-stat">Resolved</span>
-        <p class="description">Schedule description</p> 
-      </div>  
-      <div class="textbox" style="border-left: 10px solid orange;">
-        <span class="date">dd/mm/yy</span>
-        <span style="color:orange;" class="main-stat">Unresolved</span>
-        <p class="description">Schedule description</p> 
-      </div>  
+      <h2 class="mt-5 text-center">Scheduled Service Maintenance</h2>
+      <div class="row mb-3">
+        <div class="col-md-2">
+          <div class="border-left border-success pl-3">
+            <p class="m-0 font-weight-bold">dd/mm/yy</p>
+            <p class="m-0"><span class="text-success">Resolved</span></p>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <p class="m-0"><strong>Schedule description</strong></p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-2">
+          <div class="border-left border-warning pl-3">
+            <p class="m-0 font-weight-bold">dd/mm/yy</p>
+            <p class="m-0"><span class="text-warning">Unresolved</span></p>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <p class="m-0"><strong>Schedule description</strong></p>
+        </div>
+      </div>
     </div>
-  </div>
-  <footer>
-    <h3>QM minus not copyright. Developed by group 25.</h3>
-    <p> filler text  filler text filler text filler text filler text filler text filler text filler text</p>
-  </footer>
+
+    <footer class = "fixed-bottom">
+      <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+    </footer>
 </body>
 </html>

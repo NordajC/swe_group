@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!-- SQL QUERIES 
+    DB = dbName
+    userAccount = user
+
+each row in col0 will have the query below
+SELECT TICKETREF FROM DB WHERE userID = userAccount
+each row in col1 will have the query below
+SELECT SUBJECT FROM DB WHERE userID = userAccount
+each row in col2 will have the query below
+SELECT STATUS FROM DB WHERE userID = userAccount
+each row in col3 will have the query below
+SELECT CREATEDON FROM DB WHERE userID = userAccount
+
+for sorting low to high do the following after SQL query:
+ORDER BY COLUMN
+
+-->
+<html>
+    <head>
+        <title>Ticket History</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            function filterTable() {
+                // Get input values
+                var ticketRefInput = document.getElementById("ticketRef").value.toUpperCase();
+                var subjectInput = document.getElementById("subject").value.toUpperCase();
+                var statusInput = document.getElementById("status").value.toUpperCase();
+                var createdOnInput = document.getElementById("createdOn").value.toUpperCase();
+
+                // Get table rows
+                var rows = document.getElementById("ticketTable").getElementsByTagName("tr");
+
+                // Loop through rows and hide those that don't match the filter criteria
+                for (var i = 1; i < rows.length; i++) {
+                    var ticketRef = rows[i].getElementsByTagName("td")[0].textContent.toUpperCase();
+                    var subject = rows[i].getElementsByTagName("td")[1].textContent.toUpperCase();
+                    var status = rows[i].getElementsByTagName("td")[2].textContent.toUpperCase();
+                    var createdOn = rows[i].getElementsByTagName("td")[3].textContent.toUpperCase();
+                    
+                    if (ticketRef.indexOf(ticketRefInput) > -1 &&
+                        subject.indexOf(subjectInput) > -1 &&
+                        status.indexOf(statusInput) > -1 &&
+                        createdOn.indexOf(createdOnInput) > -1) {
+                        rows[i].style.display = "";
+                    } 
+                    
+                    else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+
+    </head>
+    <body>
+        <h1>Ticket History</h1>
+
+        <form>
+            <label for="ticketRef">Ticket Reference:</label>
+            <input type="text" id="ticketRef" name="ticketRef" placeholder="Search for ticket reference..." onkeyup="filterTable()">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Search for subject..." onkeyup="filterTable()">
+            <label for="status">Status:</label>
+            <select id="status" name="status" onchange="filterTable()">
+                <option value="">Select status...</option>
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+                <option value="in-progress">In Progress</option>
+                <option value="pending">Pending</option>
+            </select>
+            
+        </form>
+
+        <!-- Ticket Table for list of Tickets -->
+        <!-- A new Row and 4 Columns will be created for each ticket -->
+        <table class = "sortable">
+            <!-- class = "sortable essential" id = "col-0"
+            class = "sortable essential" id = "col-1"
+            class = "sortable essential" id = "col-2"
+            class = "sortable essential" id = "col-3" -->
+            <thead>
+                <th>Ticket Reference</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Created On</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TCK001</td>
+                    <td>Server Down</td>
+                    <td>Open</td>
+                    <td>2022-03-01</td>
+                </tr>
+                <tr>
+                    <td>TCK002</td>
+                    <td>Can't login to email</td>
+                    <td>Closed</td>
+                    <td>2022-03-02</td>
+                </tr>
+                <tr>
+                    <td>TCK003</td>
+                    <td>Printer not working</td>
+                    <td>In Progress</td>
+                    <td>2022-03-03</td>
+                </tr>
+                <tr>
+                    <td>TCK004</td>
+                    <td>Slow internet</td>
+                    <td>Pending</td>
+                    <td>2022-02-01</td>
+            </tbody>
+        </table>
+
+
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+              authDomain: "test-29549.firebaseapp.com",
+              databaseURL: "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+              projectId: "test-29549",
+              storageBucket: "test-29549.appspot.com",
+              messagingSenderId: "864209838742",
+              appId: "1:864209838742:web:26d5ee1b5cf49944f558b7"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+          </script>
+</body>
+
+
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        thead{
+            background-color: rgb(13, 50, 115);
+            color: white;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type=text] {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<title>Search Filters</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+
+			th, td {
+				text-align: left;
+				padding: 8px;
+				border: 1px solid black;
+			}
+
+			tr:nth-child(even) {
+				background-color: #f2f2f2;
+			}
+
+			input[type=text] {
+				padding: 6px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+
+			select {
+				padding: 6px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+
+			button {
+				background-color: #4CAF50;
+				color: white;
+				padding: 8px 12px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #45a049;
+			}
+		</style>
+	</head>
+<body>
+	<h1>Search Filters</h1>
+	<form>
+		<label for="ticketRef">Ticket Reference:</label>
+		<input type="text" id="ticketRef" name="ticketRef" placeholder="Search for ticket reference...">
+		<label for="subject">Subject:</label>
+		<input type="text" id="subject" name="subject" placeholder="Search for subject...">
+		<label for="status">Status:</label>
+		<select id="status" name="status">
+			<option value="">Select status...</option>
+			<option value="open">Open</option>
+			<option value="closed">Closed</option>
+			<option value="in-progress">In Progress</option>
+			<option value="pending">Pending</option>
+		</select>
+		<label for="createdOn">Created On:</label>
+		<input type="text" id="createdOn" name="createdOn" placeholder="Search for created on...">
+		<button type="submit">Search</button>
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>Ticket Reference</th>
+				<th>Subject</th>
+				<th>Status</th>
+				<th>Created On</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>TCK001</td>
+				<td>Server Down</td>
+				<td>Open</td>
+				<td>2022-03-01</td>
+			</tr>
+			<tr>
+				<td>TCK002</td>
+				<td>Can't login to email</td>
+				<td>Closed</td>
+				<td>2022-03-02</td>
+			</tr>
+			<tr>
+				<td>TCK003</td>
+				<td>Printer not working</td>
+				<td>In Progress</td>
+				<td>2022-03-03</td>
+			</tr>
+			<tr>
+				<td>TCK004</td>
+				<td>Slow internet</td>
+				<td>Pending</td>
+        </tbody>
+</html>
+ -->
