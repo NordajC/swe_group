@@ -5,23 +5,25 @@ import {
   ref,
   child,
   get,
+  push
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut 
+  signOut,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
-    authDomain: "test-29549.firebaseapp.com",
-    databaseURL: "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "test-29549",
-    storageBucket: "test-29549.appspot.com",
-    messagingSenderId: "864209838742",
-    appId: "1:864209838742:web:26d5ee1b5cf49944f558b7"
+  apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+  authDomain: "test-29549.firebaseapp.com",
+  databaseURL:
+    "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "test-29549",
+  storageBucket: "test-29549.appspot.com",
+  messagingSenderId: "864209838742",
+  appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
 };
 
 // Initialize Firebase
@@ -31,6 +33,7 @@ const dbRef = ref(db);
 const auth = getAuth();
 const user = auth.currentUser;
 var userID;
+
 //Enter path
 //var ecForm = firebase.database().ref(/path");
 
@@ -48,59 +51,67 @@ var userID;
 //     })
 
 auth.onAuthStateChanged((user) => {
-    if (user) {
+  if (user) {
     // User logged in already or has just logged in.
-    //   console.log(user.uid);
-    //   userID = user.uid;
-    //   console.log(userID);
+    console.log(user.uid);
+    let userID = user.uid;
+    console.log(userID);
 
-    let submit_button = document.getElementById('submit-button');
+    let submit_button = document.getElementById("submit-button");
+    submit_button.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent default form submission behavior
 
-    submit_button.addEventListener("click", function () {
+      let ecType = document.getElementById("ecType").value;
 
-        let ecType = document.getElementById("ecType").value;
+      let nature = document.getElementById("nature").value;
 
-        let nature = document.getElementById("nature").value;
+      let summary = document.getElementById("summary").value;
 
-        let summary = document.getElementById("summary").value;
+      let assessments = document.getElementById("assessments").value;
 
-        let assessments = document.getElementById("assessments").value;
+      let date = document.getElementById("date").value;
 
-        let date = document.getElementById("date").value;
+      let evidence = document.getElementById("evidence-file").value;
 
-        let evidence = document.getElementById("evidence-file").value;
+      var data = {
+        StudentID: userID,
+        ecType: ecType,
+        ecNature: nature,
+        ecSummary: summary,
+        ecAssess: assessments,
+        ecDate: date,
+        ecEvidence: evidence,
+      };
 
-        var data = {
+      var refEC = child(dbRef, "ecTicket");
 
-            //Student ID: userID;
-
-            ecType: ecType
-
+      //push object
+      push(refEC, data, (error) => {
+        if (error) {
+          console.error("Error saving data:", error);
+          // handle error here, e.g. display an error message to the user
+        } else {
+          console.log("Data saved successfully");
+          // do something here, e.g. show a success message to the user
         }
-
-    })
-
-    } else {
-      // User not logged in or has just logged out.
-    }
-  });
-
-
-
+      });
+    });
+  } else {
+    // User not logged in or has just logged out.
+    console.log("User not logged in");
+  }
+});
 
 
 const checkAuthStat = async () => {
-    onAuthStateChanged(auth, user => {
-        if (user) {
-            //if users are signed in then.....
-            console.log("user is signed in and is authenticated");
-        }
-        else {
-            console.log("user is NOT signed in");
-        }
-    })
-}
-
-
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      //if users are signed in then.....
+      console.log("user is signed in and is authenticated");
+    } else {
+      console.log("user is NOT signed in");
+    }
+  });
+};
 
 checkAuthStat();
