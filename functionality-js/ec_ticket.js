@@ -121,7 +121,7 @@ auth.onAuthStateChanged((user) => {
                 });
     
                 // Redirect user to successful submission page
-                //window.location.href = "submitpage.html";
+                window.location.href = "submitpage.html";
             }
 
         });

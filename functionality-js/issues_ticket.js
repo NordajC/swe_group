@@ -95,7 +95,7 @@ auth.onAuthStateChanged((user) => {
         } 
 
         //redirect
-        // window.location.href = "../HTML/submitpage.html";
+        window.location.href = "../HTML/submitpage.html";
         
       });
     
