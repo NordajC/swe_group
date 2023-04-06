@@ -16,38 +16,34 @@
                 </style>
                 <div class="name">
                     <label class="name">First Name</label>
-                    <input type="text" name="First Name"placeholder="First name" required>
+                    <label class="name" id="userName"></label>
                 </div>
             
                 <div class="Sname">
                     <label class="name">Surname</label>
-                    <input type="text" name="Surname" placeholder="Surname" required >
-                </div>
-
-                <div class="YOS">
-                    <label>Year of Study</label>
-                    <select name="Year of Study" required>
-                        <option value="" disabled selected>Choose year </option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                    <label class="name" id="userSur"></label>
                 </div>
 
                 <div class="id">
                     <label class="name">Student ID</label>
-                    <input type="text"  name="Student ID" placeholder=" Enter a 9 digit number" required>
+                    <label class="name" id="userID"></label>
                 </div>
 
                 <div class="email">
                     <label class="name">Email</label>
-                    <input type="email" name="Email" placeholder="Enter your email" required >
+                    <label class="name"id="userEmail"></label>
                 </div>
+
+
+                <div class="YOS">
+                    <label>Year of Study</label>
+                    <label class="name" id="userYOS"></label>
+                </div>
+
 
                 <div class="feedback">
                     <label>Feedback on</label> 
-                    <select name="Choice" required >
+                    <select name="Choice" required id="feedbackOn">
                         <option value="" disabled selected>Choose feedback option</option>
                         <option>Service</option>
                         <option>Module</option>
@@ -60,15 +56,16 @@
 
                 <div class="message">
                     <label>Please add more detail to the feedback. For example, module code, lecturer, praise. </label>
-                    <input type="text" name="Message"  placeholder="Enter your text here including all details" style="width: 500px; height: 100px; position: relative; top: -50px;" required >
+                    <input type="text" name="Message"  placeholder="Enter your text here including all details" style="width: 500px; height: 100px; position: relative; top: -50px;" required id="feedback">
                 </div>
             </article>
 
             <div class="design"></div>
             <section>
-                <button type="submit" value="Submit"> Submit
+                <button type="submit" value="Submit" id="submit-button"> Submit
                 <button type="reset" value="Cancel"> Cancel
             </section>
     </form>
 </body>
+<script type="module" src="../functionality-js/feedback_ticket.js"></script>
 </html>
