@@ -91,11 +91,12 @@ auth.onAuthStateChanged((user) => {
             }
           });
           console.log("ticket submitted");
+          
+          window.location.href = "../HTML/submitpage.html";
 
         } 
 
-        //redirect
-        window.location.href = "../HTML/submitpage.html";
+      
         
       });
     
