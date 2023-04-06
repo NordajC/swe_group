@@ -21,30 +21,30 @@
     <div class="container my-4">
       <form>
         <div class="container">
-          <h2 class="text-center mb-4">Last Modified: dd/mm/yy</h2>
+          <h2 class="text-center mb-4" id="dateModified"></h2>
           <div class="row">
             <span class="service col-6 col-md-4">Campus</span>
-            <span style="color:orange;" class="status col-6 col-md-8" id="campusStat">In Maintenance</span>
+            <span class="status col-6 col-md-8" id="campusStat"></span>
           </div>  
           <div class="row">
             <span class="service col-6 col-md-4">eLearning</span>
-            <span style="color:green;" class="status col-6 col-md-8" id="eLearningStat">Operational</span>
+            <span class="status col-6 col-md-8" id="eLearningStat"></span>
           </div>  
           <div class="row">
             <span class="service col-6 col-md-4">Email</span>
-            <span style="color:green;" class="status col-6 col-md-8" id="emailStat">Operational</span>
+            <span class="status col-6 col-md-8" id="emailStat"></span>
           </div>  
           <div class="row">
             <span class="service col-6 col-md-4">Internet Services</span>
-            <span style="color:green;" class="status col-6 col-md-8" id="iServicesStat">Operational</span>
+            <span class="status col-6 col-md-8" id="iServicesStat"></span>
           </div>  
           <div class="row">
             <span class="service col-6 col-md-4">MySIS</span>
-            <span style="color:green;" class="status col-6 col-md-8" id="mysisStat">Operational</span>
+            <span class="status col-6 col-md-8" id="mysisStat"></span>
           </div>  
           <div class="row">
             <span class="service col-6 col-md-4">Wi-FI</span>
-            <span style="color:green;" class="status col-6 col-md-8" id="wifiStat">Operational</span>
+            <span class="status col-6 col-md-8" id="wifiStat"></span>
           </div>  
       
     <!-- maintenance section -->
@@ -79,4 +79,5 @@
       <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
     </footer>
 </body>
+<script type="module" src="../functionality-js/status_display.js"></script>
 </html>

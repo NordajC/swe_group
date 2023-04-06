@@ -6,12 +6,13 @@ import {
   child,
   get,
   push,
+  set
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut,
+  signOut
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
@@ -34,6 +35,9 @@ const auth = getAuth();
 const user = auth.currentUser;
 var userID;
 
+
+
+
 auth.onAuthStateChanged((user) => {
   if (user) {
     // User logged in already or has just logged in.
@@ -42,66 +46,78 @@ auth.onAuthStateChanged((user) => {
     console.log(userID);
 
     
-      let name = document.getElementById("userName");
-      let surname = document.getElementById("userSur");
-      let pageUserID = document.getElementById("userID");
-      let userEmail = document.getElementById("userEmail");
-      let userYOS = document.getElementById("userYOS");
+
 
       console.log("test");
-      get(child(dbRef, `user/${user.uid}/userID`)).then((snapshot) => {
+      get(child(dbRef, `serviceStatus/campus`)).then((snapshot) => {
         if (snapshot.exists()) {
-          const currentUserID = snapshot.val();
-          console.log(currentUserID);
-          pageUserID.innerHTML = currentUserID;
+          const campusStat = snapshot.val();
+          console.log(campusStat);
+          document.getElementById("campus").value = String(campusStat);
         } else {
-          pageUserID.innerHTML = "no data available";
+          console.log("no data available campus");
         }
       });
 
-      get(child(dbRef, `user/${user.uid}/name`)).then((snapshot) => {
+      get(child(dbRef, `serviceStatus/eLearning`)).then((snapshot) => {
         if (snapshot.exists()) {
-          const currentUserName = snapshot.val();
-          console.log(currentUserName);
-          name.innerHTML = currentUserName;
+          const eLearningStat = snapshot.val();
+          console.log(eLearningStat);
+          document.getElementById("eLearning").value = String(eLearningStat);
         } else {
-          name.innerHTML = "no data available";
+          console.log("no data available eLearning");
         }
       });
 
-      get(child(dbRef, `user/${user.uid}/surname`)).then((snapshot) => {
+      get(child(dbRef, `serviceStatus/emailServices`)).then((snapshot) => {
         if (snapshot.exists()) {
-          const currentUserSur = snapshot.val();
-          console.log(currentUserSur);
-          surname.innerHTML = currentUserSur;
+          const emailStat = snapshot.val();
+          console.log(emailStat);
+          document.getElementById("email").value = String(emailStat);
         } else {
-          surname.innerHTML = "no data available";
+          console.log("no data available email");
         }
       });
 
-      get(child(dbRef, `user/${user.uid}/email`)).then((snapshot) => {
+      get(child(dbRef, `serviceStatus/internetServices`)).then((snapshot) => {
         if (snapshot.exists()) {
-          const currentUserEmail = snapshot.val();
-          console.log(currentUserEmail);
-          userEmail.innerHTML = currentUserEmail;
+          const internetStat = snapshot.val();
+          console.log(internetStat);
+          document.getElementById("internet").value = String(internetStat);
         } else {
-          userEmail.innerHTML = "no data available";
+          console.log("no data available internet");
         }
       });
 
-      get(child(dbRef, `user/${user.uid}/YOS`)).then((snapshot) => {
+      get(child(dbRef, `serviceStatus/mysis`)).then((snapshot) => {
         if (snapshot.exists()) {
-          const currentUserYOS = snapshot.val();
-          console.log(currentUserYOS);
-          userYOS.innerHTML = currentUserYOS;          
-          if(currentUserYOS == ""){
-            userYOS.innerHTML = "no data available";
-          }
+          const mysisStat = snapshot.val();
+          console.log(mysisStat);
+          document.getElementById("mysis").value = String(mysisStat);          
         } else {
-          userYOS.innerHTML = "no data available"
+          console.log("no data available mysis");
         }
       });
-    
+      
+      get(child(dbRef, `serviceStatus/wifi`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          const wifiStat = snapshot.val();
+          console.log(wifiStat);
+          document.getElementById("wifi").value = String(wifiStat);          
+        } else {
+          console.log("no data available wifi");
+        }
+      });
+
+      get(child(dbRef, `serviceStatus/lastUpdated`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          const updatedDate = snapshot.val();
+          console.log(updatedDate);
+          document.getElementById("dateModified").innerHTML = "Last Modified: " + String(updatedDate);          
+        } else {
+          console.log("no data available wifi");
+        }
+      });
 
     // console.log(issueDesc);
 
@@ -109,12 +125,13 @@ auth.onAuthStateChanged((user) => {
     submit_button.addEventListener("click", (e) => {
       e.preventDefault(); // prevent default form submission behavior
 
-      let feedbackOn = document.getElementById("feedbackOn").value;
-      let feedback = document.getElementById("feedback").value;
-
-      if (feedbackOn == "" || feedback == "") {
-        alert("Please ensure that all the fields have been filled.");
-      } else {
+      let campus = document.getElementById("campus").value;
+      let eLearning = document.getElementById("eLearning").value;
+      let email = document.getElementById("email").value;
+      let internetServices = document.getElementById("internet").value;
+      let mysis = document.getElementById("mysis").value;
+      let wifi = document.getElementById("wifi").value;
+      
         var currentdate = new Date();
         var datetime =
           currentdate.getDate() +
@@ -128,16 +145,19 @@ auth.onAuthStateChanged((user) => {
           currentdate.getMinutes();
 
         var data = {
-          StudentID: userID,
-          feedbackSubject: feedbackOn,
-          feedback: feedback,
-          ticektSubmissionDate: datetime,
+          campus: campus,
+          eLearning: eLearning,
+          emailServices: email,
+          internetServices: internetServices,
+          lastUpdated: datetime,
+          mysis: mysis,
+          wifi: wifi,
         };
 
-        var refTicket = child(dbRef, "feedback");
+        var refTicket = child(dbRef, "serviceStatus");
 
-        //push object
-        push(refTicket, data, (error) => {
+        //set object
+        set(refTicket, data, (error) => {
           if (error) {
             console.error("Error saving data:", error);
             // handle error here, e.g. display an error message to the user
@@ -148,8 +168,8 @@ auth.onAuthStateChanged((user) => {
         });
         console.log("ticket submitted");
 
-        window.location.href = "../HTML/submitpage.html";
-      }
+        alert("Status updated");
+      
     });
   } else {
     // User not logged in or has just logged out.
