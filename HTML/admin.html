@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admin Homepage</title>
-    <link rel="stylesheet" href="../css/admin.css" type="text/css">   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+  <title>Admin Home Page</title>
+  
 </head>
 <body>
-    <legend></legend>
-    <h1> EC Admin Homepage</h1>
+
+    <header style="position: relative;">
+      <h1 class="text-center" style="font-size:3vw" >EC Admin Homepage</h1>
+      <a href="admin.html" >
+        <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+      </a>
+    </header>
+
+
+     <!-- <legend></legend>
+   
     <div class="dropdown">
         <button class="dropbutton">Account</button>
         <div class="dropdown-content">
@@ -16,20 +31,51 @@
           <a href="UpdateEC.html">Update EC Ticket Status</a>
           <a href="logout.html">Log out</a>
         </div>
-    </div>
+    </div> -->
 
-    <a href="Notification.html"><img src="bell_icon2.png" alt="Italian Trulli" style="position: relative; width: 35px; height: 30px; left: 1120px; top: -137px; color: white;"></a>
-    <a href="admin.html"><img src="qm minus white.png" alt="Italian Trulli" style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 135px; top: -128px;"></a>
+    <!-- <a href="Notification.html"><img src="bell_icon2.png" alt="Italian Trulli" style="position: relative; width: 35px; height: 30px; left: 1120px; top: -137px; color: white;"></a> -->
     
-    <section>
-        <a href="review_ECapplication.html"> <input type="submit" value="Review EC Application" style="width: 230px; height: 200px; margin-top: 120px; margin-right: 100px; margin-left: 250px;"></a>
-        <a href="respondToEC.html"><input type="submit" value="Respond to EC Claim" style="width: 230px; height: 200px; margin-right: 100px;"></a>
-        <a href="UpdateEC.html"><input href=""type="submit" value="Update EC Ticket Status" style="width: 230px; height: 200px;"></a>
-    </section>
-
-    <footer>
-      
-    </footer>
-    <img src="qm-logo-white.svg" style= "width:120px; position: relative; top: -42px;">
-</body>
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+      <div class="row justify-content-between">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <a href="respondToEC.html">
+            <div class="btn btn-danger" id="issue-container" value="Respond to EC Claim">
+              <span id ="icon" class="material-symbols-outlined">
+                warning
+              </span>
+              <h3>Respond to EC Claim</h3>
+              
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <a href="review_ECapplication.html">
+            <div class="btn" id="review-container" value="Review EC Application">
+              <span id ="icon" class="material-symbols-outlined">
+                border_color
+              </span>
+              <h3>Review EC Application</h3>
+             
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <a href="UpdateEC.html">
+            <div class="btn" id="status-container"value="Update EC Ticket Status">
+              <span id="icon" class="material-symbols-outlined">
+                dns
+              </span>
+              <h3>Update EC Ticket Status</h3>
+             
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+      <footer class = "fixed-bottom">
+        <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+      </footer>
+    
+  </body>
+  
 </html>
