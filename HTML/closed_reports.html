@@ -87,8 +87,8 @@
 
             var table = document.getElementById("closed_report_table");
 
-            get_data.addEventListener('click', (e) => {
-
+            if (document.readyState === "complete") {
+                // Loading hasn't finished yet
                 $("#closed_report_table td").remove();
 
                 onValue(dbRef, (snapshot) => {
@@ -104,8 +104,27 @@
                 }, {
                     onlyOnce: true
                 });
+            }
 
-            });
+            // get_data.addEventListener('click', (e) => {
+
+            //     $("#closed_report_table td").remove();
+
+            //     onValue(dbRef, (snapshot) => {
+            //         snapshot.forEach((childSnapshot) => {
+            //             const childKey = childSnapshot.key;
+            //             const childData = childSnapshot.val();
+
+            //             var entry = "<tr><td>" + childData.dateCreated + "</td><td>" + childData.subject + "</td></tr>";
+
+            //             $(entry).appendTo("#closed_report_table");
+
+            //         });
+            //     }, {
+            //         onlyOnce: true
+            //     });
+
+            // });
 
 
 
@@ -115,7 +134,7 @@
         }
     });
 
-    get(child(dbRef, `user/${user.uid}/type`)).then((snapshot) => { });
+    // get(child(dbRef, `user/${user.uid}/type`)).then((snapshot) => { });
 
 </script>
 
