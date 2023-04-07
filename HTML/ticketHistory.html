@@ -18,9 +18,11 @@ ORDER BY COLUMN
 -->
 <html>
     <head>
-        <title>Ticket History</title>
+       
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css" type="text/css" />
 
         <script>
             function filterTable() {
@@ -56,61 +58,84 @@ ORDER BY COLUMN
 
     </head>
     <body>
-        <h1>Ticket History</h1>
-
-        <form>
-            <label for="ticketRef">Ticket Reference:</label>
-            <input type="text" id="ticketRef" name="ticketRef" placeholder="Search for ticket reference..." onkeyup="filterTable()">
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" placeholder="Search for subject..." onkeyup="filterTable()">
-            <label for="status">Status:</label>
-            <select id="status" name="status" onchange="filterTable()">
-                <option value="">Select status...</option>
-                <option value="open">Open</option>
-                <option value="closed">Closed</option>
-                <option value="in-progress">In Progress</option>
-                <option value="pending">Pending</option>
-            </select>
+        <header style="position: relative;">
+            <h1 class="row justify-content-center" >Ticket History</h1>
+            <a href="home.html" >
+              <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+            </a>
             
-        </form>
+        </header>
+
+
+
+        <div class="container-fluid">
+            
+    
+            <form class="form-inline">
+                <div class="form-group mr-2">
+                    <label for="ticketRef">Ticket Reference:</label>
+                    <input type="text" class="form-control" id="ticketRef" name="ticketRef" placeholder="Search for ticket reference..." onkeyup="filterTable()">
+                </div>
+    
+                <div class="form-group mr-2">
+                    <label for="subject">Subject:</label>
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Search for subject..." onkeyup="filterTable()">
+                </div>
+    
+                <div class="form-group mr-2">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" class="form-control" onchange="filterTable()">
+                        <option value="">Select status...</option>
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </div>
+            </form>
 
         <!-- Ticket Table for list of Tickets -->
         <!-- A new Row and 4 Columns will be created for each ticket -->
-        <table class = "sortable">
+        <div class="table-container col-lg-12 col-md-12 mb-12">
+            <table class="table thread-dark table-hover" >
+                <thead class="thead-dark">
             <!-- class = "sortable essential" id = "col-0"
             class = "sortable essential" id = "col-1"
             class = "sortable essential" id = "col-2"
             class = "sortable essential" id = "col-3" -->
-            <thead>
-                <th>Ticket Reference</th>
-                <th>Subject</th>
-                <th>Status</th>
-                <th>Created On</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>TCK001</td>
-                    <td>Server Down</td>
-                    <td>Open</td>
-                    <td>2022-03-01</td>
-                </tr>
-                <tr>
-                    <td>TCK002</td>
-                    <td>Can't login to email</td>
-                    <td>Closed</td>
-                    <td>2022-03-02</td>
-                </tr>
-                <tr>
-                    <td>TCK003</td>
-                    <td>Printer not working</td>
-                    <td>In Progress</td>
-                    <td>2022-03-03</td>
-                </tr>
-                <tr>
-                    <td>TCK004</td>
-                    <td>Slow internet</td>
-                    <td>Pending</td>
-                    <td>2022-02-01</td>
+            
+            <tr>
+                <th scope="col">Ticket Reference</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created On</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TCK001</td>
+                <td>Server Down</td>
+                <td>Open</td>
+                <td>2022-03-01</td>
+            </tr>
+            <tr>
+                <td>TCK002</td>
+                <td>Can't login to email</td>
+                <td>Closed</td>
+                <td>2022-03-02</td>
+            </tr>
+            <tr>
+                <td>TCK003</td>
+                <td>Printer not working</td>
+                <td>In Progress</td>
+                <td>2022-03-03</td>
+            </tr>
+            <tr>
+                <td>TCK004</td>
+                <td>Slow internet</td>
+                <td>Pending</td>
+                <td>2022-02-01</td>
+            </tr>    
             </tbody>
         </table>
 
@@ -136,6 +161,11 @@ ORDER BY COLUMN
             // Initialize Firebase
             const app = initializeApp(firebaseConfig);
           </script>
+
+
+        <footer class = "fixed-bottom">
+            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+        </footer>
 </body>
 
 
