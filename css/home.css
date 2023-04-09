@@ -96,6 +96,10 @@ margin-top: 20px;
   background-color: #c2a5df;
 }
 
+#feedback-container{
+  background-color: #5ad258;
+}
+
 footer{
   background-color: blue;
   position: absolute;
