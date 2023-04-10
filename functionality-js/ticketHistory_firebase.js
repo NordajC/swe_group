@@ -64,7 +64,7 @@ get(ticketsRef).then((snapshot) => {
     if (snapshot.exists()) {
       snapshot.forEach((childSnapshot) => {
         const childData = childSnapshot.val();
-        if (childData.userID === userID) {
+        if (childData.StudentID === userID) {
           const row = document.createElement("tr");
           const column1 = document.createElement("td");
           const column2 = document.createElement("td");
