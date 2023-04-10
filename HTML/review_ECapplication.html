@@ -1,30 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Review EC</title>
-    <link rel="stylesheet" href="../css/review_EC.css" type="text/css">  
-    <link rel="stylesheet" href="../css/style.css" type="text/css">  
-    <link rel="stylesheet" href="../css-bs/bootstrap.min.css"> 
-</head>
-<body>
-  <header style="position: relative;">
-    <h1 class="text-center" style="font-size:3vw" >Review EC Applications</h1>
-    <a href="admin.html" >
-      <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
-    </a>
-  </header>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../css/home.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+  <title>Review EC Applications</title>
 
-    
-<!--     
-    <div class="dropdown">
-        <button class="dropbutton">Account </button>
-        <div class="dropdown-content">
-        <a href="ECadmin_details.html">My details</a>
-          <a href="admin.html">Admin Page</a>
-          <a href="contactdetails.html">View contact details</a>
-          <a href="logout.html">Log out</a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="eecs_admin_homepage.html">
+          <img src="qm minus white.png" width="100" height="50" >
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="respondToEC.html">Respond to EC</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="update_servicestatus.html">Update EC Ticket Status</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ECadmin_details.html">My Details</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger bg-dark" id="logOut" type="submit"  href="#"> LogOut</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+  </header>
+  <h2>Review EC Applications</h2>
+
+    
+<!---  
 
       
       <a href="admin.html"><img src="qm minus white.png" alt="Italian Trulli" style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 135px; top: -128px;"></a>
@@ -69,6 +87,11 @@
         <br><br>
         <button id="submit-button">submit</button>
     </section>
+
+--->
+    <footer class = "fixed-bottom">
+      <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+    </footer>
 </body>
-<script type="module" src="../functionality-js/ec_response.js"></script>
+<!--- <script type="module" src="../functionality-js/ec_response.js"></script>
 </html>
