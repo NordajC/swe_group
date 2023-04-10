@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Respond to EC</title>
-    <link rel="stylesheet" href="../css/respondToEC.css" type="text/css">  
+    <link rel="stylesheet" href="../css/style.css" type="text/css">  
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
 </head>
 <body>
     <legend></legend>
@@ -21,51 +22,81 @@
     <a href="Notification.html"><img src="bell_icon2.png" alt="Italian Trulli" style="position: relative; width: 35px; height: 30px; left: 1120px; top: -137px; color: white;"></a>
     <a href="admin.html"><img src="qm minus white.png" alt="Italian Trulli" style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 135px; top: -128px;"></a>
     
-    <section style="width: 90vw; margin: auto;">
-        <div class="container" style="width: 100%; border: 1px solid black;" id="container">
-        <!-- <h2>ecticketid</h2>
-
-        <h3 style="display: inline-block;">Student id:</h3>
-        <p style="display: inline-block;">idhere</p>
-        <br>
-        <h3 style="display: inline-block;">student name</h3>
-        <p style="display: inline-block;">name here</p>
-        <br>
-        <h3 style="display: inline-block;">date created</h3>
-        <p style="display: inline-block;">date here</p>
-        <br>
-        <h3 style="display: inline-block;">ec claim type</h3>
-        <p style="display: inline-block;">claim type here</p>
-        <br>
-        <h3 style="display: inline-block;">nature</h3>
-        <p style="display: inline-block;">nature here</p>
-        <br>
-        <h3 style="display: inline-block;">summary</h3>
-        <p style="display: inline-block;">name here</p>
-        <br>
-        <h3 style="display: inline-block;">assessments</h3>
-        <p style="display: inline-block;">assessment here</p>
-        <br>
-        <h3 style="display: inline-block;">date extend request</h3>
-        <p style="display: inline-block;">date here</p>
-        <br>
-        <h3 style="display: inline-block;">evidence</h3>
-        <p style="display: inline-block;">evidence here</p>
-        <br>
-        <h3 style='display: inline-block;'>state</h3>
-        <select>
-            <option value='Unseen'>Unseen</option>
-            <option value='Closed'>Unseen</option>
-            <option value='Open'>Unseen</option>
-        </select>
-        <br>
-        <button>accept</button>
-        <button>reject</button> -->
+    <section class="container-fluid col-lg-7 col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">ECTicketID</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Student ID:</h3>
+                        <p>ID Here</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Student Name:</h3>
+                        <p>Name Here</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Date Created:</h3>
+                        <p>Date Here</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>EC Claim Type:</h3>
+                        <p>Claim Type Here</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Nature:</h3>
+                        <p>Nature Here</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Summary:</h3>
+                        <p>Summary Here</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Assessments:</h3>
+                        <p>Assessment Here</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Date Extend Request:</h3>
+                        <p>Date Here</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Evidence:</h3>
+                        <p>Evidence Here</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>State:</h3>
+                        <select class="form-control">
+                            <option value="Unseen">Unseen</option>
+                            <option value="Closed">Closed</option>
+                            <option value="Open">Open</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-primary">Accept</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-danger">Reject</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
     </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="module" src="../functionality-js/ec_review.js"></script>
+
+    <footer class = "fixed-bottom">
+        <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+    </footer>
+
 </body>
 </html>
