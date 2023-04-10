@@ -21,28 +21,36 @@
         </div>
     </div>
 
-    <a href="eecs_notification.html"><img src="bell_icon2.png" alt="Italian Trulli" style="position: relative; width: 35px; height: 30px; left: 1120px; top: -137px; color: white;"></a>
-    <a href="eecs_admin_homepage.html"><img src="qm minus white.png" alt="Italian Trulli" style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 130px; top: -128px;"></a>
+    <a href="eecs_notification.html"><img src="bell_icon2.png" alt="Italian Trulli"
+            style="position: relative; width: 35px; height: 30px; left: 1120px; top: -137px; color: white;"></a>
+    <a href="eecs_admin_homepage.html"><img src="qm minus white.png" alt="Italian Trulli"
+            style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 130px; top: -128px;"></a>
 
-    <br/>
+    <br />
     <p style="display: inline-block">StudentID:</p>
     <p style="display: inline" id="studentID"></p>
-    <br/>
+    <br />
 
     <p style="display: inline-block">Date:</p>
     <p style="display: inline" id="dateCreated"></p>
-    <br/>
+    <br />
 
     <p style="display: inline-block">Location:</p>
     <p style="display: inline" id="location"></p>
-    <br/>
+    <br />
 
     <p style="display: inline-block">Subject:</p>
     <p style="display: inline" id="subject"></p>
-    <br/>
+    <br />
 
     <p style="display: inline-block">Message:</p>
     <p style="display: inline" id="message"></p>
+
+    <h3>Respond to this ticket</h3>
+    <form>
+        <textarea name="Admin Response" id="admin-response" cols="30" rows="10" required></textarea>
+        <br /><input type="button" value="submit" id="submit-button">
+    </form>
 
 </body>
 
@@ -55,6 +63,8 @@
         child,
         get,
         onValue,
+        push,
+        set,
     } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
     import {
         getAuth,
@@ -147,13 +157,50 @@
                 }
             });
 
+            let submit_button = document.getElementById("submit-button");
+            submit_button.addEventListener("click", (e) => {
+
+                let response = document.getElementById("admin-response").value;
+                console.log("response:" + response);
+
+                let studentID = document.getElementById("studentID").innerHTML;
+                let dateCreated = document.getElementById("dateCreated").innerHTML;
+                let location = document.getElementById("location").innerHTML;
+                let message = document.getElementById("message").innerHTML;
+                let subject = document.getElementById("subject").innerHTML;
+                let status = "Closed";
+
+                var data = {
+                    StudentID: studentID,
+                    dateCreated: dateCreated,
+                    location: location,
+                    message: message,
+                    status: status,
+                    subject: subject,
+                    adminResponse: response,
+                };
+
+                var refReport = child(dbRef, `reportTicket/${reportID}`);
+
+                //set object
+                set(refReport, data, (error) => {
+                    if (error) {
+                        console.error("Error saving data:", error);
+                        // handle error here, e.g. display an error message to the user
+                    } else {
+                        console.log("Data saved successfully");
+                        // do something here, e.g. show a success message to the user
+                    }
+                });
+
+                alert("Response is saved");
+            });
+
         } else {
             // User not logged in or has just logged out.
             console.log("User not logged in");
         }
     });
-
-    //get(child(dbRef, `user/${user.uid}/type`)).then((snapshot) => { });
 
 </script>
 
