@@ -112,7 +112,17 @@ ORDER BY COLUMN
                     <label for="ticketRef">Ticket Reference:</label>
                     <input type="text" class="form-control" id="ticketRef" name="ticketRef" placeholder="Search for ticket reference..." onkeyup="filterTable()">
                 </div>
-    
+                
+                <div class="form-group mr-2">
+                    <label for="ticketType">Ticket Type:</label>
+                    <select id="ticketType" name="ticketType" class="form-control" onchange="filterTable()">
+                        <option value="">Select type...</option>
+                        <option value="Issue">Issue</option>
+                        <option value="Report">Report</option>
+                        <option value="EC">EC</option>
+                    </select>
+                </div>
+
                 <div class="form-group mr-2">
                     <label for="subject">Subject:</label>
                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Search for subject..." onkeyup="filterTable()">
@@ -128,6 +138,12 @@ ORDER BY COLUMN
                         <option value="pending">Pending</option>
                     </select>
                 </div>
+
+                <div class="form-group mr-2">
+                    <label for="createdOn">Created On:</label>
+                    <input type="text" class="form-control" id="createdOn" name="createdOn" placeholder="Search for date..." onkeyup="filterTable()">
+                </div>
+
             </form>
 
         <!-- Ticket Table for list of Tickets -->
@@ -142,6 +158,7 @@ ORDER BY COLUMN
             
                     <tr>
                         <th scope="col">Ticket Reference</th>
+                        <th scope="col">Ticket Type</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Status</th>
                         <th scope="col">Created On</th>
@@ -249,7 +266,7 @@ ORDER BY COLUMN
                                 const childData = childSnapshot.val();
 
                                 if (childData.StudentID == userID){
-                                    var entry = "<tr><td>" + childKey + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueStatus + "</td><td>"  + childData.ticektSubmissionDate + "</td></tr>";
+                                    var entry = "<tr><td>" + childKey + "</td><td>" + "Issue" + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueStatus + "</td><td>"  + childData.ticektSubmissionDate + "</td></tr>";
                                     
                                     $(entry).appendTo("#ticket_table");
 
@@ -272,7 +289,7 @@ ORDER BY COLUMN
                                 const childData = childSnapshot.val();
 
                                 if (childData.StudentID == userID){
-                                    var entry = "<tr><td>" + childKey + "</td><td>" + childData.subject + "</td><td>" + childData.status + "</td><td>"  + childData.dateCreated + "</td></tr>";
+                                    var entry = "<tr><td>" + childKey + "</td><td>" + "Report" + "</td><td>"  + childData.subject + "</td><td>" + childData.status + "</td><td>"  + childData.dateCreated + "</td></tr>";
                                     
                                     $(entry).appendTo("#ticket_table");
 
@@ -294,7 +311,7 @@ ORDER BY COLUMN
                                 const childData = childSnapshot.val();
 
                                 if (childData.StudentID == userID){
-                                    var entry = "<tr><td>" + childKey + "</td><td>" + childData.ecSummary + "</td><td>" + childData.state + "</td><td>"  + childData.dateCreated + "</td></tr>";
+                                    var entry = "<tr><td>" + childKey + "</td><td>" + "EC" + "</td><td>" + childData.ecSummary + "</td><td>" + childData.state + "</td><td>"  + childData.dateCreated + "</td></tr>";
                                     
                                     $(entry).appendTo("#ticket_table");
 
