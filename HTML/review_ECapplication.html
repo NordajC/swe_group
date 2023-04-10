@@ -1,26 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Review EC</title>
-    <link rel="stylesheet" href="../css/review_EC.css" type="text/css">   
-</head>
-<body>
-    <legend></legend>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../css/home.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+  <title>Review EC Applications</title>
 
-    <h1>Review EC Applications</h1>
-    
-    <div class="dropdown">
-        <button class="dropbutton">Account </button>
-        <div class="dropdown-content">
-        <a href="ECadmin_details.html">My details</a>
-          <a href="admin.html">Admin Page</a>
-          <a href="contactdetails.html">View contact details</a>
-          <a href="logout.html">Log out</a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="eecs_admin_homepage.html">
+          <img src="qm minus white.png" width="100" height="50" >
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="respondToEC.html">Respond to EC</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="UpdateEC.html">Update EC Ticket Status</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ECadmin_details.html">My Details</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger bg-dark" id="logOut" type="submit"  href="#"> LogOut</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+  </header>
+  <h2>Review EC Applications</h2>
 
-      <a href="Notification.html"><img src="bell_icon2.png" alt="Italian Trulli" style="position: relative; width: 35px; height: 30px; left: 1120px; top: -137px; color: white;"></a>
+    
+<!---  
+
+      
       <a href="admin.html"><img src="qm minus white.png" alt="Italian Trulli" style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 135px; top: -128px;"></a>
       
+      <section style="width: 90vw; margin: auto;">
+        <div class="container1" style="width: 100%; border: 1px solid black;" id="container">
+        <h2>ecticketid</h2>
+
+        <h3 style="display: inline-block;">Student id:</h3>
+        <p style="display: inline-block;" id="StudentID"></p>
+        <br>
+        <h3 style="display: inline-block;">date created</h3>
+        <p style="display: inline-block;" id="dateCreated"></p>
+        <br>
+        <h3 style="display: inline-block;">ec claim type</h3>
+        <p style="display: inline-block;" id="ecType"></p>
+        <br>
+        <h3 style="display: inline-block;">nature</h3>
+        <p style="display: inline-block;" id="ecNature"></p>
+        <br>
+        <h3 style="display: inline-block;">summary</h3>
+        <p style="display: inline-block;" id="ecSummary"></p>
+        <br>
+        <h3 style="display: inline-block;">assessments</h3>
+        <p style="display: inline-block;" id="ecAssessments"></p>
+        <br>
+        <h3 style="display: inline-block;">date extend request</h3>
+        <p style="display: inline-block;" id="ecReqDate"></p>
+        <br>
+        <h3 style="display: inline-block;">evidence</h3>
+        <p style="display: inline-block;" id="ecEvidence"></p>
+        <br>
+        <h3 style='display: inline-block;'>Set Applicaiton state</h3>
+        <br>
+        <h3 style='display: inline-block;'>Response</h3>
+        <br>
+        <select id="ECresponse">
+            <option value="" disabled selected>Select Response</option>
+            <option value='Accept'>Accept</option>
+            <option value='Reject'>Reject</option>
+        </select>
+        <br><br>
+        <button id="submit-button">submit</button>
+    </section>
+
+--->
+    <footer class = "fixed-bottom">
+      <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+    </footer>
 </body>
+<!--- <script type="module" src="../functionality-js/ec_response.js"></script>
 </html>

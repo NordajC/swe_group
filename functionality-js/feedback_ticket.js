@@ -131,7 +131,7 @@ auth.onAuthStateChanged((user) => {
           StudentID: userID,
           feedbackSubject: feedbackOn,
           feedback: feedback,
-          ticektSubmissionDate: datetime,
+          ticketSubmissionDate: datetime,
         };
 
         var refTicket = child(dbRef, "feedback");

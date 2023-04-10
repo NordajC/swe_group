@@ -3,23 +3,6 @@ body{
   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(226,224,241,1) 100%);
   background-position: center;
 }
-header{
-  background-color: blue;
-  margin: 0;
-  padding: 0;
-  height: 10vh;
-  position: relative;
-  width: 100vw;
-  top: -25px;
-  
-}
-
-header>h1{
-  text-align: left;
-  padding: 0.5em;
-  color: white;
-  
-}
 
 footer{
   background-color: blue;
@@ -55,7 +38,7 @@ footer{
 }
 
 h2{
-  margin: 1em 0 1em 0;
+  text-align: center;
 }
 
 .row{
@@ -133,3 +116,13 @@ h2{
   resize: none;
   border: 1px solid #454545;
 }
+
+.nav-link {
+  border-bottom: 5px solid transparent;
+}
+
+.nav-link:hover {
+  border-bottom: 5px solid red;
+}
+
+
