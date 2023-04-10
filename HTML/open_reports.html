@@ -98,7 +98,8 @@
                         const childData = childSnapshot.val();
 
                         if (childData.status == "Open") {
-                            var entry = "<tr><td>" + childData.dateCreated + "</td><td>" + childData.subject + "</td></tr>";
+                            console.log(childKey);
+                            var entry = "<tr><td>" + childData.dateCreated + "</td><td>" + childData.subject + `<button onclick="location.href='../HTML/eecs_response.html?id=${childKey}';">Button</button></td></tr>`;
 
                             $(entry).appendTo("#open_report_table");
                         }
