@@ -62,11 +62,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebas
 
                         if (childData.adminResponse == "" ){
                           var entry = 
-                        "<div class='container' style='width: 100%; border: 1px solid black;' id='container'><h2>" 
+                        "<div class='card'><div class='card-header'><h2 class='mb-0'>" 
                         + childKey + 
-                        "</h2><h3 style='display: inline-block;'>Student id: </h3><p style='display: inline-block;'>" 
-                        + childData.StudentID + "</p><br><h3 style='display: inline-block;'>Student Name </h3><p style='display: inline-block;' id='studentName'></p><br><h3 style='display: inline-block;'>Date Created</h3><p style='display: inline-block;'>" + childData.dateCreated + "</p><br><h3 style='display: inline-block;'>EC Claim Type: </h3><p style='display: inline-block;'>" + childData.ecType + 
-                        "</p><br><h3 style='display: inline-block;'>Nature: </h3><p style='display: inline-block;'>" +childData.ecNature + "</p><br><h3 style='display: inline-block;'>Summary: </h3><p style='display: inline-block;'>" +childData.ecSummary +"</p><br><h3 style='display: inline-block;'>Assessments</h3><p style='display: inline-block;'>" +childData.ecAssessments + "</p><br><h3 style='display: inline-block;'>Date Extend Request </h3><p style='display: inline-block;'>" +childData.ecReqDate + "</p><br><h3 style='display: inline-block;'>Evidence: </h3><p style='display: inline-block;'>" +childData.ecEvidence + `</p><br><button onclick="location.href='../HTML/review_ECapplication.html?id=${childKey}';">respond to report</button></td></tr>`;
+                        "</h2></div><div class='card-body'><div class='row'><div class='col-sm-6'><h3>Student ID:</h3>" 
+                        + childData.StudentID + "/p></div><div class='col-sm-6'><h3>Date Created:</h3><p>" + childData.dateCreated + "</p></div></div><div class='row'><div class='col-sm-6'><h3>EC Claim Type:</h3><p>" + childData.ecType + 
+                        "</p></div><div class='col-sm-6'><h3>Nature:</h3><p>" +childData.ecNature + "</p></div></div><div class='row'><div class='col-sm-6'><h3>Summary:</h3><p>" +childData.ecSummary +"</p></div><div class='col-sm-6'><h3>Assessments:</h3><p>" +childData.ecAssessments + "</p></div></div><div class='row'><div class='col-sm-6'><h3>Date Extend Request:</h3><p>" +childData.ecReqDate + "</p></div><div class='col-sm-6'><h3>Evidence:</h3><p>" +childData.ecEvidence + `</p></div></div><div class='row'></div><div class='row mt-3'><div class='col-sm-6'><button class='btn btn-primary' onclick="location.href='../HTML/review_ECapplication.html?id=${childKey}';">respond to report</button>`;
 
 
                         $(entry).appendTo("#container");

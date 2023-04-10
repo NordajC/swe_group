@@ -61,8 +61,6 @@ auth.onAuthStateChanged((user) => {
             }
           });
           
-          //continue from here.....
-
           get(child(dbRef, `${ecID}/dateCreated`)).then((snapshot) => {
             if (snapshot.exists()) {
               const dateCreated = snapshot.val();
