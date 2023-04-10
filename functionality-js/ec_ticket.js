@@ -80,8 +80,6 @@ auth.onAuthStateChanged((user) => {
 
             let assessment = document.getElementById("assessment").value;
 
-            //let assessDate = document.getElementById("assessDate").value;
-
             let reqDate = document.getElementById("reqDate").value;
 
             let evidence = document.getElementById("evidence-file").value;
@@ -100,7 +98,6 @@ auth.onAuthStateChanged((user) => {
                     ecNature: nature,
                     ecSummary: summary,
                     ecAssessments: assessment,
-                    //ecAssessDate: assessDate,
                     ecReqDate: reqDate,
                     ecEvidence: evidence,
                     state: state,
