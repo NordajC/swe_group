@@ -97,49 +97,235 @@ ORDER BY COLUMN
         <!-- Ticket Table for list of Tickets -->
         <!-- A new Row and 4 Columns will be created for each ticket -->
         <div class="table-container col-lg-12 col-md-12 mb-12">
-            <table class="table thread-dark table-hover" >
+            <table class="table thread-dark table-hover" id = "ticket_table">
                 <thead class="thead-dark">
-            <!-- class = "sortable essential" id = "col-0"
-            class = "sortable essential" id = "col-1"
-            class = "sortable essential" id = "col-2"
-            class = "sortable essential" id = "col-3" -->
+                    <!-- class = "sortable essential" id = "col-0"
+                    class = "sortable essential" id = "col-1"
+                    class = "sortable essential" id = "col-2"
+                    class = "sortable essential" id = "col-3" -->
             
-            <tr>
-                <th scope="col">Ticket Reference</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Status</th>
-                <th scope="col">Created On</th>
-            </tr>
-        </thead>
-        <tbody id = "table-body">
-            <!-- <tr>
-                <td>TCK001</td>
-                <td>Server Down</td>
-                <td>Open</td>
-                <td>2022-03-01</td>
-            </tr>
-            <tr>
-                <td>TCK002</td>
-                <td>Can't login to email</td>
-                <td>Closed</td>
-                <td>2022-03-02</td>
-            </tr>
-            <tr>
-                <td>TCK003</td>
-                <td>Printer not working</td>
-                <td>In Progress</td>
-                <td>2022-03-03</td>
-            </tr>
-            <tr>
-                <td>TCK004</td>
-                <td>Slow internet</td>
-                <td>Pending</td>
-                <td>2022-02-01</td>
-            </tr>     -->
-            </tbody>
-        </table>
+                    <tr>
+                        <th scope="col">Ticket Reference</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Created On</th>
+                    </tr>
+                </thead>
+                <tbody id = "tbody">
+                    <!-- <tr>
+                        <td>TCK001</td>
+                        <td>Server Down</td>
+                        <td>Open</td>
+                        <td>2022-03-01</td>
+                    </tr>
+                    <tr>
+                        <td>TCK002</td>
+                        <td>Can't login to email</td>
+                        <td>Closed</td>
+                        <td>2022-03-02</td>
+                    </tr>
+                    <tr>
+                        <td>TCK003</td>
+                        <td>Printer not working</td>
+                        <td>In Progress</td>
+                        <td>2022-03-03</td>
+                    </tr>
+                    <tr>
+                        <td>TCK004</td>
+                        <td>Slow internet</td>
+                        <td>Pending</td>
+                        <td>2022-02-01</td>
+                    </tr>     -->
+                </tbody>
+            </table>
 
-        <script type="module" src="../functionality-js/ticketHistory_firebase.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous">
+        </script>
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+            import {
+            getDatabase,
+            ref,
+            child,
+            get,
+            onValue,
+            } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+            import {
+            getAuth,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut,
+            } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+            apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+            authDomain: "test-29549.firebaseapp.com",
+            databaseURL:
+                "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "test-29549",
+            storageBucket: "test-29549.appspot.com",
+            messagingSenderId: "864209838742",
+            appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
+            };
+
+            // Initialize Firebase App
+            const app = initializeApp(firebaseConfig);
+
+            // Get Firebase database and auth instances
+            const db = getDatabase(app);
+            //const dbRef = ref(db);
+            const auth = getAuth();
+            const current_user = auth.currentUser;
+
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User logged in already or has just logged in.
+                    console.log(user.uid);
+                    let userID = user.uid;
+                    console.log(userID);
+
+                    //const userID = current_user;
+
+                    const ticketID = auth.currentUser.uid;
+                    const dbIssueTicketRef = ref(db, `issueTicket`);
+                    
+                    var tbody = document.getElementById("ticket_table");
+
+                    if (document.readyState === "complete") {
+                            
+                        $("ticket_table td").remove();
+
+                        //get all IssueTickets for specific user logged in
+                        onValue(dbIssueTicketRef, (snapshot) => {
+                            snapshot.forEach((childSnapshot) => {
+                                const childKey = childSnapshot.key;    
+                                const childData = childSnapshot.val();
+
+                                if (childData.StudentID == userID){
+                                    var entry = "<tr><td>" + childKey + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueStatus + "</td><td>"  + childData.ticektSubmissionDate + "</td></tr>";
+                                    
+                                    $(entry).appendTo("#ticket_table");
+
+                                } else{
+                                    console.log("Not users data")
+                                }
+                            });
+                        }, {
+                                onlyOnce: true
+                        });
+                        
+
+                        
+
+                        //get all ReportTickets for specific user logged in
+                        const dbReportTicketRef = ref(db, `reportTicket`);
+                        onValue(dbReportTicketRef, (snapshot) => {
+                            snapshot.forEach((childSnapshot) => {
+                                const childKey = childSnapshot.key;    
+                                const childData = childSnapshot.val();
+
+                                if (childData.StudentID == userID){
+                                    var entry = "<tr><td>" + childKey + "</td><td>" + childData.subject + "</td><td>" + childData.status + "</td><td>"  + childData.dateCreated + "</td></tr>";
+                                    
+                                    $(entry).appendTo("#ticket_table");
+
+                                } else{
+                                    console.log("Not users data")
+                                }
+                            });
+                        }, {
+                            onlyOnce: true
+                        });
+
+                        
+
+                        //get all EcTickets for specific user logged in
+                        const dbEcTicketRef = ref(db, `ecTicket`);
+                        onValue(dbEcTicketRef, (snapshot) => {
+                            snapshot.forEach((childSnapshot) => {
+                                const childKey = childSnapshot.key;    
+                                const childData = childSnapshot.val();
+
+                                if (childData.StudentID == userID){
+                                    var entry = "<tr><td>" + childKey + "</td><td>" + childData.ecSummary + "</td><td>" + childData.state + "</td><td>"  + childData.dateCreated + "</td></tr>";
+                                    
+                                    $(entry).appendTo("#ticket_table");
+
+                                } else{
+                                    console.log("Not users data")
+                                }
+                            });
+                        }, {
+                            onlyOnce: true
+                        });
+
+                    } 
+                    
+                } else {
+                        // User not logged in or has just logged out.
+                        console.log("User not logged in");
+                }
+
+            });
+
+
+
+               
+
+
+
+
+
+
+            /* get(ticketsRef)
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        console.log("data exists")
+                    snapshot.forEach((childSnapshot) => {
+                        console.log("child snapshot exists")
+                        const childData = childSnapshot.val();
+                        if (childData.userID === userID) {
+                            console.log("userID data exists")
+                        const row = document.createElement("tr");
+                        const column1 = document.createElement("td");
+                        const column2 = document.createElement("td");
+                        const column3 = document.createElement("td");
+                        const column4 = document.createElement("td");
+                        const column5 = document.createElement("td");
+
+                        column1.innerHTML = childData.column1;
+                        column2.innerHTML = childData.column2;
+                        column3.innerHTML = childData.column3;
+
+                        row.appendChild(column1);
+                        row.appendChild(column2);
+                        row.appendChild(column3);
+                        row.appendChild(column4);
+                        row.appendChild(column5);
+                        document.getElementById("table-body").appendChild(row);
+                        }
+                    });
+                    } else {
+                    console.log("No data available");
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+            }); */
+            
+
+        </script>
 
         <footer class = "fixed-bottom">
             <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
