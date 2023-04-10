@@ -28,7 +28,13 @@
 
     <br />
     <p style="display: inline-block">StudentID:</p>
-    <p style="display: inline" id="studentID"></p>
+    <p style="display: none" id="studentID"></p>
+    <p style="display: inline" id="userID"></p>
+    <br />
+
+    <p style="display: inline-block">Student Name:</p>
+    <p style="display: inline" id="studentName"></p>
+    <p style="display: inline" id="studentSurname"></p>
     <br />
 
     <p style="display: inline-block">Date:</p>
@@ -112,6 +118,37 @@
                     const studentID = snapshot.val();
                     console.log(studentID);
                     document.getElementById('studentID').innerHTML = studentID;
+
+                    get(child(dbRef, `user/${studentID}/userID`)).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const userID = snapshot.val();
+                            console.log(userID);
+                            document.getElementById('userID').innerHTML = userID;
+                        } else {
+                            console.log("no data available");
+                        }
+                    });
+
+                    get(child(dbRef, `user/${studentID}/name`)).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const studentName = snapshot.val();
+                            console.log(studentName);
+                            document.getElementById('studentName').innerHTML = studentName;
+                        } else {
+                            console.log("no data available");
+                        }
+                    });
+
+                    get(child(dbRef, `user/${studentID}/surname`)).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const studentSurname = snapshot.val();
+                            console.log(studentSurname);
+                            document.getElementById('studentSurname').innerHTML = studentSurname;
+                        } else {
+                            console.log("no data available");
+                        }
+                    });
+
                 } else {
                     console.log("no data available");
                 }
@@ -157,12 +194,26 @@
                 }
             });
 
+            /**
+
+            let studentID = document.getElementById("studentID").innerHTML;
+            console.log("STUDENT ID is" + studentID);
+            get(child(dbRef, `user/${studentID}/name`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const studentName = snapshot.val();
+                    console.log(studentName);
+                    document.getElementById('studentName').innerHTML = studentName;
+                } else {
+                    console.log("no data available");
+                }
+            });
+
+            **/
+
             let submit_button = document.getElementById("submit-button");
             submit_button.addEventListener("click", (e) => {
 
                 let response = document.getElementById("admin-response").value;
-                console.log("response:" + response);
-
                 let studentID = document.getElementById("studentID").innerHTML;
                 let dateCreated = document.getElementById("dateCreated").innerHTML;
                 let location = document.getElementById("location").innerHTML;
