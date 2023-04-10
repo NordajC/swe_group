@@ -84,6 +84,10 @@ font-size: 90px;
 margin-top: 20px;
 }
 
+#issue-container{
+  background-color:#d73c36;
+}
+
 #EC-container{
   background-color:#ffa602;
 }
@@ -94,6 +98,16 @@ margin-top: 20px;
 
 #status-container{
   background-color: #c2a5df;
+}
+
+#feedback-container{
+  background-color: #5ad258;
+}
+#contact-container{
+  background-color: #cd50b2;
+}
+#details-container{
+  background-color: #e2792e;
 }
 
 footer{

@@ -2,70 +2,100 @@
 <html>
 <head>
     <title>Feedback Form</title>
-    <link rel="stylesheet" href="../css/SEProjectForm.css" type="text/css">   
+    <!-- <link rel="stylesheet" href="../css/SEProjectForm.css" type="text/css"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />   
 </head>
 <body>
-    <form method="POST" action="">
-            <legend><div style="position: relative; right: -620px; top: 10px;">Feedback form</div></legend>
+    <header style="position: relative;">
+        <h1 class="row justify-content-center">Feedback form</h1>
+        <a href="home.html">
+            <img src="qm minus white.png" style="width: 90px; position: absolute; bottom: 0;">
+        </a>
+
+    </header>
+    <div class="container-fluid col-lg-7 col-md-10 ">
+        <form method="POST" action="" id="feedback-form" class="card p-3 row justify-content-center">
             <article>
                 <style>
                     label {
                       display: inline-block;
-                      width: 100px;
+                      width: 120px;
                     }
                 </style>
-                <div class="name">
-                    <label class="name">First Name</label>
-                    <label class="name" id="userName"></label>
-                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <div class="name">
+                                <label class="name">First Name</label>
+                                <label class="name" id="userName"></label>
+                            </div>
+                        
+                            <div class="Sname">
+                                <label class="name">Surname</label>
+                                <label class="name" id="userSur"></label>
+                            </div>
             
-                <div class="Sname">
-                    <label class="name">Surname</label>
-                    <label class="name" id="userSur"></label>
+                            <div class="id">
+                                <label class="name">Student ID</label>
+                                <label class="name" id="userID"></label>
+                            </div>
+            
+                            <div class="email">
+                                <label class="name">Email</label>
+                                <label class="name"id="userEmail"></label>
+                            </div>
+            
+            
+                            <div class="YOS">
+                                <label>Year of Study</label>
+                                <label class="name" id="userYOS"></label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="id">
-                    <label class="name">Student ID</label>
-                    <label class="name" id="userID"></label>
+                
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="mb-3">
+                            <div class="feedback">
+                                <label>Feedback on:</label> 
+                                <select name="Choice" required id="feedbackOn">
+                                    <option value="" disabled selected>Choose feedback option</option>
+                                    <option>Service</option>
+                                    <option>Module</option>
+                                    <option>lecture</option>
+                                    <option>Campus</option>
+                                    <option>Teaching</option>
+                                    <option>Equipments</option>
+                                </select>
+                            </div>
+            
+                            <div class="message">
+                                <label>Details to the feedback: </label>
+                                <!-- <input type="text" name="Message"  placeholder="Enter your text here including all details. For example, module code, lecturer, praise."  required id="feedback"> -->
+                                <textarea name="Message" class="form-control" id="feedback" form="feedback-form" placeholder="Enter your text here including all details. For example, module code, lecturer, praise." required></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="email">
-                    <label class="name">Email</label>
-                    <label class="name"id="userEmail"></label>
-                </div>
-
-
-                <div class="YOS">
-                    <label>Year of Study</label>
-                    <label class="name" id="userYOS"></label>
-                </div>
-
-
-                <div class="feedback">
-                    <label>Feedback on</label> 
-                    <select name="Choice" required id="feedbackOn">
-                        <option value="" disabled selected>Choose feedback option</option>
-                        <option>Service</option>
-                        <option>Module</option>
-                        <option>lecture</option>
-                        <option>Campus</option>
-                        <option>Teaching</option>
-                        <option>Equipments</option>
-                    </select>
-                </div>
-
-                <div class="message">
-                    <label>Please add more detail to the feedback. For example, module code, lecturer, praise. </label>
-                    <input type="text" name="Message"  placeholder="Enter your text here including all details" style="width: 500px; height: 100px; position: relative; top: -50px;" required id="feedback">
-                </div>
+                
             </article>
 
             <div class="design"></div>
-            <section>
-                <button type="submit" value="Submit" id="submit-button"> Submit
-                <button type="reset" value="Cancel"> Cancel
-            </section>
-    </form>
+            <div class="col-md-12" id="footer">
+                <div class="mb-3">
+
+                    <p id="buttons">
+                        <input type="submit" class="btn btn-success" id="submit-button">
+                        <input type="reset" class="btn btn-danger">
+                    </p>
+                </div>
+
+            </div>
+        </form>
+    </div>
 </body>
 <script type="module" src="../functionality-js/feedback_ticket.js"></script>
 </html>
