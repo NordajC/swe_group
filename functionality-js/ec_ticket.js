@@ -102,6 +102,7 @@ auth.onAuthStateChanged((user) => {
                     ecEvidence: evidence,
                     state: state,
                     subject: subject,
+                    adminResponse: "",
                 };
     
                 var refEC = child(dbRef, "ecTicket");
