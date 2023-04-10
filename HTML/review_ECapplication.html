@@ -22,5 +22,46 @@
       
       <a href="admin.html"><img src="qm minus white.png" alt="Italian Trulli" style="position: relative; padding: 0.3%; width: 60px; height: 40px; right: 135px; top: -128px;"></a>
       
+      <section style="width: 90vw; margin: auto;">
+        <div class="container" style="width: 100%; border: 1px solid black;" id="container">
+        <h2>ecticketid</h2>
+
+        <h3 style="display: inline-block;">Student id:</h3>
+        <p style="display: inline-block;" id="StudentID">idhere</p>
+        <br>
+        <h3 style="display: inline-block;">date created</h3>
+        <p style="display: inline-block;" id="dateCreated"></p>
+        <br>
+        <h3 style="display: inline-block;">ec claim type</h3>
+        <p style="display: inline-block;" id="ecType"></p>
+        <br>
+        <h3 style="display: inline-block;">nature</h3>
+        <p style="display: inline-block;" id="ecNature"></p>
+        <br>
+        <h3 style="display: inline-block;">summary</h3>
+        <p style="display: inline-block;" id="ecSummary"></p>
+        <br>
+        <h3 style="display: inline-block;">assessments</h3>
+        <p style="display: inline-block;" id="ecAssessments"></p>
+        <br>
+        <h3 style="display: inline-block;">date extend request</h3>
+        <p style="display: inline-block;" id="ecReqDate"></p>
+        <br>
+        <h3 style="display: inline-block;">evidence</h3>
+        <p style="display: inline-block;" id="ecEvidence"></p>
+        <br>
+        <h3 style='display: inline-block;'>Set Applicaiton state</h3>
+        <br>
+        <h3 style='display: inline-block;'>Response</h3>
+        <br>
+        <select id="ECresponse">
+            <option value="" disabled selected>Select Response</option>
+            <option value='Accept'>Accept</option>
+            <option value='Reject'>Reject</option>
+        </select>
+        <br><br>
+        <button id="submit-button">submit</button>
+    </section>
 </body>
+<script type="module" src="../functionality-js/ec_response.js"></script>
 </html>
