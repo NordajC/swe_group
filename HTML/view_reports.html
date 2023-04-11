@@ -49,9 +49,13 @@
     
     <table id="report_table">
         <tr>
-            <th>Data</th>
+            <th>TicketID</th>
+            <th>Date</th>
             <th>Subject</th>
+            <th>Description</th>
             <th>Status</th>
+            <th>Response</th>
+            <th>Response Date</th>
         </tr>
     </table>
 
@@ -124,10 +128,14 @@
                         const childKey = childSnapshot.key;
                         const childData = childSnapshot.val();
 
-                        var entry = "<tr><td>" + childData.dateCreated + "</td><td>" + childData.subject + "</td><td>" + childData.status + "</td></tr>";
+                        if (childData.status == "Closed") {
+                          var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>" + childData.adminResponse + "</td><td>"  + childData.responseDate + "</td></tr>";
+                        }
+                        else {
+                          var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>N/A</td><td>N/A</td></tr>";
+                        }
 
                         $(entry).appendTo("#report_table");
-
 
                     });
                 }, {
@@ -141,8 +149,6 @@
             console.log("User not logged in");
         }
     });
-
-    get(child(dbRef, `user/${user.uid}/type`)).then((snapshot) => { });
 
 </script>
 <script type="module" src="../functionality-js/logout_firebase.js"></script>
