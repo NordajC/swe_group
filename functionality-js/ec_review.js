@@ -62,7 +62,6 @@ auth.onAuthStateChanged((user) => {
 
                     if (childData.adminResponse == "") {
                         let studentID = childData.StudentID;
-                        console.log("STUDENTID IS" + studentID)
 
                         get(child(ref(db), `user/${studentID}/userID`)).then((snapshot) => {
                             if (snapshot.exists()) {
