@@ -45,7 +45,8 @@
     
     <table id="open_report_table">
         <tr>
-            <th>Data</th>
+            <th>TicketID</th>
+            <th>Date</th>
             <th>Subject</th>
         </tr>
     </table>
@@ -119,8 +120,9 @@
                         const childData = childSnapshot.val();
 
                         if (childData.status == "Open") {
-                            console.log(childKey);
-                            var entry = "<tr><td>" + childData.dateCreated + "</td><td>" + childData.subject + `<button onclick="location.href='../HTML/eecs_response.html?id=${childKey}';">Button</button></td></tr>`;
+
+                            var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" +
+                            `<button onclick="location.href='../HTML/eecs_response.html?id=${childKey}';">Respond to Report</button></td></tr>`;
 
                             $(entry).appendTo("#open_report_table");
                         }
@@ -137,8 +139,6 @@
             console.log("User not logged in");
         }
     });
-
-    get(child(dbRef, `user/${user.uid}/type`)).then((snapshot) => { });
 
 </script>
 
