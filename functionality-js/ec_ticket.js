@@ -61,7 +61,7 @@ auth.onAuthStateChanged((user) => {
                 month='0'+month;
             }
 
-            let dateCreated = `${year}-${month}-${day}`;
+            let dateCreated = `${day}/${month}/${year}`;
 
             let ecType = document.getElementById("claim-type").value;
 
