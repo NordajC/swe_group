@@ -53,11 +53,11 @@ auth.onAuthStateChanged((user) => {
 
         let issueSubject = document.getElementById("issue-subject").value;
         let issueDesc = document.getElementById("issue-description").value;
-        let issueLoc = document.getElementById("building").value;
-        let issueFloor = document.getElementById("floor").value;
+        // let issueLoc = document.getElementById("building").value;
+        // let issueFloor = document.getElementById("floor").value;
         let tickCheckbox = document.getElementById("tick-checkbox");
 
-        if(issueSubject == "" || issueDesc == "" || issueLoc == "" || issueFloor == "" || tickCheckbox.checked == false){
+        if(issueSubject == "" || issueDesc == "" || tickCheckbox.checked == false){
           alert("Please ensure that all the fields have been filled.");
         }
         else{
@@ -65,20 +65,18 @@ auth.onAuthStateChanged((user) => {
           var currentdate = new Date(); 
           var datetime =  currentdate.getDate() + "/"
                           + (currentdate.getMonth()+1)  + "/" 
-                          + currentdate.getFullYear() + " "  
-                          + currentdate.getHours() + ":"  
-                          + currentdate.getMinutes();
+                          + currentdate.getFullYear();  
+
 
           var data = {
             StudentID: userID,
             issueSubject: issueSubject,
             issueDesc: issueDesc,
-            issueLoc: issueLoc,
-            issueFloor: issueFloor,
-            ticektSubmissionDate: datetime,
+            status: "Open",
+            dateCreated: datetime,
           };
 
-          var refTicket = child(dbRef, "issueTicket");
+          var refTicket = child(dbRef, "reportTicket");
 
           //push object
           push(refTicket, data, (error) => {
@@ -95,9 +93,6 @@ auth.onAuthStateChanged((user) => {
           window.location.href = "../HTML/submitpage.html";
 
         } 
-
-      
-        
       });
     
   } else{

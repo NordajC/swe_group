@@ -46,7 +46,7 @@ auth.onAuthStateChanged((user) => {
 
             e.preventDefault(); // prevent default form submission behavior
 
-            let state = "Unseen";
+            let state = "Open";
 
             const date = new Date();
             let day = date.getDate();
@@ -65,14 +65,14 @@ auth.onAuthStateChanged((user) => {
 
             let ecType = document.getElementById("claim-type").value;
 
-            if (ecType == "standard-claim") {
-                var subject2 = "Standard Claim";
-            }
-            else {
-                var subject2 = "Self-Certification";
-            }
+            // if (ecType == "standard-claim") {
+            //     var subject2 = "Standard Claim";
+            // }
+            // else {
+            //     var subject2 = "Self-Certification";
+            // }
 
-            let subject = subject2;
+            // let subject = subject2;
 
             let nature = document.getElementById("nature").value;
 
@@ -100,8 +100,7 @@ auth.onAuthStateChanged((user) => {
                     ecAssessments: assessment,
                     ecReqDate: reqDate,
                     ecEvidence: evidence,
-                    state: state,
-                    subject: subject,
+                    status: state,
                     adminResponse: "",
                 };
     

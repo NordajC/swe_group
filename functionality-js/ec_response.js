@@ -101,7 +101,7 @@ auth.onAuthStateChanged((user) => {
             }
           });
 
-          get(child(dbRef, `${ecID}/ecAssessment`)).then((snapshot) => {
+          get(child(dbRef, `${ecID}/ecAssessments`)).then((snapshot) => {
             if (snapshot.exists()) {
               const ecAssessments = snapshot.val();
               console.log(ecAssessments);
@@ -131,17 +131,51 @@ auth.onAuthStateChanged((user) => {
 
           let submit_button = document.getElementById("submit-button");
         submit_button.addEventListener("click", (e) => {
+            
             let ECresponse = document.getElementById('ECresponse').value;
+            let s_ID = document.getElementById('StudentID').innerHTML;
+            let d_Created = document.getElementById('dateCreated').innerHTML;
+            let ec_type = document.getElementById('ecType').innerHTML;
+            let nature = document.getElementById('ecNature').innerHTML;
+            let summary = document.getElementById('ecSummary').innerHTML;
+            let assessment = document.getElementById('ecAssessments').innerHTML;
+            let reqDate = document.getElementById('ecReqDate').innerHTML;
+            let evidence = document.getElementById('ecEvidence').innerHTML;
+
+            const date = new Date();
+            let day = date.getDate();
+            let month = date.getMonth() + 1;
+            let year = date.getFullYear();
+
+            if(day<10) {
+                day='0'+day;
+            } 
+
+            if(month<10) {
+                month='0'+month;
+            }
+
+            let dateResponded = `${day}/${month}/${year}`;
 
             if(ECresponse == ""){
                 alert("Please select a response")
             }
             else{
                 var data = {
+                    StudentID: s_ID,
                     adminResponse: ECresponse,
+                    dateCreated: d_Created,
+                    ecAssessments: assessment,
+                    ecEvidence:  evidence,
+                    ecNature: nature,
+                    ecReqDate: reqDate,
+                    ecSummary: summary,
+                    ecType: ec_type,
+                    status: "Closed",
+                    ResponseDate: dateResponded,
                 };
 
-                var refEC = child(dbRef, `${ecID}/adminResponse`);
+                var refEC = child(dbRef, `${ecID}`);
                 set(refEC, data, (error) => {
                     if (error) {
                       console.error("Error saving data:", error);
