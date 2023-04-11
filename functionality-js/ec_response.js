@@ -41,7 +41,7 @@ auth.onAuthStateChanged((user) => {
     console.log(userID);
 
     const ticketID = auth.currentUser.uid;
-    const dbRef = ref(db, `ecTicket`);
+    const dbRef = ref(db);
 
     if (document.readyState === "complete") {
       let query = location.search;
@@ -50,17 +50,47 @@ auth.onAuthStateChanged((user) => {
       console.log("query: " + query);
       console.log(ecID);
 
-      get(child(dbRef, `${ecID}/StudentID`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/StudentID`)).then((snapshot) => {
         if (snapshot.exists()) {
           const StudentID = snapshot.val();
           console.log(StudentID);
           document.getElementById("StudentID").innerHTML = StudentID;
+
+          get(child(dbRef, `user/${StudentID}/userID`)).then((snapshot) => {
+              if (snapshot.exists()) {
+                  const userID = snapshot.val();
+                  document.getElementById('userID').innerHTML = userID;
+              } else {
+                  console.log("no data available");
+              }
+          });
+
+          get(child(dbRef, `user/${StudentID}/name`)).then((snapshot) => {
+              if (snapshot.exists()) {
+                  const studentName = snapshot.val();
+                  console.log(studentName);
+                  document.getElementById('firstname').innerHTML = studentName;
+              } else {
+                  console.log("no data available");
+              }
+          });
+
+        get(child(dbRef, `user/${StudentID}/surname`)).then((snapshot) => {
+              if (snapshot.exists()) {
+                  const studentSurname = snapshot.val();
+                  console.log(studentSurname);
+                  document.getElementById('surname').innerHTML = studentSurname;
+              } else {
+                  console.log("no data available");
+              }
+          });
+
         } else {
           console.log("no data available");
         }
       });
 
-      get(child(dbRef, `${ecID}/dateCreated`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/dateCreated`)).then((snapshot) => {
         if (snapshot.exists()) {
           const dateCreated = snapshot.val();
           console.log(dateCreated);
@@ -70,7 +100,7 @@ auth.onAuthStateChanged((user) => {
         }
       });
 
-      get(child(dbRef, `${ecID}/ecType`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/ecType`)).then((snapshot) => {
         if (snapshot.exists()) {
           const ecType = snapshot.val();
           console.log(ecType);
@@ -80,7 +110,7 @@ auth.onAuthStateChanged((user) => {
         }
       });
 
-      get(child(dbRef, `${ecID}/ecNature`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/ecNature`)).then((snapshot) => {
         if (snapshot.exists()) {
           const ecNature = snapshot.val();
           console.log(ecNature);
@@ -90,7 +120,7 @@ auth.onAuthStateChanged((user) => {
         }
       });
 
-      get(child(dbRef, `${ecID}/ecSummary`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/ecSummary`)).then((snapshot) => {
         if (snapshot.exists()) {
           const ecSummary = snapshot.val();
           console.log(ecSummary);
@@ -100,7 +130,7 @@ auth.onAuthStateChanged((user) => {
         }
       });
 
-      get(child(dbRef, `${ecID}/ecAssessment`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/ecAssessment`)).then((snapshot) => {
         if (snapshot.exists()) {
           const ecAssessment = snapshot.val();
           console.log(ecAssessment);
@@ -109,7 +139,7 @@ auth.onAuthStateChanged((user) => {
           console.log("no data available");
         }
       });
-      get(child(dbRef, `${ecID}/ecReqDate`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/ecReqDate`)).then((snapshot) => {
         if (snapshot.exists()) {
           const ecReqDate = snapshot.val();
           console.log(ecReqDate);
@@ -118,7 +148,7 @@ auth.onAuthStateChanged((user) => {
           console.log("no data available");
         }
       });
-      get(child(dbRef, `${ecID}/ecEvidence`)).then((snapshot) => {
+      get(child(dbRef, `ecTicket/${ecID}/ecEvidence`)).then((snapshot) => {
         if (snapshot.exists()) {
           const ecEvidence = snapshot.val();
           console.log(ecEvidence);
@@ -172,7 +202,7 @@ auth.onAuthStateChanged((user) => {
             responseDate: dateResponded,
           };
 
-          var refEC = child(dbRef, `${ecID}`);
+          var refEC = child(dbRef, `ecTicket/${ecID}`);
           set(refEC, data, (error) => {
             if (error) {
               console.error("Error saving data:", error);
