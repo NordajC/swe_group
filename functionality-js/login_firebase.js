@@ -67,7 +67,7 @@ const userLogIn = async () => {
             if (userType == "ec") {
               alert("user is an ec admin");
               //redirect
-              window.location.href = "../HTML/admin.html";
+              window.location.href = "../HTML/ec_admin_homepage.html";
             } else if (userType == "eecs") {
               alert("user is an eecs admin");
               //redirect
@@ -75,7 +75,7 @@ const userLogIn = async () => {
             } else if (userType == "student") {
               alert("user is a student");
               //redirect
-              window.location.href = "../HTML/home.html";
+              window.location.href = "../HTML/student_homepage.html";
             }
           } else {
             console.log("No data available");
