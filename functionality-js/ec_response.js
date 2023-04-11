@@ -185,7 +185,8 @@ auth.onAuthStateChanged((user) => {
                       // do something here, e.g. show a success message to the user
                     }
                   });
-                  console.log("response submitted");
+                  alert("response submitted");
+                  window.location.href = "respondToEC.html";
             }
         });
 
