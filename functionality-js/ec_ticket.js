@@ -97,7 +97,7 @@ auth.onAuthStateChanged((user) => {
                     ecType: ecType,
                     ecNature: nature,
                     ecSummary: summary,
-                    ecAssessments: assessment,
+                    ecAssessment: assessment,
                     ecReqDate: reqDate,
                     ecEvidence: evidence,
                     status: state,

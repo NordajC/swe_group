@@ -100,11 +100,11 @@ auth.onAuthStateChanged((user) => {
         }
       });
 
-      get(child(dbRef, `${ecID}/ecAssessments`)).then((snapshot) => {
+      get(child(dbRef, `${ecID}/ecAssessment`)).then((snapshot) => {
         if (snapshot.exists()) {
-          const ecAssessments = snapshot.val();
-          console.log(ecAssessments);
-          document.getElementById("ecAssessments").innerHTML = ecAssessments;
+          const ecAssessment = snapshot.val();
+          console.log(ecAssessment);
+          document.getElementById("ecAssessment").innerHTML = ecAssessment;
         } else {
           console.log("no data available");
         }
@@ -136,7 +136,7 @@ auth.onAuthStateChanged((user) => {
         let ec_type = document.getElementById("ecType").innerHTML;
         let nature = document.getElementById("ecNature").innerHTML;
         let summary = document.getElementById("ecSummary").innerHTML;
-        let assessment = document.getElementById("ecAssessments").innerHTML;
+        let assessment = document.getElementById("ecAssessment").innerHTML;
         let reqDate = document.getElementById("ecReqDate").innerHTML;
         let evidence = document.getElementById("ecEvidence").innerHTML;
 
@@ -162,14 +162,14 @@ auth.onAuthStateChanged((user) => {
             StudentID: s_ID,
             adminResponse: ECresponse,
             dateCreated: d_Created,
-            ecAssessments: assessment,
+            ecAssessment: assessment,
             ecEvidence: evidence,
             ecNature: nature,
             ecReqDate: reqDate,
             ecSummary: summary,
             ecType: ec_type,
             status: "Closed",
-            ResponseDate: dateResponded,
+            responseDate: dateResponded,
           };
 
           var refEC = child(dbRef, `${ecID}`);
