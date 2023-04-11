@@ -54,6 +54,8 @@
         <tr>
             <th>TicketID</th>
             <th>Date</th>
+            <th>StudentID</th>
+            <th>Student Name</th>
             <th>Subject</th>
             <th>Description</th>
             <th>Status</th>
@@ -131,14 +133,52 @@
                         const childKey = childSnapshot.key;
                         const childData = childSnapshot.val();
 
-                        if (childData.status == "Closed") {
-                          var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>" + childData.adminResponse + "</td><td>"  + childData.responseDate + "</td></tr>";
-                        }
-                        else {
-                          var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>N/A</td><td>N/A</td></tr>";
-                        }
+                        let studentID = childData.StudentID;
 
-                        $(entry).appendTo("#report_table");
+                        get(child(ref(db), `user/${studentID}/userID`)).then((snapshot) => {
+                            if (snapshot.exists()) {
+                                const userID = snapshot.val();
+
+                                get(child(ref(db), `user/${studentID}/name`)).then((snapshot) => {
+                                  if (snapshot.exists()) {
+                                      const studentName = snapshot.val();
+                                      
+                                      get(child(ref(db), `user/${studentID}/surname`)).then((snapshot) => {
+                                        if (snapshot.exists()) {
+                                            const studentSurname = snapshot.val();
+                                            
+                                              if (childData.status == "Closed") {
+                                                var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + userID + "</td><td>" + studentName + " " + studentSurname + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>" + childData.adminResponse + "</td><td>"  + childData.responseDate + "</td></tr>";
+                                              }
+                                              else {
+                                                var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + userID + "</td><td>" + studentName + " " + studentSurname + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>N/A</td><td>N/A</td></tr>";
+                                              }
+
+                                              $(entry).appendTo("#report_table");
+
+                                        } else {
+                                            console.log("no data available");
+                                        }
+                                      });
+
+                                  } else {
+                                      console.log("no data available");
+                                  }
+                                });
+                                
+                            } else {
+                                console.log("no data available");
+                            }
+                        });
+
+                        // if (childData.status == "Closed") {
+                        //   var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>" + childData.adminResponse + "</td><td>"  + childData.responseDate + "</td></tr>";
+                        // }
+                        // else {
+                        //   var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>N/A</td><td>N/A</td></tr>";
+                        // }
+
+                        // $(entry).appendTo("#report_table");
 
                     });
                 }, {
