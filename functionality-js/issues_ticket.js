@@ -41,66 +41,74 @@ auth.onAuthStateChanged((user) => {
     let userID = user.uid;
     console.log(userID);
 
-    
-
-
     // console.log(issueDesc);
 
-    
-      let submit_button = document.getElementById("submit-button");
-      submit_button.addEventListener("click", (e) => {
-        e.preventDefault(); // prevent default form submission behavior
+    let submit_button = document.getElementById("submit-button");
+    submit_button.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent default form submission behavior
 
-        let issueSubject = document.getElementById("issue-subject").value;
-        let issueDesc = document.getElementById("issue-description").value;
-        // let issueLoc = document.getElementById("building").value;
-        // let issueFloor = document.getElementById("floor").value;
-        let tickCheckbox = document.getElementById("tick-checkbox");
+      let issueSubject = document.getElementById("issue-subject").value;
+      let issueDesc = document.getElementById("issue-description").value;
+      // let issueLoc = document.getElementById("building").value;
+      // let issueFloor = document.getElementById("floor").value;
+      let tickCheckbox = document.getElementById("tick-checkbox");
 
-        if(issueSubject == "" || issueDesc == "" || tickCheckbox.checked == false){
-          alert("Please ensure that all the fields have been filled.");
+      if (
+        issueSubject == "" ||
+        issueDesc == "" ||
+        tickCheckbox.checked == false
+      ) {
+        alert("Please ensure that all the fields have been filled.");
+      } else {
+        // var currentdate = new Date();
+        // var datetime =  currentdate.getDate() + "/"
+        //                 + (currentdate.getMonth()+1)  + "/"
+        //                 + currentdate.getFullYear();
+
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        if (day < 10) {
+          day = "0" + day;
         }
-        else{
 
-          var currentdate = new Date(); 
-          var datetime =  currentdate.getDate() + "/"
-                          + (currentdate.getMonth()+1)  + "/" 
-                          + currentdate.getFullYear();  
+        if (month < 10) {
+          month = "0" + month;
+        }
 
+        let datetime = `${day}/${month}/${year}`;
 
-          var data = {
-            StudentID: userID,
-            issueSubject: issueSubject,
-            issueDesc: issueDesc,
-            status: "Open",
-            dateCreated: datetime,
-          };
+        var data = {
+          StudentID: userID,
+          issueSubject: issueSubject,
+          issueDesc: issueDesc,
+          status: "Open",
+          dateCreated: datetime,
+        };
 
-          var refTicket = child(dbRef, "reportTicket");
+        var refTicket = child(dbRef, "reportTicket");
 
-          //push object
-          push(refTicket, data, (error) => {
-            if (error) {
-              console.error("Error saving data:", error);
-              // handle error here, e.g. display an error message to the user
-            } else {
-              console.log("Data saved successfully");
-              // do something here, e.g. show a success message to the user
-            }
-          });
-          console.log("ticket submitted");
-          
-          window.location.href = "../HTML/submitpage.html";
+        //push object
+        push(refTicket, data, (error) => {
+          if (error) {
+            console.error("Error saving data:", error);
+            // handle error here, e.g. display an error message to the user
+          } else {
+            console.log("Data saved successfully");
+            // do something here, e.g. show a success message to the user
+          }
+        });
+        console.log("ticket submitted");
 
-        } 
-      });
-    
-  } else{
+        window.location.href = "../HTML/submitpage.html";
+      }
+    });
+  } else {
     // User not logged in or has just logged out.
     console.log("User not logged in");
   }
-
-
 });
 
 const checkAuthStat = async () => {
@@ -115,4 +123,3 @@ const checkAuthStat = async () => {
 };
 
 checkAuthStat();
-
