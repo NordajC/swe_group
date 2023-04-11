@@ -51,6 +51,10 @@
 
 
     <br />
+    <p style="display: inline-block">ReportID:</p>
+    <p style="display: inline" id="reportID"></p>
+    <br />
+
     <p style="display: inline-block">StudentID:</p>
     <p style="display: none" id="studentID"></p>
     <p style="display: inline" id="userID"></p>
@@ -143,6 +147,8 @@
             let reportID = array[1];
             console.log("query: " + query);
             console.log(reportID);
+
+            document.getElementById('reportID').innerHTML = reportID;
 
             get(child(dbRef, `reportTicket/${reportID}`)).then((snapshot) => {
                 if (snapshot.exists()) {
