@@ -2,222 +2,222 @@
 
 <html>
 
-    <!-- back button to ticketHistory page-->
-    <button onclick="location.href='../HTML/ticketHistory.html'"></button>
+<!-- back button to ticketHistory page-->
+<button onclick="location.href='../HTML/ticketHistory.html'"></button>
 
-    <h1>Details for Extenuating Circumstance: </h1>
-    
-    <p style="display: inline-block">TicketID:</p>
-    <p style="display: inline" id="ecTicketID"></p>
-    <br />
+<h1>Details for Extenuating Circumstance: </h1>
 
-    <p style="display: inline-block">State:</p>
-    <p style="display: inline" id="status"></p>
-    <br />
+<p style="display: inline-block">TicketID:</p>
+<p style="display: inline" id="ecTicketID"></p>
+<br />
 
-    <p style="display: inline-block">EC Type:</p>
-    <p style="display: inline" id="ecType"></p>
-    <br />
+<p style="display: inline-block">State:</p>
+<p style="display: inline" id="status"></p>
+<br />
 
-    <p style="display: inline-block">Nature:</p>
-    <p style="display: inline" id="ecNature"></p>
-    <br />
+<p style="display: inline-block">EC Type:</p>
+<p style="display: inline" id="ecType"></p>
+<br />
 
-    <p style="display: inline-block">Summary:</p>
-    <p style="display: inline" id="ecSummary"></p>
-    <br />
+<p style="display: inline-block">Nature:</p>
+<p style="display: inline" id="ecNature"></p>
+<br />
 
-    <p style="display: inline-block">Assessments:</p>
-    <p style="display: inline" id="ecAssessment"></p>
-    <br />
+<p style="display: inline-block">Summary:</p>
+<p style="display: inline" id="ecSummary"></p>
+<br />
 
-    <p style="display: inline-block">Evidence:</p>
-    <p style="display: inline" id="ecEvidence"></p>
-    <br />
+<p style="display: inline-block">Assessments:</p>
+<p style="display: inline" id="ecAssessment"></p>
+<br />
 
-    <p style="display: inline-block">Requested Date:</p>
-    <p style="display: inline" id="ecReqDate"></p>
-    <br />
+<p style="display: inline-block">Evidence:</p>
+<p style="display: inline" id="ecEvidence"></p>
+<br />
 
-    <h2>Admin Response: </h2>
+<p style="display: inline-block">Requested Date:</p>
+<p style="display: inline" id="ecReqDate"></p>
+<br />
 
-    <p style="display: inline-block">Response:</p>
-    <p style="display: inline" id="adminResponse"></p>
-    <br />
+<h2>Admin Response: </h2>
 
-    <p style="display: inline-block">Response Date:</p>
-    <p style="display: inline" id="responseDate"></p>
-    <br />
+<p style="display: inline-block">Response:</p>
+<p style="display: inline" id="adminResponse"></p>
+<br />
 
-    <h2>Ticket information: </h2>
- 
-    <p style="display: inline-block">dateCreated:</p>
-    <p style="display: inline" id="dateCreated"></p>
+<p style="display: inline-block">Response Date:</p>
+<p style="display: inline" id="responseDate"></p>
+<br />
 
-    <!-- <h3>Updated:</h3>
+<h2>Ticket information: </h2>
+
+<p style="display: inline-block">dateCreated:</p>
+<p style="display: inline" id="dateCreated"></p>
+
+<!-- <h3>Updated:</h3>
     <p style="display: inline-block">Message:</p>
     <p style="display: inline" id="message"></p> -->
 
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-        import {
-            getDatabase,
-            ref,
-            child,
-            get,
-            onValue,
-            push,
-            set,
-        } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
-        import {
-            getAuth,
-            signInWithEmailAndPassword,
-            onAuthStateChanged,
-            signOut,
-        } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import {
+        getDatabase,
+        ref,
+        child,
+        get,
+        onValue,
+        push,
+        set,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+    import {
+        getAuth,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut,
+    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
-            authDomain: "test-29549.firebaseapp.com",
-            databaseURL:
-                "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "test-29549",
-            storageBucket: "test-29549.appspot.com",
-            messagingSenderId: "864209838742",
-            appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
-        };
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+        authDomain: "test-29549.firebaseapp.com",
+        databaseURL:
+            "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "test-29549",
+        storageBucket: "test-29549.appspot.com",
+        messagingSenderId: "864209838742",
+        appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
+    };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const auth = getAuth();
-        const dbRef = ref(db);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth();
+    const dbRef = ref(db);
 
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                // User logged in already or has just logged in.
-                console.log(user.uid);
-                let userID = user.uid;
-                console.log(userID);
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            // User logged in already or has just logged in.
+            console.log(user.uid);
+            let userID = user.uid;
+            console.log(userID);
 
-                // Get data from URL parameters
-                let query = location.search;
-                let array = query.split("?id=");
-                let ecID = array[1];
-                console.log("query: " + query);
-                console.log(ecID);
-                
-                document.getElementById('ecTicketID').innerHTML = ecID;
+            // Get data from URL parameters
+            let query = location.search;
+            let array = query.split("?id=");
+            let ecID = array[1];
+            console.log("query: " + query);
+            console.log(ecID);
 
-        
-                get(child(dbRef, `ecTicket/${ecID}/status`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const status = snapshot.val();
-                        console.log(status);
-                        document.getElementById('status').innerHTML = status;
-                    } else {
-                        console.log("no status data available");
-                    }
-                });
-
-                get(child(dbRef, `ecTicket/${ecID}/ecType`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const ecType = snapshot.val();
-                        console.log(ecType);
-                        document.getElementById('ecType').innerHTML = ecType;
-                    } else {
-                        console.log("no ecType data available");
-                    }
-                });
-
-                get(child(dbRef, `ecTicket/${ecID}/ecNature`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const ecNature = snapshot.val();
-                        console.log(ecNature);
-                        document.getElementById('ecNature').innerHTML = ecNature;
-                    } else {
-                        console.log("no ecNature data available");
-                    }
-                });
-
-                get(child(dbRef, `ecTicket/${ecID}/ecSummary`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const ecSummary = snapshot.val();
-                        console.log(ecSummary);
-                        document.getElementById('ecSummary').innerHTML = ecSummary;
-                    } else {
-                        console.log("no ecSummary data available");
-                    }
-                });
-
-                get(child(dbRef, `ecTicket/${ecID}/ecAssessment`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const ecAssessment = snapshot.val();
-                        console.log(ecAssessment);
-                        document.getElementById('ecAssessment').innerHTML = ecAssessment;
-                    } else {
-                        console.log("no ecAssessment data available");
-                    }
-                });
-
-                get(child(dbRef, `ecTicket/${ecID}/ecEvidence`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const ecEvidence = snapshot.val();
-                        console.log(ecEvidence);
-                        document.getElementById('ecEvidence').innerHTML = ecEvidence;
-                    } else {
-                        console.log("no ecEvidence data available");
-                    }
-                });
-
-                get(child(dbRef, `ecTicket/${ecID}/ecReqDate`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const ecReqDate = snapshot.val();
-                        console.log(ecReqDate);
-                        document.getElementById('ecReqDate').innerHTML = ecReqDate;
-                    } else {
-                        console.log("no ecReqDate data available");
-                    }
-                });
+            document.getElementById('ecTicketID').innerHTML = ecID;
 
 
-                get(child(dbRef, `ecTicket/${ecID}/adminResponse`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const adminResponse = snapshot.val();
-                        console.log(adminResponse);
-                        document.getElementById('adminResponse').innerHTML = adminResponse;
-                    } else {
-                        console.log("no adminResponse data available");
-                    }
-                });
+            get(child(dbRef, `ecTicket/${ecID}/status`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const status = snapshot.val();
+                    console.log(status);
+                    document.getElementById('status').innerHTML = status;
+                } else {
+                    console.log("no status data available");
+                }
+            });
 
-                get(child(dbRef, `ecTicket/${ecID}/responseDate`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const responseDate = snapshot.val();
-                        console.log(responseDate);
-                        document.getElementById('responseDate').innerHTML = responseDate;
-                    } else {
-                        console.log("no responseDate data available");
-                    }
-                });
+            get(child(dbRef, `ecTicket/${ecID}/ecType`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const ecType = snapshot.val();
+                    console.log(ecType);
+                    document.getElementById('ecType').innerHTML = ecType;
+                } else {
+                    console.log("no ecType data available");
+                }
+            });
 
-                get(child(dbRef, `ecTicket/${ecID}/dateCreated`)).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const dateCreated = snapshot.val();
-                        console.log(dateCreated);
-                        document.getElementById('dateCreated').innerHTML = dateCreated;
-                    } else {
-                        console.log("no dateCreated data available");
-                    }
-                });
-            }
-        });
+            get(child(dbRef, `ecTicket/${ecID}/ecNature`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const ecNature = snapshot.val();
+                    console.log(ecNature);
+                    document.getElementById('ecNature').innerHTML = ecNature;
+                } else {
+                    console.log("no ecNature data available");
+                }
+            });
 
-    </script>
+            get(child(dbRef, `ecTicket/${ecID}/ecSummary`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const ecSummary = snapshot.val();
+                    console.log(ecSummary);
+                    document.getElementById('ecSummary').innerHTML = ecSummary;
+                } else {
+                    console.log("no ecSummary data available");
+                }
+            });
+
+            get(child(dbRef, `ecTicket/${ecID}/ecAssessment`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const ecAssessment = snapshot.val();
+                    console.log(ecAssessment);
+                    document.getElementById('ecAssessment').innerHTML = ecAssessment;
+                } else {
+                    console.log("no ecAssessment data available");
+                }
+            });
+
+            get(child(dbRef, `ecTicket/${ecID}/ecEvidence`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const ecEvidence = snapshot.val();
+                    console.log(ecEvidence);
+                    document.getElementById('ecEvidence').innerHTML = ecEvidence;
+                } else {
+                    console.log("no ecEvidence data available");
+                }
+            });
+
+            get(child(dbRef, `ecTicket/${ecID}/ecReqDate`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const ecReqDate = snapshot.val();
+                    console.log(ecReqDate);
+                    document.getElementById('ecReqDate').innerHTML = ecReqDate;
+                } else {
+                    console.log("no ecReqDate data available");
+                }
+            });
+
+
+            get(child(dbRef, `ecTicket/${ecID}/adminResponse`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const adminResponse = snapshot.val();
+                    console.log(adminResponse);
+                    document.getElementById('adminResponse').innerHTML = adminResponse;
+                } else {
+                    console.log("no adminResponse data available");
+                }
+            });
+
+            get(child(dbRef, `ecTicket/${ecID}/responseDate`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const responseDate = snapshot.val();
+                    console.log(responseDate);
+                    document.getElementById('responseDate').innerHTML = responseDate;
+                } else {
+                    console.log("no responseDate data available");
+                }
+            });
+
+            get(child(dbRef, `ecTicket/${ecID}/dateCreated`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const dateCreated = snapshot.val();
+                    console.log(dateCreated);
+                    document.getElementById('dateCreated').innerHTML = dateCreated;
+                } else {
+                    console.log("no dateCreated data available");
+                }
+            });
+        }
+    });
+
+</script>
 
 </html>

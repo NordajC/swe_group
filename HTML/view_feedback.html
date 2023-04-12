@@ -62,15 +62,6 @@
           </thead>
       </table>
     </div>
-    
-    <!--<table id="feedback_table">
-        <tr>
-            <th>FeedbackID</th>
-            <th>Date</th>
-            <th>Subject</th>
-            <th>Feedback</th>
-        </tr>
-    </table>-->
 
     <footer class = "fixed-bottom bg-primary">
         <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
@@ -123,9 +114,6 @@
     auth.onAuthStateChanged((user) => {
         if (user) {
             // User logged in already or has just logged in.
-            console.log(user.uid);
-            let userID = user.uid;
-            console.log(userID);
 
             const ticketID = auth.currentUser.uid;
             const dbRef = ref(db, `feedback`);
@@ -135,7 +123,7 @@
             if (document.readyState === "complete") {
 
                 $("#feedback_table td").remove();
-
+                //add data to feedback table
                 onValue(dbRef, (snapshot) => {
                     snapshot.forEach((childSnapshot) => {
                         const childKey = childSnapshot.key;

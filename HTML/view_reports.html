@@ -121,19 +121,16 @@
     auth.onAuthStateChanged((user) => {
         if (user) {
             // User logged in already or has just logged in.
-            console.log(user.uid);
-            let userID = user.uid;
-            console.log(userID);
 
             const ticketID = auth.currentUser.uid;
             const dbRef = ref(db, `reportTicket`);
 
             var table = document.getElementById("report_table");
-
+            //if webpage is loaded then run the following code
             if (document.readyState === "complete") {
 
                 $("#report_table td").remove();
-
+                //gets data of child and insert data into table
                 onValue(dbRef, (snapshot) => {
                     snapshot.forEach((childSnapshot) => {
                         const childKey = childSnapshot.key;
@@ -176,15 +173,6 @@
                                 console.log("no data available");
                             }
                         });
-
-                        // if (childData.status == "Closed") {
-                        //   var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>" + childData.adminResponse + "</td><td>"  + childData.responseDate + "</td></tr>";
-                        // }
-                        // else {
-                        //   var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueDesc + "</td><td>" + childData.status + "</td><td>N/A</td><td>N/A</td></tr>";
-                        // }
-
-                        // $(entry).appendTo("#report_table");
 
                     });
                 }, {

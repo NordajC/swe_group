@@ -31,28 +31,24 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbRef = ref(db);
 const auth = getAuth();
-const user = auth.currentUser;
-var userID;
 
+//checks if user is logged in and enables functionality
 auth.onAuthStateChanged((user) => {
   if (user) {
     // User logged in already or has just logged in.
-    console.log(user.uid);
     let userID = user.uid;
-    console.log(userID);
 
-    // console.log(issueDesc);
-
+    //listens for submit button click and create a new data entry based on user input upon clicking
     let submit_button = document.getElementById("submit-button");
     submit_button.addEventListener("click", (e) => {
       e.preventDefault(); // prevent default form submission behavior
 
+      //reads user input
       let issueSubject = document.getElementById("issue-subject").value;
       let issueDesc = document.getElementById("issue-description").value;
-      // let issueLoc = document.getElementById("building").value;
-      // let issueFloor = document.getElementById("floor").value;
       let tickCheckbox = document.getElementById("tick-checkbox");
 
+      //in fields aren't filled then alert user to fill the fields in else submit issue ticket
       if (
         issueSubject == "" ||
         issueDesc == "" ||
@@ -60,11 +56,8 @@ auth.onAuthStateChanged((user) => {
       ) {
         alert("Please ensure that all the fields have been filled.");
       } else {
-        // var currentdate = new Date();
-        // var datetime =  currentdate.getDate() + "/"
-        //                 + (currentdate.getMonth()+1)  + "/"
-        //                 + currentdate.getFullYear();
 
+        //gets current date
         const date = new Date();
         let day = date.getDate();
         let month = date.getMonth() + 1;
@@ -88,20 +81,18 @@ auth.onAuthStateChanged((user) => {
           dateCreated: datetime,
         };
 
+        //reference reportTicket in the database
         var refTicket = child(dbRef, "reportTicket");
 
         //push object
         push(refTicket, data, (error) => {
           if (error) {
             console.error("Error saving data:", error);
-            // handle error here, e.g. display an error message to the user
           } else {
             console.log("Data saved successfully");
-            // do something here, e.g. show a success message to the user
           }
         });
-        console.log("ticket submitted");
-
+        //after ticket has been submitted it re routes user to the submit page
         window.location.href = "../HTML/submitpage.html";
       }
     });
@@ -111,15 +102,3 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-const checkAuthStat = async () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      //if users are signed in then.....
-      console.log("user is signed in and is authenticated");
-    } else {
-      console.log("user is NOT signed in");
-    }
-  });
-};
-
-checkAuthStat();

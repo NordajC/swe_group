@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QMinus | Login </title>
     <link rel="stylesheet" href="../css/style.css"/>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'
+      rel='stylesheet'>
     <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
 
-</head>
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="">
-          <img src="qm minus white.png" width="100" height="50" >
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-             
-            </li>
-          </ul>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="">
+            <img src="qm minus white.png" width="100" height="50">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end"
+            id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
+    <div class="box">
+      <h2>Login</h2>
+      <div class="container-sm">
 
-
-
-   <div class="box">
-    <h2>Login</h2>
-    <div class="container-sm">
-      
-      <div class="top-header">
-      </div>
-      <div class="container-fluid col-lg-6">
-        <div class="justify-content-center">
-          <div class="card my-10 col-lg-12 mx-auto">
-            <div class="card-body" style="width: 30em;">
-              <h5 class="card-title text-center mb-6">Welcome to QM Minus!</h5>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="bx bx-user" id="person"></i>
-                  </span>
+        <div class="top-header">
+        </div>
+        <div class="container-fluid col-lg-6">
+          <div class="justify-content-center">
+            <div class="card my-10 col-lg-12 mx-auto">
+              <div class="card-body" style="width: 30em;">
+                <h5 class="card-title text-center mb-6">Welcome to QM Minus!</h5>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="bx bx-user" id="person"></i>
+                    </span>
+                  </div>
+                  <input id="email" type="text" class="form-control"
+                    placeholder="Email" required>
                 </div>
-                <input id="email" type="text" class="form-control" placeholder="Email" required>
-              </div>
-              <div class="input-group mt-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="bx bx-lock-alt" id="lock"></i>
-                  </span>
+                <div class="input-group mt-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="bx bx-lock-alt" id="lock"></i>
+                    </span>
+                  </div>
+                  <input id="password" type="password" class="form-control"
+                    placeholder="Password" required>
                 </div>
-                <input id="password" type="password" class="form-control" placeholder="Password" required>
-              </div>
-              <div class="input-group mt-3">
-                <input id="submitLogin" type="submit" class="btn btn-success" value="Login">
+                <div class="input-group mt-3">
+                  <input id="submitLogin" type="submit" class="btn btn-success"
+                    value="Login">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-      
-    </div> 
-   </div>
-</body>
-<footer class = "fixed-bottom bg-primary>
-  <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
-</footer>
-<script type="module" src="../functionality-js/login_firebase.js"></script>
-
-
-
+    </div>
+  </body>
+  <footer class="fixed-bottom bg-primary>
+    <img src="qm-logo-white.svg" style="width:120px; position: relative;">
+  </footer>
+  <script type="module" src="../functionality-js/login_firebase.js"></script>
 </html>
