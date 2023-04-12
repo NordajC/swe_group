@@ -4,14 +4,11 @@ import {
     getDatabase,
     ref,
     child,
-    get,
     push
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 import {
     getAuth,
-    signInWithEmailAndPassword,
     onAuthStateChanged,
-    signOut,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 
 // Your web app's Firebase configuration
@@ -31,16 +28,14 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbRef = ref(db);
 const auth = getAuth();
-const user = auth.currentUser;
 
-
+// Checks if user is logged in and enables functionality if they are logged in
 auth.onAuthStateChanged((user) => {
-    if (user) {
-        // User logged in already or has just logged in.
-        console.log(user.uid);
+    if (user) { // User logged in already or has just logged in.
+        
         let userID = user.uid;
-        console.log(userID);
 
+        // When the user submits form to create EC Claim
         let submit_button = document.getElementById("submit-button");
         submit_button.addEventListener("click", (e) => {
 
@@ -48,49 +43,35 @@ auth.onAuthStateChanged((user) => {
 
             let state = "Open";
 
+            // Format Date
             const date = new Date();
             let day = date.getDate();
             let month = date.getMonth() + 1;
             let year = date.getFullYear();
-
             if(day<10) {
                 day='0'+day;
             } 
-
             if(month<10) {
                 month='0'+month;
             }
-
             let dateCreated = `${day}/${month}/${year}`;
 
+            // Get input data from form
             let ecType = document.getElementById("claim-type").value;
-
-            // if (ecType == "standard-claim") {
-            //     var subject2 = "Standard Claim";
-            // }
-            // else {
-            //     var subject2 = "Self-Certification";
-            // }
-
-            // let subject = subject2;
-
             let nature = document.getElementById("nature").value;
-
             let summary = document.getElementById("summary").value;
-
             let assessment = document.getElementById("assessment").value;
-
             let reqDate = document.getElementById("reqDate").value;
-
             let evidence = document.getElementById("evidence-file").value;
-
             let tickCheckbox = document.getElementById("tick-checkbox");
 
+            // Checks if all fields are filled
             if (ecType == "" || nature == "Choose nature/category" || summary == "" || assessment == "Choose Assessment" || reqDate == "" || tickCheckbox.checked == false) {
                 alert("Error: Fill all fields.")
             }
 
             else {
+                // Set data variables to input
                 var data = {
                     StudentID: userID,
                     dateCreated: dateCreated,
@@ -104,16 +85,13 @@ auth.onAuthStateChanged((user) => {
                     adminResponse: "",
                 };
     
+                // Push object into ecTicket
                 var refEC = child(dbRef, "ecTicket");
-    
-                //push object
                 push(refEC, data, (error) => {
                     if (error) {
                         console.error("Error saving data:", error);
-                        // handle error here, e.g. display an error message to the user
                     } else {
                         console.log("Data saved successfully");
-                        // do something here, e.g. show a success message to the user
                     }
                 });
     
@@ -127,17 +105,3 @@ auth.onAuthStateChanged((user) => {
         console.log("User not logged in");
     }
 });
-
-
-const checkAuthStat = async () => {
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            //if users are signed in then.....
-            console.log("user is signed in and is authenticated");
-        } else {
-            console.log("user is NOT signed in");
-        }
-    });
-};
-
-checkAuthStat();
