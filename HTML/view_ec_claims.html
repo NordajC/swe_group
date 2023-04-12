@@ -43,22 +43,33 @@
         </nav>
       </header>
     <h2>View EC Claims</h2>
-    
-    <table id="ec_table">
-        <tr>
-            <th>TicketID</th>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Nature</th>
-            <th>Summary</th>
-            <th>Assessment</th>
-            <th>Requested Date</th>
-            <th>Status</th>
-            <th>Response</th>
-            <th>Response Date</th>
-        </tr>
-    </table>
 
+    <div class="table-container col-lg-12 col-md-12 mb-12">
+        <table class="table thread-dark table-hover" id = "ec_table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">TicketID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Nature</th>
+                    <th scope="col">Summary</th>
+                    <th scope="col">Assessment</th>
+                    <th scope="col">Requested Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Response</th>
+                    <th scope="col">Response Date</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>tr123</td>
+                <td>ec</td>
+                <td>mental health</td>
+                <td>open</td>
+                <td>2023-05-12</td>
+            </tr>
+        </table>
+    </div>
+    
     <footer class = "fixed-bottom bg-primary">
         <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
     </footer>
@@ -152,4 +163,54 @@
 
 </script>
 <script type="module" src="../functionality-js/logout_firebase.js"></script>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    thead{
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid black;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    input[type=text] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    select {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
 </html>
