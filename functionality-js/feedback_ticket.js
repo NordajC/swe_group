@@ -115,23 +115,26 @@ auth.onAuthStateChanged((user) => {
       if (feedbackOn == "" || feedback == "") {
         alert("Please ensure that all the fields have been filled.");
       } else {
-        var currentdate = new Date();
-        var datetime =
-          currentdate.getDate() +
-          "/" +
-          (currentdate.getMonth() + 1) +
-          "/" +
-          currentdate.getFullYear() +
-          " " +
-          currentdate.getHours() +
-          ":" +
-          currentdate.getMinutes();
+        const date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        let feedbackDate = `${day}/${month}/${year}`;
 
         var data = {
           StudentID: userID,
           feedbackSubject: feedbackOn,
           feedback: feedback,
-          ticketSubmissionDate: datetime,
+          feedbackDate: feedbackDate,
         };
 
         var refTicket = child(dbRef, "feedback");

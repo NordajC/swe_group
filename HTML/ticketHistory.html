@@ -1,21 +1,5 @@
 <!DOCTYPE html>
-<!-- SQL QUERIES 
-    DB = dbName
-    userAccount = user
 
-each row in col0 will have the query below
-SELECT TICKETREF FROM DB WHERE userID = userAccount
-each row in col1 will have the query below
-SELECT SUBJECT FROM DB WHERE userID = userAccount
-each row in col2 will have the query below
-SELECT STATUS FROM DB WHERE userID = userAccount
-each row in col3 will have the query below
-SELECT CREATEDON FROM DB WHERE userID = userAccount
-
-for sorting low to high do the following after SQL query:
-ORDER BY COLUMN
-
--->
 <html>
 
 <head>
@@ -88,8 +72,7 @@ ORDER BY COLUMN
             <div class="form-group mr-2">
                 <label for="ticketType">Ticket Type:</label>
                 <select id="ticketType" name="ticketType" class="form-control" onchange="filterTable()">
-                    <option value="">Select type...</option>
-                    <option value="Issue">Issue</option>
+                    <option value="">Select type...</option>                
                     <option value="Report">Report</option>
                     <option value="EC">EC</option>
                 </select>
@@ -137,13 +120,6 @@ ORDER BY COLUMN
                         <th scope="col">Created On</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>tr123</td>
-                    <td>ec</td>
-                    <td>mental health</td>
-                    <td>open</td>
-                    <td>2023-05-12</td>
-                </tr>
             </table>
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -381,10 +357,10 @@ ORDER BY COLUMN
             </script>
 
 
-            <footer class="fixed-bottom">
-                <img src="qm-logo-white.svg" style="width:120px; position: relative;">
-            </footer>
-</body>
+        <footer class = "fixed-bottom bg-primary">
+            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+        </footer>
+    </body>
 
 <script type="module" src="../functionality-js/logout_firebase.js"></script>
 
@@ -397,10 +373,10 @@ ORDER BY COLUMN
         margin-bottom: 20px;
     }
 
-    thead {
-        background-color: rgb(13, 50, 115);
-        color: white;
-    }
+        thead{
+            background-color: #0d6ef3;
+            color:white;
+        }
 
     th,
     td {

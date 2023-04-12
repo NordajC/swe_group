@@ -9,12 +9,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-  <title>Respond to EC</title>
+  <title>View Open EC Ticket</title>
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="admin.html">
+        <a class="navbar-brand" href="ec_admin_homepage.html">
           <img src="qm minus white.png" width="100" height="50" >
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="review_ECapplication.html">Review EC Application</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="UpdateEC.html">Update EC Ticket Status</a>
+              <a class="nav-link" href="view_ec_claims.html">View EC Claim</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="ECadmin_details.html">My Details</a>
@@ -40,9 +37,10 @@
     </nav>
   </header>
   <h2>Respond to EC</h2>
-
+<body>
+    <p style="display: none" id="userID"></p>
     <section class="container-fluid col-lg-7 col-md-10" id="container">
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header">
                 <h2 class="mb-0">ECTicketID</h2>
             </div>
@@ -95,10 +93,10 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>  -->
     </section>
 
-    <footer class = "fixed-bottom">
+    <footer class = "fixed-bottom bg-primary">
         <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
     </footer>
 
