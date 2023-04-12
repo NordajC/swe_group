@@ -24,7 +24,7 @@
     <br />
 
     <p style="display: inline-block">Assessments:</p>
-    <p style="display: inline" id="ecAssessments"></p>
+    <p style="display: inline" id="ecAssessment"></p>
     <br />
 
     <p style="display: inline-block">Evidence:</p>
@@ -42,7 +42,7 @@
     <br />
 
     <p style="display: inline-block">Response Date:</p>
-    <p style="display: inline" id="ResponseDate"></p>
+    <p style="display: inline" id="responseDate"></p>
     <br />
 
     <h2>Ticket information: </h2>
@@ -151,13 +151,13 @@
                     }
                 });
 
-                get(child(dbRef, `ecTicket/${ecID}/ecAssessments`)).then((snapshot) => {
+                get(child(dbRef, `ecTicket/${ecID}/ecAssessment`)).then((snapshot) => {
                     if (snapshot.exists()) {
-                        const ecAssessments = snapshot.val();
-                        console.log(ecAssessments);
-                        document.getElementById('ecAssessments').innerHTML = ecAssessments;
+                        const ecAssessment = snapshot.val();
+                        console.log(ecAssessment);
+                        document.getElementById('ecAssessment').innerHTML = ecAssessment;
                     } else {
-                        console.log("no ecAssessments data available");
+                        console.log("no ecAssessment data available");
                     }
                 });
 
@@ -192,13 +192,13 @@
                     }
                 });
 
-                get(child(dbRef, `ecTicket/${ecID}/ResponseDate`)).then((snapshot) => {
+                get(child(dbRef, `ecTicket/${ecID}/responseDate`)).then((snapshot) => {
                     if (snapshot.exists()) {
-                        const ResponseDate = snapshot.val();
-                        console.log(ResponseDate);
-                        document.getElementById('ResponseDate').innerHTML = ResponseDate;
+                        const responseDate = snapshot.val();
+                        console.log(responseDate);
+                        document.getElementById('responseDate').innerHTML = responseDate;
                     } else {
-                        console.log("no ResponseDate data available");
+                        console.log("no responseDate data available");
                     }
                 });
 
