@@ -52,30 +52,19 @@
   <h2>View Reports</h2>
   <div class="container-sm">
     <div class="table-container col-lg-12 col-md-12 mb-12">
-      <table class="table thread-dark table-hover" id = "open_report_table">
-          <thead class="thead-dark">
-              <tr>
-                  <th scope="col">TicketID</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">StudentID</th>
-                  <th scope="col">Student Name</th>
-                  <th scope="col">Subject</th>
-              </tr>
-          </thead>
+      <table class="table thread-dark table-hover" id="open_report_table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">TicketID</th>
+            <th scope="col">Date</th>
+            <th scope="col">StudentID</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Subject</th>
+          </tr>
+        </thead>
       </table>
+    </div>
   </div>
-  </div>
-    
-
-  <!--<table id="open_report_table">
-    <tr>
-      <th>TicketID</th>
-      <th>Date</th>
-      <th>StudentID</th>
-      <th>Student Name</th>
-      <th>Subject</th>
-    </tr>
-  </table>-->
 
   <footer class="fixed-bottom bg-primary">
     <img src="qm-logo-white.svg" style="width:120px; position: relative;">
@@ -123,21 +112,20 @@
   const db = getDatabase(app);
   const auth = getAuth();
 
+  // Checks if user is logged in and enables functionality if they are logged in
   auth.onAuthStateChanged((user) => {
     if (user) {
       // User logged in already or has just logged in.
-      console.log(user.uid);
       let userID = user.uid;
-      console.log(userID);
-
-      const dbRef = ref(db, `reportTicket`);
 
       var table = document.getElementById("open_report_table");
 
+      // Checks if the document is fully loaded, executes if it is complete
       if (document.readyState === "complete") {
+        $("#open_report_table td").remove(); // Gets rid of existing table data - restarting table when table is loaded
 
-        $("#open_report_table td").remove();
-
+        // Goes through every key and data in reportTicket
+        const dbRef = ref(db, `reportTicket`);
         onValue(dbRef, (snapshot) => {
           snapshot.forEach((childSnapshot) => {
             const childKey = childSnapshot.key;
@@ -145,23 +133,29 @@
 
             let studentID = childData.StudentID;
 
+            // Checks if status is open
             if (childData.status == "Open") {
 
+              // Get student ID
               get(child(ref(db), `user/${studentID}/userID`)).then((snapshot) => {
                 if (snapshot.exists()) {
                   const userID = snapshot.val();
 
+                  // Get student name
                   get(child(ref(db), `user/${studentID}/name`)).then((snapshot) => {
                     if (snapshot.exists()) {
                       const studentName = snapshot.val();
 
+                      // Get student surname
                       get(child(ref(db), `user/${studentID}/surname`)).then((snapshot) => {
                         if (snapshot.exists()) {
                           const studentSurname = snapshot.val();
 
+                          // Create data row and insert data grabbed from database
                           var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + userID + "</td><td>" + studentName + " " + studentSurname + "</td><td>" + childData.issueSubject + "</td><td>" +
-                          `<button onclick="location.href='../HTML/eecs_response.html?id=${childKey}';">Respond to Report</button></td></tr>`;
+                            `<button onclick="location.href='../HTML/eecs_response.html?id=${childKey}';">Respond to Report</button></td></tr>`;
 
+                          // Add row to table
                           $(entry).appendTo("#open_report_table");
 
                         } else {
@@ -178,11 +172,6 @@
                   console.log("no data available");
                 }
               });
-
-              // var entry = "<tr><td>" + childKey + "</td><td>" + childData.dateCreated + "</td><td>" + childData.issueSubject + "</td><td>" +
-              //   `<button onclick="location.href='../HTML/eecs_response.html?id=${childKey}';">Respond to Report</button></td></tr>`;
-
-              // $(entry).appendTo("#open_report_table");
             }
 
           });
@@ -203,52 +192,54 @@
 <script type="module" src="../functionality-js/logout_firebase.js"></script>
 <style>
   table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-      margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
-  thead{
-      background-color: #0d6efd;
-      color: white;
+  thead {
+    background-color: #0d6efd;
+    color: white;
   }
 
-  th, td {
-      text-align: left;
-      padding: 8px;
-      border: 1px solid black;
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
   }
 
   tr:nth-child(even) {
-      background-color: #f2f2f2;
+    background-color: #f2f2f2;
   }
 
   input[type=text] {
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
 
   select {
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
 
   button {
-      background-color: #4CAF50;
-      color: black;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+    background-color: #4CAF50;
+    color: black;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
 
   button:hover {
-      background-color: #45a049;
+    background-color: #45a049;
   }
 </style>
+
 </html>

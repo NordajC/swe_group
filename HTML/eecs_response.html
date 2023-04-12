@@ -48,11 +48,8 @@
         </nav>
     </header>
 
-
-
     <br />
    
-
     <div class="container-sm">
         <h3>Respond to this ticket</h3>
         <table class="table table-hover table-bordered table-light">
@@ -146,51 +143,50 @@
     const auth = getAuth();
     const dbRef = ref(db);
 
+    // Checks if user is logged in and enables functionality if they are logged in
     auth.onAuthStateChanged((user) => {
         if (user) {
             // User logged in already or has just logged in.
-            console.log(user.uid);
             let userID = user.uid;
-            console.log(userID);
 
             // Get data from URL parameters
             let query = location.search;
             let array = query.split("?id=");
             let reportID = array[1];
-            console.log("query: " + query);
-            console.log(reportID);
 
             document.getElementById('reportID').innerHTML = reportID;
 
+            // Get report ID
             get(child(dbRef, `reportTicket/${reportID}`)).then((snapshot) => {
                 if (snapshot.exists()) {
-                    get(child(dbRef, `reportTicket/${reportID}/StudentID`)).then((snapshot) => {
 
+                    // Get student ID
+                    get(child(dbRef, `reportTicket/${reportID}/StudentID`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             const studentID = snapshot.val();
-                            console.log(studentID);
                             document.getElementById('studentID').innerHTML = studentID;
 
+                            // Get student's user ID
                             get(child(dbRef, `user/${studentID}/userID`)).then((snapshot) => {
                                 if (snapshot.exists()) {
                                     const userID = snapshot.val();
-                                    console.log(userID);
                                     document.getElementById('userID').innerHTML = userID;
                                 } else {
                                     console.log("no data available");
                                 }
                             });
 
+                            // Get student name
                             get(child(dbRef, `user/${studentID}/name`)).then((snapshot) => {
                                 if (snapshot.exists()) {
                                     const studentName = snapshot.val();
-                                    console.log(studentName);
                                     document.getElementById('studentName').innerHTML = studentName;
                                 } else {
                                     console.log("no data available");
                                 }
                             });
 
+                            // Get student surname
                             get(child(dbRef, `user/${studentID}/surname`)).then((snapshot) => {
                                 if (snapshot.exists()) {
                                     const studentSurname = snapshot.val();
@@ -206,6 +202,7 @@
                         }
                     });
 
+                    // Get date of report ticket creation
                     get(child(dbRef, `reportTicket/${reportID}/dateCreated`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             const dateCreated = snapshot.val();
@@ -216,6 +213,7 @@
                         }
                     });
 
+                    // Get report subject
                     get(child(dbRef, `reportTicket/${reportID}/issueSubject`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             const subject = snapshot.val();
@@ -226,6 +224,7 @@
                         }
                     });
 
+                    // Get report description
                     get(child(dbRef, `reportTicket/${reportID}/issueDesc`)).then((snapshot) => {
                         if (snapshot.exists()) {
                             const message = snapshot.val();
@@ -236,36 +235,40 @@
                         }
                     });
 
+                    // If EECS admin click on submit button to respond
                     let submit_button = document.getElementById("submit-button");
                     submit_button.addEventListener("click", (e) => {
 
+                        // Set response variable to be the input of the admin response
                         let response = document.getElementById("admin-response").value;
 
+                        // Checks if response field is empty
                         if (response == "") {
                             alert("Please fill in response");
                         }
                         else {
+                            // Get all information to be stored in reportTicket
                             let studentID = document.getElementById("studentID").innerHTML;
                             let dateCreated = document.getElementById("dateCreated").innerHTML;
                             let message = document.getElementById("message").innerHTML;
                             let subject = document.getElementById("subject").innerHTML;
                             let status = "Closed";
 
+                            // Format date
                             const date = new Date();
                             let day = date.getDate();
                             let month = date.getMonth() + 1;
                             let year = date.getFullYear();
-
                             if (day < 10) {
                                 day = '0' + day;
                             }
-
                             if (month < 10) {
                                 month = '0' + month;
                             }
 
                             let responseDate = `${day}/${month}/${year}`;
 
+                            // Set data variables to input
                             var data = {
                                 StudentID: studentID,
                                 dateCreated: dateCreated,
@@ -276,24 +279,23 @@
                                 responseDate: responseDate,
                             };
 
+                            // Set object into reportTicket 
                             var refReport = child(dbRef, `reportTicket/${reportID}`);
-
-                            //set object
                             set(refReport, data, (error) => {
                                 if (error) {
                                     console.error("Error saving data:", error);
-                                    // handle error here, e.g. display an error message to the user
                                 } else {
                                     console.log("Data saved successfully");
-                                    // do something here, e.g. show a success message to the user
                                 }
                             });
                             alert("Response is sent");
+                            // Relocate user
                             window.close();
                             window.open("open_reports.html");
                         }
                     });
                 } else {
+                    // Relocate user if URL parameters include a non-existing report ID ticket
                     alert("Ticket is unavailable.")
                     window.close();
                     window.open("open_reports.html");

@@ -3,13 +3,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebas
 import {
   getDatabase,
   ref,
-  child,
-  get,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 import {
   getAuth,
   onAuthStateChanged,
-  signOut 
+  signOut
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,29 +26,28 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const dbRef = ref(db);
 const auth = getAuth();
-const current_user = auth.currentUser;
 
-//checks if user exists, is signed in, and authenticated
-const checkAuthStat = async() => {
-  onAuthStateChanged(auth, user =>{
-    if(user) {
-      //if users are signed in then.....
-      console.log("user is signed in and is authenticated");
+// Checks if user exists, is signed in, and authenticated
+const checkAuthStat = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      // If users are signed in
+      console.log("User is signed in and is authenticated");
     }
     else {
-      console.log("user is NOT signed in");
+      console.log("User is NOT signed in");
     }
   })
 }
 checkAuthStat();
+
 //sign out
-const userSignOut = async() => {
+const userSignOut = async () => {
   await signOut(auth);
 }
 
+// If user clicks on log out button
 const logOut = document.getElementById("logOut");
 logOut.addEventListener("click", (e) => {
   userSignOut();
@@ -59,6 +56,7 @@ logOut.addEventListener("click", (e) => {
   window.location.href = "../HTML/logout.html";
 });
 
+// Checks if user logs in when the window is loaded
 window.addEventListener("load", (event) => {
   checkAuthStat();
 });
