@@ -44,6 +44,8 @@ auth.onAuthStateChanged((user) => {
       console.log("query: " + query);
       console.log(ecID);
 
+      document.getElementById("TicketID").innerHTML = ecID;
+
       // Get StudentID
       get(child(dbRef, `ecTicket/${ecID}/StudentID`)).then((snapshot) => {
         if (snapshot.exists()) {
