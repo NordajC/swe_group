@@ -17,110 +17,118 @@ ORDER BY COLUMN
 
 -->
 <html>
-    <head>
-       <title>Ticket History</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/style.css" type="text/css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
-        
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-              <div class="container-fluid">
+<head>
+    <title>Ticket History</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="home.html">
-                  <img src="qm minus white.png" width="100" height="50" >
+                    <img src="qm minus white.png" width="100" height="50">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                  <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="issue_form.html">Report Issue</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="ec_form.html">Apply for EC</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="status.html">Service Status</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="SE project form.html">Feedback Form</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contactdetails.html">Contact Details</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="ECadmin_details.html">My Details</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-danger bg-dark" id="logOut" type="submit"  href="#"> LogOut</a>
-                    </li>
-                  </ul>
-                  
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="issue_form.html">Report Issue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ec_form.html">Apply for EC</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="status.html">Service Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="SE project form.html">Feedback Form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactdetails.html">Contact Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ECadmin_details.html">My Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-danger bg-dark" id="logOut" type="submit" href="#"> LogOut</a>
+                        </li>
+                    </ul>
+
                 </div>
-              </div>
-            </nav>
-          </header>
+            </div>
+        </nav>
+    </header>
 
 
-        <div class="container-fluid">
-            <h2>Ticket History</h2>
-    
-            <form class="form-inline">
-                <div class="form-group mr-2">
-                    <label for="ticketRef">Ticket Reference:</label>
-                    <input type="text" class="form-control" id="ticketRef" name="ticketRef" placeholder="Search for ticket reference..." onkeyup="filterTable()">
-                </div>
-                
-                <div class="form-group mr-2">
-                    <label for="ticketType">Ticket Type:</label>
-                    <select id="ticketType" name="ticketType" class="form-control" onchange="filterTable()">
-                        <option value="">Select type...</option>
-                        <option value="Issue">Issue</option>
-                        <option value="Report">Report</option>
-                        <option value="EC">EC</option>
-                    </select>
-                </div>
+    <div class="container-fluid">
+        <h2>Ticket History</h2>
 
-                <div class="form-group mr-2">
-                    <label for="subject">Subject:</label>
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Search for subject..." onkeyup="filterTable()">
-                </div>
-    
-                <div class="form-group mr-2">
-                    <label for="status">Status:</label>
-                    <select id="status" name="status" class="form-control" onchange="filterTable()">
-                        <option value="">Select status...</option>
-                        <option value="open">Open</option>
-                        <option value="closed">Closed</option>                
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                </div>
+        <form class="form-inline">
+            <div class="form-group mr-2">
+                <label for="ticketRef">Ticket Reference:</label>
+                <input type="text" class="form-control" id="ticketRef" name="ticketRef"
+                    placeholder="Search for ticket reference..." onkeyup="filterTable()">
+            </div>
 
-                <div class="form-group mr-2">
-                    <label for="createdOn">Created On:</label>
-                    <input type="text" class="form-control" id="createdOn" name="createdOn" placeholder="Search for date..." onkeyup="filterTable()">
-                </div>
+            <div class="form-group mr-2">
+                <label for="ticketType">Ticket Type:</label>
+                <select id="ticketType" name="ticketType" class="form-control" onchange="filterTable()">
+                    <option value="">Select type...</option>
+                    <option value="Issue">Issue</option>
+                    <option value="Report">Report</option>
+                    <option value="EC">EC</option>
+                </select>
+            </div>
 
-            </form>
+            <div class="form-group mr-2">
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Search for subject..."
+                    onkeyup="filterTable()">
+            </div>
+
+            <div class="form-group mr-2">
+                <label for="status">Status:</label>
+                <select id="status" name="status" class="form-control" onchange="filterTable()">
+                    <option value="">Select status...</option>
+                    <option value="open">Open</option>
+                    <option value="closed">Closed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+
+            <div class="form-group mr-2">
+                <label for="createdOn">Created On:</label>
+                <input type="text" class="form-control" id="createdOn" name="createdOn" placeholder="Search for date..."
+                    onkeyup="filterTable()">
+            </div>
+
+        </form>
 
         <!-- Ticket Table for list of Tickets -->
         <!-- A new Row and 4 Columns will be created for each ticket -->
         <div class="table-container col-lg-12 col-md-12 mb-12">
-            <table class="table thread-dark table-hover" id = "ticket_table">
+            <table class="table thread-dark table-hover" id="ticket_table">
                 <thead class="thead-dark">
                     <!-- class = "sortable essential" id = "col-0"
                     class = "sortable essential" id = "col-1"
                     class = "sortable essential" id = "col-2"
                     class = "sortable essential" id = "col-3" -->
-            
+
                     <tr>
                         <th scope="col">Ticket Reference</th>
                         <th scope="col">Ticket Type</th>
@@ -138,298 +146,300 @@ ORDER BY COLUMN
                 </tr>
             </table>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous">
-        </script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+                </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous">
+                </script>
 
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-            import {
-            getDatabase,
-            ref,
-            child,
-            get,
-            onValue,
-            } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
-            import {
-            getAuth,
-            signInWithEmailAndPassword,
-            onAuthStateChanged,
-            signOut,
-            } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
+            <script type="module">
+                // Import the functions you need from the SDKs you need
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+                import {
+                    getDatabase,
+                    ref,
+                    child,
+                    get,
+                    onValue,
+                } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+                import {
+                    getAuth,
+                    signInWithEmailAndPassword,
+                    onAuthStateChanged,
+                    signOut,
+                } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+                // TODO: Add SDKs for Firebase products that you want to use
+                // https://firebase.google.com/docs/web/setup#available-libraries
 
-            // Your web app's Firebase configuration
-            const firebaseConfig = {
-            apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
-            authDomain: "test-29549.firebaseapp.com",
-            databaseURL:
-                "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "test-29549",
-            storageBucket: "test-29549.appspot.com",
-            messagingSenderId: "864209838742",
-            appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
-            };
+                // Your web app's Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+                    authDomain: "test-29549.firebaseapp.com",
+                    databaseURL:
+                        "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+                    projectId: "test-29549",
+                    storageBucket: "test-29549.appspot.com",
+                    messagingSenderId: "864209838742",
+                    appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
+                };
 
-            // Initialize Firebase App
-            const app = initializeApp(firebaseConfig);
+                // Initialize Firebase App
+                const app = initializeApp(firebaseConfig);
 
-            // Get Firebase database and auth instances
-            const db = getDatabase(app);
-            //const dbRef = ref(db);
-            const auth = getAuth();
-            const current_user = auth.currentUser;
+                // Get Firebase database and auth instances
+                const db = getDatabase(app);
+                //const dbRef = ref(db);
+                const auth = getAuth();
+                const current_user = auth.currentUser;
 
-            auth.onAuthStateChanged((user) => {
-                if (user) {
-                    // User logged in already or has just logged in.
-                    console.log(user.uid);
-                    let userID = user.uid;
-                    console.log(userID);
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        // User logged in already or has just logged in.
+                        console.log(user.uid);
+                        let userID = user.uid;
+                        console.log(userID);
 
-                    //const userID = current_user;
+                        //const userID = current_user;
 
-                    const ticketID = auth.currentUser.uid;
-                    const dbIssueTicketRef = ref(db, `issueTicket`);
-                    
-                    var tbody = document.getElementById("ticket_table");
+                        const ticketID = auth.currentUser.uid;
+                        const dbIssueTicketRef = ref(db, `issueTicket`);
 
-                    if (document.readyState === "complete") {
-                            
-                        $("ticket_table td").remove();
+                        var tbody = document.getElementById("ticket_table");
 
-                        //get all IssueTickets for specific user logged in
-                        onValue(dbIssueTicketRef, (snapshot) => {
-                            snapshot.forEach((childSnapshot) => {
-                                const childKey = childSnapshot.key;    
-                                const childData = childSnapshot.val();
+                        if (document.readyState === "complete") {
 
-                                if (childData.StudentID == userID){
-                                    var entry = "<tr><td>" + childKey + "</td><td>" + "Issue" + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueStatus + "</td><td>"  + childData.ticektSubmissionDate + "</td></tr>";
-                                    
-                                    $(entry).appendTo("#ticket_table");
+                            $("ticket_table td").remove();
 
-                                } else{
-                                    console.log("Not users data")
-                                }
-                            });
-                        }, {
+                            //get all IssueTickets for specific user logged in
+                            /* onValue(dbIssueTicketRef, (snapshot) => {
+                                snapshot.forEach((childSnapshot) => {
+                                    const childKey = childSnapshot.key;
+                                    const childData = childSnapshot.val();
+
+                                    if (childData.StudentID == userID) {
+                                        var entry = '<tr onclick="location.href=\'../HTML/eecs_response.html?id=' + childKey + '\';"><td>' + childKey + "</td><td>" + "Issue" + "</td><td>" + childData.issueSubject + "</td><td>" + childData.issueStatus + "</td><td>" + childData.ticektSubmissionDate + "</td></tr>";
+                                        
+                                        $(entry).appendTo("#ticket_table");
+
+                                    } else {
+                                        console.log("Not users data")
+                                    }
+                                });
+                            }, {
                                 onlyOnce: true
-                        });
-                        
+                            }); */
 
-                        
 
-                        //get all ReportTickets for specific user logged in
-                        const dbReportTicketRef = ref(db, `reportTicket`);
-                        onValue(dbReportTicketRef, (snapshot) => {
-                            snapshot.forEach((childSnapshot) => {
-                                const childKey = childSnapshot.key;    
-                                const childData = childSnapshot.val();
 
-                                if (childData.StudentID == userID){
-                                    var entry = "<tr><td>" + childKey + "</td><td>" + "Report" + "</td><td>"  + childData.subject + "</td><td>" + childData.status + "</td><td>"  + childData.dateCreated + "</td></tr>";
-                                    
-                                    $(entry).appendTo("#ticket_table");
 
-                                } else{
-                                    console.log("Not users data")
-                                }
+                            //get all ReportTickets for specific user logged in
+                            const dbReportTicketRef = ref(db, `reportTicket`);
+                            onValue(dbReportTicketRef, (snapshot) => {
+                                snapshot.forEach((childSnapshot) => {
+                                    const childKey = childSnapshot.key;
+                                    const childData = childSnapshot.val();
+
+                                    if (childData.StudentID == userID) {
+
+                                        var entry = '<tr onclick="location.href=\'../HTML/studentViewReportTicket.html?id=' + childKey + '\';"><td>' + childKey + "</td><td>" + "Report" + "</td><td>" + childData.issueSubject + "</td><td>" + childData.status + "</td><td>" + childData.dateCreated + "</td></tr>";
+
+                                        $(entry).appendTo("#ticket_table");
+
+                                    } else {
+                                        console.log("Not users data")
+                                    }
+                                });
+                            }, {
+                                onlyOnce: true
                             });
-                        }, {
-                            onlyOnce: true
-                        });
 
-                        
 
-                        //get all EcTickets for specific user logged in
-                        const dbEcTicketRef = ref(db, `ecTicket`);
-                        onValue(dbEcTicketRef, (snapshot) => {
-                            snapshot.forEach((childSnapshot) => {
-                                const childKey = childSnapshot.key;    
-                                const childData = childSnapshot.val();
 
-                                if (childData.StudentID == userID){
-                                    var entry = "<tr><td>" + childKey + "</td><td>" + "EC" + "</td><td>" + childData.ecSummary + "</td><td>" + childData.state + "</td><td>"  + childData.dateCreated + "</td></tr>";
-                                    
-                                    $(entry).appendTo("#ticket_table");
+                            //get all EcTickets for specific user logged in
+                            const dbEcTicketRef = ref(db, `ecTicket`);
+                            onValue(dbEcTicketRef, (snapshot) => {
+                                snapshot.forEach((childSnapshot) => {
+                                    const childKey = childSnapshot.key;
+                                    const childData = childSnapshot.val();
 
-                                } else{
-                                    console.log("Not users data")
-                                }
+                                    if (childData.StudentID == userID) {
+                                        var entry = '<tr onclick="location.href=\'../HTML/studentViewECTicket.html?id=' + childKey + '\';"><td>' + childKey + "</td><td>" + "EC" + "</td><td>" + childData.ecSummary + "</td><td>" + childData.status + "</td><td>" + childData.dateCreated + "</td></tr>";
+
+                                        $(entry).appendTo("#ticket_table");
+
+                                    } else {
+                                        console.log("Not users data")
+                                    }
+                                });
+                            }, {
+                                onlyOnce: true
                             });
-                        }, {
-                            onlyOnce: true
-                        });
 
-                    } 
-                    
-                } else {
+                        }
+
+                    } else {
                         // User not logged in or has just logged out.
                         console.log("User not logged in");
-                }
+                    }
 
-            });
+                });
 
-        </script>
+            </script>
 
-        <!-- <script>
-            function filterTable() {
-                // Get input values
-                var ticketRefInput = document.getElementById("ticketRef").value.toUpperCase();
-                var subjectInput = document.getElementById("subject").value.toUpperCase();
-                var statusInput = document.getElementById("status").value.toUpperCase();
-                var createdOnInput = document.getElementById("createdOn").value.toUpperCase();
+            <script>
+                function filterTable() {
+                    // Get input values
+                    var ticketRefInput = document.getElementById("ticketRef").value.toUpperCase();
+                    var subjectInput = document.getElementById("subject").value.toUpperCase();
+                    var statusInput = document.getElementById("status").value.toUpperCase();
+                    var createdOnInput = document.getElementById("createdOn").value.toUpperCase();
 
-                // Get table rows
-                var rows = document.getElementById("ticketTable").getElementsByTagName("tr");
+                    // Get table rows
+                    var rows = document.getElementById("ticketTable").getElementsByTagName("tr");
 
-                // Loop through rows and hide those that don't match the filter criteria
-                for (var i = 1; i < rows.length; i++) {
-                    var ticketRef = rows[i].getElementsByTagName("td")[0].textContent.toUpperCase();
-                    var subject = rows[i].getElementsByTagName("td")[1].textContent.toUpperCase();
-                    var status = rows[i].getElementsByTagName("td")[2].textContent.toUpperCase();
-                    var createdOn = rows[i].getElementsByTagName("td")[3].textContent.toUpperCase();
-                    
-                    if (ticketRef.indexOf(ticketRefInput) > -1 &&
-                        subject.indexOf(subjectInput) > -1 &&
-                        status.indexOf(statusInput) > -1 &&
-                        createdOn.indexOf(createdOnInput) > -1) {
-                        rows[i].style.display = "";
-                    } 
-                    
-                    else {
-                        rows[i].style.display = "none";
+                    // Loop through rows and hide those that don't match the filter criteria
+                    for (var i = 1; i < rows.length; i++) {
+                        var ticketRef = rows[i].getElementsByTagName("td")[0].textContent.toUpperCase();
+                        var subject = rows[i].getElementsByTagName("td")[1].textContent.toUpperCase();
+                        var status = rows[i].getElementsByTagName("td")[2].textContent.toUpperCase();
+                        var createdOn = rows[i].getElementsByTagName("td")[3].textContent.toUpperCase();
+                        
+                        if (ticketRef.indexOf(ticketRefInput) > -1 &&
+                            subject.indexOf(subjectInput) > -1 &&
+                            status.indexOf(statusInput) > -1 &&
+                            createdOn.indexOf(createdOnInput) > -1) {
+                            rows[i].style.display = "";
+                        } 
+                        
+                        else {
+                            rows[i].style.display = "none";
+                        }
                     }
                 }
-            }
-        </script> -->
+            </script>
 
-        <script>
-            const table = document.getElementById('ticket_table');
-            const rows = table.getElementsByTagName('tr');
-            const ticketRefInput = document.getElementById('ticketRef');
-            const ticketTypeInput = document.getElementById('ticketType');
-            const subjectInput = document.getElementById('subject');
-            const statusInput = document.getElementById('status');
-            const createdOnInput = document.getElementById('createdOn');
+            <script>
+                const table = document.getElementById('ticket_table');
+                const rows = table.getElementsByTagName('tr');
+                const ticketRefInput = document.getElementById('ticketRef');
+                const ticketTypeInput = document.getElementById('ticketType');
+                const subjectInput = document.getElementById('subject');
+                const statusInput = document.getElementById('status');
+                const createdOnInput = document.getElementById('createdOn');
 
-            function searchTable(column, searchText) {
-                for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i];
-                    const cell = row.getElementsByTagName('td')[column];
-                    if (cell) {
-                        const text = cell.textContent.toLowerCase();
-                        if (text.includes(searchText)) {
-                            row.style.display = '';
-                        } else {
-                            row.style.display = 'none';
+                function searchTable(column, searchText) {
+                    for (let i = 1; i < rows.length; i++) {
+                        const row = rows[i];
+                        const cell = row.getElementsByTagName('td')[column];
+                        if (cell) {
+                            const text = cell.textContent.toLowerCase();
+                            if (text.includes(searchText)) {
+                                row.style.display = '';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        }
+                    }
+
+                    // If the search text is empty, display all rows
+                    if (!searchText) {
+                        for (let i = 1; i < rows.length; i++) {
+                            rows[i].style.display = '';
                         }
                     }
                 }
 
-                // If the search text is empty, display all rows
-                if (!searchText) {
-                    for (let i = 1; i < rows.length; i++) {
-                        rows[i].style.display = '';
-                    }
-                }
-            }
+                ticketRefInput.addEventListener('input', () => {
+                    const searchText = ticketRefInput.value.toLowerCase();
+                    searchTable(0, searchText);
+                });
 
-            ticketRefInput.addEventListener('input', () => {
-                const searchText = ticketRefInput.value.toLowerCase();
-                searchTable(0, searchText);
-            });
+                ticketTypeInput.addEventListener('change', () => {
+                    const searchText = ticketTypeInput.value.toLowerCase();
+                    searchTable(1, searchText);
+                });
 
-            ticketTypeInput.addEventListener('change', () => {
-                const searchText = ticketTypeInput.value.toLowerCase();
-                searchTable(1, searchText);
-            });
+                subjectInput.addEventListener('input', () => {
+                    const searchText = subjectInput.value.toLowerCase();
+                    searchTable(2, searchText);
+                });
 
-            subjectInput.addEventListener('input', () => {
-                const searchText = subjectInput.value.toLowerCase();
-                searchTable(2, searchText);
-            });
+                statusInput.addEventListener('change', () => {
+                    const searchText = statusInput.value.toLowerCase();
+                    searchTable(3, searchText);
+                });
 
-            statusInput.addEventListener('change', () => {
-                const searchText = statusInput.value.toLowerCase();
-                searchTable(3, searchText);
-            });
-
-            createdOnInput.addEventListener('input', () => {
-                const searchText = createdOnInput.value.toLowerCase();
-                searchTable(4, searchText);
-            });
+                createdOnInput.addEventListener('input', () => {
+                    const searchText = createdOnInput.value.toLowerCase();
+                    searchTable(4, searchText);
+                });
 
 
-        </script>
+            </script>
 
 
-        <footer class = "fixed-bottom">
-            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
-        </footer>
-    </body>
+            <footer class="fixed-bottom">
+                <img src="qm-logo-white.svg" style="width:120px; position: relative;">
+            </footer>
+</body>
 
-    <script type="module" src="../functionality-js/logout_firebase.js"></script>
+<script type="module" src="../functionality-js/logout_firebase.js"></script>
 
 
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-        thead{
-            background-color: rgb(13, 50, 115);
-            color: white;
-        }
+    thead {
+        background-color: rgb(13, 50, 115);
+        color: white;
+    }
 
-        th, td {
-            text-align: left;
-            padding: 8px;
-            border: 1px solid black;
-        }
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid black;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-        input[type=text] {
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+    input[type=text] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-        select {
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+    select {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
 
 </html>
 
@@ -580,5 +590,3 @@ ORDER BY COLUMN
     .catch((error) => {
         console.error(error);
 });  -->
-
-
