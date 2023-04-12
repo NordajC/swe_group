@@ -10,7 +10,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut 
+  signOut
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -32,10 +32,8 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbRef = ref(db);
 const auth = getAuth();
-const current_user = auth.currentUser;
 
-
-
+// Run userLogIn when the user submits to try and log-in
 const login = document.getElementById("submitLogin");
 login.addEventListener("click", (e) => {
   userLogIn();
@@ -56,25 +54,21 @@ const userLogIn = async () => {
 
       // alerts user if they have signed in
       alert("user logged in successfully");
-      console.log(user.uid);
 
       //check user type and redirect user to the correct view
       get(child(dbRef, `user/${user.uid}/type`))
         .then((snapshot) => {
           if (snapshot.exists()) {
             const userType = snapshot.val();
-            console.log(userType);
+            // Redirect user depending on the user type
             if (userType == "ec") {
               alert("user is an ec admin");
-              //redirect
               window.location.href = "../HTML/ec_admin_homepage.html";
             } else if (userType == "eecs") {
               alert("user is an eecs admin");
-              //redirect
               window.location.href = "../HTML/eecs_admin_homepage.html";
             } else if (userType == "student") {
               alert("user is a student");
-              //redirect
               window.location.href = "../HTML/student_homepage.html";
             }
           } else {
@@ -86,17 +80,16 @@ const userLogIn = async () => {
         });
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
     });
 };
 
 //checks if user exists, is signed in, and authenticated
-const checkAuthStat = async() => {
-  onAuthStateChanged(auth, user =>{
-    if(user) {
-      //if users are signed in then.....
+const checkAuthStat = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      //  User is signed in
       console.log("user is signed in and is authenticated");
     }
     else {
@@ -104,19 +97,6 @@ const checkAuthStat = async() => {
     }
   })
 }
-
-//sign out
-const userSignOut = async() => {
-  await signOut(auth);
-}
-
-// const logOut = document.getElementById("logOut");
-// logOut.addEventListener("click", (e) => {
-//   userSignOut();
-//   checkAuthStat();
-//   alert("logout");
-//   window.location.href = "../HTML/logout.html";
-// });
 
 window.addEventListener("load", (event) => {
   checkAuthStat();

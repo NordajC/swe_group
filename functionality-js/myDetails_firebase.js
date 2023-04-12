@@ -8,9 +8,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
 import {
   getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
 } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -32,7 +29,6 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbRef = ref(db);
 const auth = getAuth();
-const current_user = auth.currentUser;
 
 auth.onAuthStateChanged((user) => {
   if (user) {
@@ -41,6 +37,7 @@ auth.onAuthStateChanged((user) => {
     let userID = user.uid;
     console.log(userID);
 
+    // Get user ID
     get(child(dbRef, `user/${user.uid}/userID`)).then((snapshot) => {
       if (snapshot.exists()) {
         const currentUserID = snapshot.val();
@@ -51,6 +48,7 @@ auth.onAuthStateChanged((user) => {
       }
     });
 
+    // Get user's name
     get(child(dbRef, `user/${user.uid}/name`)).then((snapshot) => {
       if (snapshot.exists()) {
         const currentUserName = snapshot.val();
@@ -61,6 +59,7 @@ auth.onAuthStateChanged((user) => {
       }
     });
 
+    // Get user's email
     get(child(dbRef, `user/${user.uid}/email`)).then((snapshot) => {
       if (snapshot.exists()) {
         const currentUserEmail = snapshot.val();
@@ -71,6 +70,7 @@ auth.onAuthStateChanged((user) => {
       }
     });
 
+    // Get user's surname
     get(child(dbRef, `user/${user.uid}/surname`)).then((snapshot) => {
       if (snapshot.exists()) {
         const currentUserSurname = snapshot.val();
@@ -85,5 +85,3 @@ auth.onAuthStateChanged((user) => {
     console.log("User not logged in");
   }
 });
-
-get(child(dbRef, `user/${user.uid}/type`)).then((snapshot) => {});
