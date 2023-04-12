@@ -49,20 +49,24 @@
         </nav>
       </header>
     <h2>View Reports</h2>
-    
-    <table id="report_table">
-        <tr>
-            <th>TicketID</th>
-            <th>Date</th>
-            <th>StudentID</th>
-            <th>Student Name</th>
-            <th>Subject</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Response</th>
-            <th>Response Date</th>
-        </tr>
-    </table>
+
+    <div class="table-container col-lg-12 col-md-12 mb-12">
+      <table class="table thread-dark table-hover" id = "report_table">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">TicketID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">StudentID</th>
+                  <th scope="col">Student Name</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Response</th>
+                  <th scope="col">Response Date</th>
+              </tr>
+          </thead>
+      </table>
+    </div>
 
     <footer class = "fixed-bottom bg-primary">
         <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
@@ -195,4 +199,54 @@
 
 </script>
 <script type="module" src="../functionality-js/logout_firebase.js"></script>
+<style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+
+  thead{
+      background-color: #0d6efd;
+      color: white;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid black;
+  }
+
+  tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  input[type=text] {
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+  select {
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+
+  button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+
+  button:hover {
+      background-color: #45a049;
+  }
+</style>
 </html>
