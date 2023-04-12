@@ -2,47 +2,111 @@
 
 <html>
 
-    <!-- back button to ticketHistory page-->
-    <button onclick="location.href='../HTML/ticketHistory.html'"></button>
-
-    <h1>Details for Report: </h1>
-    
-    <p style="display: inline-block">TicketID:</p>
-    <p style="display: inline" id="reportTicketID"></p>
-    <br />
-
-    <p style="display: inline-block">Subject:</p>
-    <p style="display: inline" id="issueSubject"></p>
-    <br />
-
-    <p style="display: inline-block">Description:</p>
-    <p style="display: inline" id="issueDesc"></p>
-    <br />
-
-    <p style="display: inline-block">Status:</p>
-    <p style="display: inline" id="status"></p>
-    <br />
-
-    <h2>Admin Response: </h2>
-
-    <p style="display: inline-block">Response:</p>
-    <p style="display: inline" id="adminResponse"></p>
-    <br />
-
-    <p style="display: inline-block">Response Date:</p>
-    <p style="display: inline" id="responseDate"></p>
-    <br />
-
-    <h2>Ticket information: </h2>
- 
-    <p style="display: inline-block">dateCreated:</p>
-    <p style="display: inline" id="dateCreated"></p>
-
-    <!-- <h3>Updated:</h3>
-    <p style="display: inline-block">Message:</p>
-    <p style="display: inline" id="message"></p> -->
+<head>
+    <title>Report Information</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
 
 
+</head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="home.html">
+                        <img src="qm minus white.png" width="100" height="50">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="issue_form.html">Report Issue</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ec_form.html">Apply for EC</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="status.html">Service Status</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="SE project form.html">Feedback Form</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contactdetails.html">Contact Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ECadmin_details.html">My Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger bg-dark" id="logOut" type="submit" href="#"> LogOut</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <h1>Details for Report: </h1>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-light">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ticket ID</td>
+                  <td id="reportTicketID"></td>
+                </tr>
+                <tr>
+                  <td>Subject</td>
+                  <td id="issueSubject"></td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td id="issueDesc"></td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td id="status"></td>
+                </tr>
+                <tr>
+                  <td>Admin Response</td>
+                  <td>
+                    <p id="adminResponse"></p>
+                    <p id="responseDate"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ticket Information</td>
+                  <td id="dateCreated"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        <!-- <h3>Updated:</h3>
+        <p style="display: inline-block">Message:</p>
+        <p style="display: inline" id="message"></p> -->
+        <footer class = "fixed-bottom bg-primary">
+            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+        </footer>
+    </body>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
