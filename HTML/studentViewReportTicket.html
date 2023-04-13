@@ -1,170 +1,228 @@
 <!DOCTYPE html>
 
 <html>
-  <!-- back button to ticketHistory page-->
-  <button onclick="location.href='../HTML/ticketHistory.html'"></button>
 
-  <h1>Details for Report:</h1>
+<head>
+    <title>Report Information</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css-bs/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
 
-  <p style="display: inline-block">TicketID:</p>
-  <p style="display: inline" id="reportTicketID"></p>
-  <br />
+</head>
 
-  <p style="display: inline-block">Subject:</p>
-  <p style="display: inline" id="issueSubject"></p>
-  <br />
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="student_homepage.html">
+                        <img src="qm minus white.png" width="100" height="50">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="issue_form.html">Report Issue</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ec_form.html">Apply for EC</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="status.html">Service Status</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="feedback_form.html">Feedback Form</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contactdetails.html">Contact Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="student_details.html">My Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-danger bg-dark" id="logOut" type="submit" href="#"> LogOut</a>
+                            </li>
+                        </ul>
 
-  <p style="display: inline-block">Description:</p>
-  <p style="display: inline" id="issueDesc"></p>
-  <br />
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-  <p style="display: inline-block">Status:</p>
-  <p style="display: inline" id="status"></p>
-  <br />
+        <h1>Details for Report: </h1>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-light">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ticket ID</td>
+                  <td id="reportTicketID"></td>
+                </tr>
+                <tr>
+                  <td>Subject</td>
+                  <td id="issueSubject"></td>
+                </tr>
+                <tr>
+                  <td>Description</td>
+                  <td id="issueDesc"></td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td id="status"></td>
+                </tr>
+                <tr>
+                  <td>Admin Response</td>
+                  <td>
+                    <p id="adminResponse"></p>
+                    <p id="responseDate"></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ticket Information</td>
+                  <td id="dateCreated"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        <!-- <h3>Updated:</h3>
+        <p style="display: inline-block">Message:</p>
+        <p style="display: inline" id="message"></p> -->
+        <footer class = "fixed-bottom bg-primary">
+            <img src="qm-logo-white.svg" style= "width:120px; position: relative;"> 
+        </footer>
+    </body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import {
+            getDatabase,
+            ref,
+            child,
+            get,
+            onValue,
+            push,
+            set,
+        } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut,
+        } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-  <h2>Admin Response:</h2>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
+            authDomain: "test-29549.firebaseapp.com",
+            databaseURL:
+                "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "test-29549",
+            storageBucket: "test-29549.appspot.com",
+            messagingSenderId: "864209838742",
+            appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
+        };
 
-  <p style="display: inline-block">Response:</p>
-  <p style="display: inline" id="adminResponse"></p>
-  <br />
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth();
+        const dbRef = ref(db);
 
-  <p style="display: inline-block">Response Date:</p>
-  <p style="display: inline" id="responseDate"></p>
-  <br />
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // User logged in already or has just logged in.
+                console.log(user.uid);
+                let userID = user.uid;
+                console.log(userID);
 
-  <h2>Ticket information:</h2>
+                // Get data from URL parameters
+                let query = location.search;
+                let array = query.split("?id=");
+                let reportID = array[1];
+                console.log("query: " + query);
+                console.log(reportID);
+            
+                document.getElementById('reportTicketID').innerHTML = reportID;
+        
+                get(child(dbRef, `reportTicket/${reportID}/issueSubject`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const subject = snapshot.val();
+                        console.log(subject);
+                        document.getElementById('issueSubject').innerHTML = subject;
+                    } else {
+                        console.log("no issueSubject data available");
+                    }
+                });
 
-  <p style="display: inline-block">dateCreated:</p>
-  <p style="display: inline" id="dateCreated"></p>
+                get(child(dbRef, `reportTicket/${reportID}/issueDesc`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const desc = snapshot.val();
+                        console.log(desc);
+                        document.getElementById('issueDesc').innerHTML = desc;
+                    } else {
+                        console.log("no issueDesc data available");
+                    }
+                });
 
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-    import {
-      getDatabase,
-      ref,
-      child,
-      get,
-      onValue,
-      push,
-      set,
-    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      onAuthStateChanged,
-      signOut,
-    } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+                get(child(dbRef, `reportTicket/${reportID}/status`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const status = snapshot.val();
+                        console.log(status);
+                        document.getElementById('status').innerHTML = status;
+                    } else {
+                        console.log("no status data available");
+                    }
+                });
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDZiskzFA7Lyb9m1w8vPiXrCifgV8VhoSg",
-      authDomain: "test-29549.firebaseapp.com",
-      databaseURL:
-        "https://test-29549-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "test-29549",
-      storageBucket: "test-29549.appspot.com",
-      messagingSenderId: "864209838742",
-      appId: "1:864209838742:web:26d5ee1b5cf49944f558b7",
-    };
+                get(child(dbRef, `reportTicket/${reportID}/adminResponse`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const adminResponse = snapshot.val();
+                        console.log(adminResponse);
+                        document.getElementById('adminResponse').innerHTML = adminResponse;
+                    } else {
+                        console.log("no adminResponse data available");
+                    }
+                });
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const auth = getAuth();
-    const dbRef = ref(db);
+                get(child(dbRef, `reportTicket/${reportID}/responseDate`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const responseDate = snapshot.val();
+                        console.log(responseDate);
+                        document.getElementById('responseDate').innerHTML = responseDate;
+                    } else {
+                        console.log("no responseDate data available");
+                    }
+                });
 
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User logged in already or has just logged in.
-        console.log(user.uid);
-        let userID = user.uid;
-        console.log(userID);
-
-        // Get data from URL parameters
-        let query = location.search;
-        let array = query.split("?id=");
-        let reportID = array[1];
-        console.log("query: " + query);
-        console.log(reportID);
-
-        document.getElementById("reportTicketID").innerHTML = reportID;
-        //get subject data and display it in webpage
-        get(child(dbRef, `reportTicket/${reportID}/issueSubject`)).then(
-          (snapshot) => {
-            if (snapshot.exists()) {
-              const subject = snapshot.val();
-              console.log(subject);
-              document.getElementById("issueSubject").innerHTML = subject;
-            } else {
-              console.log("no issueSubject data available");
+                get(child(dbRef, `reportTicket/${reportID}/dateCreated`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const dateCreated = snapshot.val();
+                        console.log(dateCreated);
+                        document.getElementById('dateCreated').innerHTML = dateCreated;
+                    } else {
+                        console.log("no dateCreated data available");
+                    }
+                });
             }
-          }
-        );
-        //get description data and display it in webpage
-        get(child(dbRef, `reportTicket/${reportID}/issueDesc`)).then(
-          (snapshot) => {
-            if (snapshot.exists()) {
-              const desc = snapshot.val();
-              console.log(desc);
-              document.getElementById("issueDesc").innerHTML = desc;
-            } else {
-              console.log("no issueDesc data available");
-            }
-          }
-        );
-        //get status data and display it in webpage
-        get(child(dbRef, `reportTicket/${reportID}/status`)).then(
-          (snapshot) => {
-            if (snapshot.exists()) {
-              const status = snapshot.val();
-              console.log(status);
-              document.getElementById("status").innerHTML = status;
-            } else {
-              console.log("no status data available");
-            }
-          }
-        );
-        //get admin response and display it in webpage
-        get(child(dbRef, `reportTicket/${reportID}/adminResponse`)).then(
-          (snapshot) => {
-            if (snapshot.exists()) {
-              const adminResponse = snapshot.val();
-              console.log(adminResponse);
-              document.getElementById("adminResponse").innerHTML =
-                adminResponse;
-            } else {
-              console.log("no adminResponse data available");
-            }
-          }
-        );
-        //get response date and display it in webpage
-        get(child(dbRef, `reportTicket/${reportID}/responseDate`)).then(
-          (snapshot) => {
-            if (snapshot.exists()) {
-              const responseDate = snapshot.val();
-              console.log(responseDate);
-              document.getElementById("responseDate").innerHTML = responseDate;
-            } else {
-              console.log("no responseDate data available");
-            }
-          }
-        );
-        //get response date created and display it in webpage
-        get(child(dbRef, `reportTicket/${reportID}/dateCreated`)).then(
-          (snapshot) => {
-            if (snapshot.exists()) {
-              const dateCreated = snapshot.val();
-              console.log(dateCreated);
-              document.getElementById("dateCreated").innerHTML = dateCreated;
-            } else {
-              console.log("no dateCreated data available");
-            }
-          }
-        );
-      }
-    });
-  </script>
+        });
+
+    </script>
+
 </html>
